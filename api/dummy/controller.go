@@ -232,6 +232,14 @@ func (Controller *Controller) ProductCashout(c echo.Context) error {
 	})
 }
 
+// Create godoc
+// @Summary Product EMoney
+// @description Product EMoney user
+// @tags Product
+// @Accept json
+// @Produce json
+// @Success 200 {object} []dummy.ProductEmoney
+// @Router /v1/product/emoney [get]
 func (Controller *Controller) ProductEmoney(c echo.Context) error {
 	var err error
 	product1 := dummyBussiness.ProductEmoney{
@@ -296,6 +304,14 @@ func (Controller *Controller) ProductEmoney(c echo.Context) error {
 	})
 }
 
+// Create godoc
+// @Summary Product Pulsa
+// @description Product Pulsa user
+// @tags Product
+// @Accept json
+// @Produce json
+// @Success 200 {object} []dummy.ProductPulsa
+// @Router /v1/product/pulsa [get]
 func (Controller *Controller) ProductPulsa(c echo.Context) error {
 	var err error
 	product1 := dummyBussiness.ProductPulsa{
@@ -360,6 +376,14 @@ func (Controller *Controller) ProductPulsa(c echo.Context) error {
 	})
 }
 
+// Create godoc
+// @Summary Product PaketData
+// @description Product PaketData user
+// @tags Product
+// @Accept json
+// @Produce json
+// @Success 200 {object} []dummy.ProductPaketData
+// @Router /v1/product/paketdata [get]
 func (Controller *Controller) ProductPaketData(c echo.Context) error {
 	var err error
 	product1 := dummyBussiness.ProductPaketData{

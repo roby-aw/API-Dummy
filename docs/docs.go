@@ -139,6 +139,84 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/v1/product/emoney": {
+            "get": {
+                "description": "Product EMoney user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Product EMoney",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/dummy.ProductEmoney"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/product/paketdata": {
+            "get": {
+                "description": "Product PaketData user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Product PaketData",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/dummy.ProductPaketData"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/product/pulsa": {
+            "get": {
+                "description": "Product Pulsa user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Product Pulsa",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/dummy.ProductPulsa"
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -217,6 +295,54 @@ const docTemplate = `{
             }
         },
         "dummy.ProductCashout": {
+            "type": "object",
+            "properties": {
+                "harga": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "poin": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dummy.ProductEmoney": {
+            "type": "object",
+            "properties": {
+                "harga": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "poin": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dummy.ProductPaketData": {
+            "type": "object",
+            "properties": {
+                "Internet": {
+                    "type": "string"
+                },
+                "harga": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "kuota": {
+                    "type": "string"
+                },
+                "poin": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dummy.ProductPulsa": {
             "type": "object",
             "properties": {
                 "harga": {

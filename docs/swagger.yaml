@@ -57,6 +57,37 @@ definitions:
       poin:
         type: integer
     type: object
+  dummy.ProductEmoney:
+    properties:
+      harga:
+        type: integer
+      id:
+        type: integer
+      poin:
+        type: integer
+    type: object
+  dummy.ProductPaketData:
+    properties:
+      Internet:
+        type: string
+      harga:
+        type: integer
+      id:
+        type: integer
+      kuota:
+        type: string
+      poin:
+        type: integer
+    type: object
+  dummy.ProductPulsa:
+    properties:
+      harga:
+        type: integer
+      id:
+        type: integer
+      poin:
+        type: integer
+    type: object
 host: api-dummy.herokuapp.com
 info:
   contact: {}
@@ -143,6 +174,57 @@ paths:
               $ref: '#/definitions/dummy.ProductCashout'
             type: array
       summary: Product CashOut
+      tags:
+      - Product
+  /v1/product/emoney:
+    get:
+      consumes:
+      - application/json
+      description: Product EMoney user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dummy.ProductEmoney'
+            type: array
+      summary: Product EMoney
+      tags:
+      - Product
+  /v1/product/paketdata:
+    get:
+      consumes:
+      - application/json
+      description: Product PaketData user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dummy.ProductPaketData'
+            type: array
+      summary: Product PaketData
+      tags:
+      - Product
+  /v1/product/pulsa:
+    get:
+      consumes:
+      - application/json
+      description: Product Pulsa user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dummy.ProductPulsa'
+            type: array
+      summary: Product Pulsa
       tags:
       - Product
 swagger: "2.0"
