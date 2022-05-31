@@ -138,6 +138,54 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/order/emoney": {
+            "post": {
+                "description": "Pulsa user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserOrder"
+                ],
+                "summary": "Order Pulsa",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/order/paketdata": {
+            "post": {
+                "description": "PaketData user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserOrder"
+                ],
+                "summary": "Order PaketData",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
         "/v1/product/cashout": {
             "get": {
                 "description": "Product CashOut user",

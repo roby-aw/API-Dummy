@@ -493,3 +493,48 @@ func (Controller *Controller) OrderCashout(c echo.Context) error {
 		"messages": "success register",
 	})
 }
+
+// Create godoc
+// @Summary Order Emoney
+// @description Emoney user
+// @tags UserOrder
+// @Accept json
+// @Produce json
+// @Success 200 {object} map[string]interface{}
+// @Router /v1/order/emoney [post]
+func (Controller *Controller) OrderEmoney(c echo.Context) error {
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success register",
+	})
+}
+
+// Create godoc
+// @Summary Order Pulsa
+// @description Pulsa user
+// @tags UserOrder
+// @Accept json
+// @Produce json
+// @Success 200 {object} map[string]interface{}
+// @Router /v1/order/emoney [post]
+func (Controller *Controller) OrderPulsa(c echo.Context) error {
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success register",
+	})
+}
+
+// Create godoc
+// @Summary Order PaketData
+// @description PaketData user
+// @tags UserOrder
+// @Accept json
+// @Produce json
+// @Success 200 {object} map[string]interface{}
+// @Router /v1/order/paketdata [post]
+func (Controller *Controller) OrderPaketData(c echo.Context) error {
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success register",
+	})
+}

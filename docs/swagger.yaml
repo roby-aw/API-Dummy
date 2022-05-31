@@ -175,6 +175,38 @@ paths:
       summary: Order Cashout
       tags:
       - UserOrder
+  /v1/order/emoney:
+    post:
+      consumes:
+      - application/json
+      description: Pulsa user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Order Pulsa
+      tags:
+      - UserOrder
+  /v1/order/paketdata:
+    post:
+      consumes:
+      - application/json
+      description: PaketData user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Order PaketData
+      tags:
+      - UserOrder
   /v1/product/cashout:
     get:
       consumes:
