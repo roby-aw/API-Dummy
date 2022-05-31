@@ -145,6 +145,21 @@ paths:
       summary: Login
       tags:
       - Admin
+  /v1/admin/managecustomer:
+    get:
+      consumes:
+      - application/json
+      description: Manage Customer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.User'
+      summary: Manage Customer
+      tags:
+      - Admin
   /v1/admin/managecustomerpoint:
     get:
       consumes:
