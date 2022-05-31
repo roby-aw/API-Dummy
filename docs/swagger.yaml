@@ -1,5 +1,12 @@
 basePath: /
 definitions:
+  admin.Dashboard:
+    properties:
+      stock:
+        type: integer
+      user:
+        type: integer
+    type: object
   admin.LoginAdmin:
     properties:
       password:
@@ -88,6 +95,21 @@ paths:
       summary: UpdateUser
       tags:
       - User
+  /v1/admin/dashboard:
+    get:
+      consumes:
+      - application/json
+      description: Dashboard Admin
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.Dashboard'
+      summary: Dashboard Admin
+      tags:
+      - Admin
   /v1/admin/login:
     post:
       consumes:

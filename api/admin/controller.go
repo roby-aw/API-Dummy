@@ -62,3 +62,27 @@ func (Controller *Controller) LoginAdmin(c echo.Context) error {
 		"result":   result,
 	})
 }
+
+// Create godoc
+// @Summary Dashboard Admin
+// @description Dashboard Admin
+// @tags Admin
+// @Accept json
+// @Produce json
+// @Success 200 {object} admin.Dashboard
+// @Router /v1/admin/dashboard [get]
+func (Controller *Controller) Dashboard(c echo.Context) error {
+	var err error
+	result := adminBusiness.Dashboard{
+		User:  15,
+		Stock: 120,
+	}
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success get dashboard",
+		"result":   result,
+	})
+}

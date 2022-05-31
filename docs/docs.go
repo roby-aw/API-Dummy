@@ -50,6 +50,29 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/admin/dashboard": {
+            "get": {
+                "description": "Dashboard Admin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Dashboard Admin",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/admin.Dashboard"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/admin/login": {
             "post": {
                 "description": "Login Admin",
@@ -352,6 +375,17 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "admin.Dashboard": {
+            "type": "object",
+            "properties": {
+                "stock": {
+                    "type": "integer"
+                },
+                "user": {
+                    "type": "integer"
+                }
+            }
+        },
         "admin.LoginAdmin": {
             "type": "object",
             "required": [

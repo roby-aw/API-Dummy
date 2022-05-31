@@ -45,3 +45,8 @@ type GetCityById struct {
 	Nama_kota string `json:"nama_kota"`
 	Tipe_kota string `json:"tipe_kota"`
 }
+
+type Dashboard struct {
+	User  int `json:"user"`
+	Stock int `json:"stock"`
+}
