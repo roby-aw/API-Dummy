@@ -1,5 +1,6 @@
 module api-redeem-point
 
+//heroku goVersion go1.17
 go 1.17
 
 require github.com/spf13/viper v1.11.0
