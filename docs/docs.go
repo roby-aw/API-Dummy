@@ -48,7 +48,9 @@ const docTemplate = `{
                         }
                     }
                 }
-            },
+            }
+        },
+        "/v1/account/{id}": {
             "delete": {
                 "description": "Delete User",
                 "consumes": [
@@ -62,6 +64,13 @@ const docTemplate = `{
                 ],
                 "summary": "Delete User",
                 "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id user",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
                     {
                         "type": "string",
                         "default": "Bearer \u003cAdd access token here\u003e",

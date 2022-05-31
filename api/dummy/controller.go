@@ -262,9 +262,10 @@ func (Controller *Controller) UpdateUser(c echo.Context) error {
 // @tags User
 // @Accept json
 // @Produce json
+// @Param id path int true "id user"
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Success 200 {object} map[string]interface{}
-// @Router /v1/account [DELETE]
+// @Router /v1/account/{id} [DELETE]
 func (Controller *Controller) DeleteUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
