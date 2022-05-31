@@ -159,6 +159,17 @@ paths:
       summary: Login
       tags:
       - User
+  /v1/order/cashout:
+    post:
+      consumes:
+      - application/json
+      description: Register user
+      produces:
+      - application/json
+      responses: {}
+      summary: Order Cashout
+      tags:
+      - UserOrder
   /v1/product/cashout:
     get:
       consumes:
@@ -227,4 +238,15 @@ paths:
       summary: Product Pulsa
       tags:
       - Product
+  /v1/register:
+    post:
+      consumes:
+      - application/json
+      description: Register user
+      produces:
+      - application/json
+      responses: {}
+      summary: Register
+      tags:
+      - User
 swagger: "2.0"

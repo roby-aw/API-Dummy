@@ -463,3 +463,31 @@ func (Controller *Controller) ProductPaketData(c echo.Context) error {
 		"result":   arr,
 	})
 }
+
+// Create godoc
+// @Summary Register
+// @description Register user
+// @tags User
+// @Accept json
+// @Produce json
+// @Router /v1/register [post]
+func (Controller *Controller) Register(c echo.Context) error {
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success register",
+	})
+}
+
+// Create godoc
+// @Summary Order Cashout
+// @description Register user
+// @tags UserOrder
+// @Accept json
+// @Produce json
+// @Router /v1/order/cashout [post]
+func (Controller *Controller) OrderCashout(c echo.Context) error {
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success register",
+	})
+}

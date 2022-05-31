@@ -114,6 +114,22 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/order/cashout": {
+            "post": {
+                "description": "Register user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserOrder"
+                ],
+                "summary": "Order Cashout",
+                "responses": {}
+            }
+        },
         "/v1/product/cashout": {
             "get": {
                 "description": "Product CashOut user",
@@ -216,6 +232,22 @@ const docTemplate = `{
                         }
                     }
                 }
+            }
+        },
+        "/v1/register": {
+            "post": {
+                "description": "Register user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register",
+                "responses": {}
             }
         }
     },
