@@ -14,6 +14,13 @@ type Admin struct {
 	Password string `json:"password" validate:"required"`
 	Token    string `json:"token"`
 }
+type User struct {
+	ID       int    `json:"id"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
+	Alamat   string `json:"alamat"`
+	Poin     int    `json:"poin"`
+}
 
 type Kota struct {
 	ID                 int    `json:"id"`

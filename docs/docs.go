@@ -107,6 +107,29 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/admin/managecustomerpoint": {
+            "get": {
+                "description": "Manage Customer Point",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Manage Customer Point",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/admin.Dashboard"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/detailhistory/{id}": {
             "get": {
                 "description": "History/transaction User",
