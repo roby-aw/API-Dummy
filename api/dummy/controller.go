@@ -516,7 +516,7 @@ func (Controller *Controller) OrderEmoney(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Success 200 {object} map[string]interface{}
-// @Router /v1/order/emoney [post]
+// @Router /v1/order/pulsa [post]
 func (Controller *Controller) OrderPulsa(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,

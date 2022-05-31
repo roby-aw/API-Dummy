@@ -140,7 +140,7 @@ const docTemplate = `{
         },
         "/v1/order/emoney": {
             "post": {
-                "description": "Pulsa user",
+                "description": "Emoney user",
                 "consumes": [
                     "application/json"
                 ],
@@ -150,7 +150,7 @@ const docTemplate = `{
                 "tags": [
                     "UserOrder"
                 ],
-                "summary": "Order Pulsa",
+                "summary": "Order Emoney",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -175,6 +175,30 @@ const docTemplate = `{
                     "UserOrder"
                 ],
                 "summary": "Order PaketData",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/order/pulsa": {
+            "post": {
+                "description": "Pulsa user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserOrder"
+                ],
+                "summary": "Order Pulsa",
                 "responses": {
                     "200": {
                         "description": "OK",

@@ -179,7 +179,7 @@ paths:
     post:
       consumes:
       - application/json
-      description: Pulsa user
+      description: Emoney user
       produces:
       - application/json
       responses:
@@ -188,7 +188,7 @@ paths:
           schema:
             additionalProperties: true
             type: object
-      summary: Order Pulsa
+      summary: Order Emoney
       tags:
       - UserOrder
   /v1/order/paketdata:
@@ -205,6 +205,22 @@ paths:
             additionalProperties: true
             type: object
       summary: Order PaketData
+      tags:
+      - UserOrder
+  /v1/order/pulsa:
+    post:
+      consumes:
+      - application/json
+      description: Pulsa user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Order Pulsa
       tags:
       - UserOrder
   /v1/product/cashout:
