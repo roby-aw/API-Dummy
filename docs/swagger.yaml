@@ -78,34 +78,6 @@ paths:
       summary: UpdateUser
       tags:
       - User
-  /v1/account/{id}:
-    delete:
-      consumes:
-      - application/json
-      description: Delete User
-      parameters:
-      - description: id user
-        in: path
-        name: id
-        required: true
-        type: integer
-      - default: Bearer <Add access token here>
-        description: Insert your access token
-        in: header
-        name: Authorization
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            additionalProperties: true
-            type: object
-      summary: Delete User
-      tags:
-      - User
   /v1/detailhistory/{id}:
     get:
       consumes:
