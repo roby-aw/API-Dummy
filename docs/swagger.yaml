@@ -134,6 +134,21 @@ paths:
       summary: Dashboard Admin
       tags:
       - Admin
+  /v1/admin/historycustomer:
+    get:
+      consumes:
+      - application/json
+      description: History User
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dummy.History'
+      summary: History
+      tags:
+      - User
   /v1/admin/login:
     post:
       consumes:

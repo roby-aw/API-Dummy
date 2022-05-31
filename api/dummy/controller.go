@@ -20,23 +20,6 @@ func NewController(service dummyBussiness.Service) *Controller {
 	}
 }
 
-func (Controller *Controller) GetFoodByName(c echo.Context) error {
-	name := c.Param("name")
-	fmt.Println(name)
-	foods, err := Controller.service.GetFoodByName(name)
-	if err != nil {
-		return c.JSON(http.StatusBadRequest, map[string]interface{}{
-			"code":     400,
-			"messages": err.Error(),
-		})
-	}
-	return c.JSON(http.StatusOK, map[string]interface{}{
-		"code":     200,
-		"messages": "success get foods",
-		"result":   foods,
-	})
-}
-
 // Create godoc
 // @Summary Login
 // @description Login user

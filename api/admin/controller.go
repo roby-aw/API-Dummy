@@ -2,8 +2,10 @@ package admin
 
 import (
 	adminBusiness "api-redeem-point/business/admin"
+	"api-redeem-point/business/dummy"
 	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/labstack/echo/v4"
 )
@@ -184,7 +186,49 @@ func (Controller *Controller) ManageCustomer(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
-		"messages": "success get manage point customer",
+		"messages": "success get manage customer",
+		"result":   arr,
+	})
+}
+
+// Create godoc
+// @Summary History
+// @description History User
+// @tags User
+// @Accept json
+// @Produce json
+// @Success 200 {object} dummy.History
+// @Router /v1/admin/historycustomer [get]
+func (Controller *Controller) CustomerHistory(c echo.Context) error {
+	var err error
+	History1 := &dummy.History{
+		ID:             1,
+		Tipe_transaksi: "Redeem CashOut",
+		Tanggal:        time.Date(2022, 5, 16, 156, 24, 34, 534, time.UTC),
+		Status:         "Sukses",
+	}
+	History2 := &dummy.History{
+		ID:             5,
+		Tipe_transaksi: "Redeem paket data",
+		Tanggal:        time.Date(2022, 5, 17, 156, 24, 34, 534, time.UTC),
+		Status:         "Sukses",
+	}
+	History3 := &dummy.History{
+		ID:             7,
+		Tipe_transaksi: "Redeem CashOut",
+		Tanggal:        time.Date(2022, 5, 18, 156, 24, 34, 534, time.UTC),
+		Status:         "Pending",
+	}
+	var arr []dummy.History
+	arr = append(arr, *History1)
+	arr = append(arr, *History2)
+	arr = append(arr, *History3)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success get history customer",
 		"result":   arr,
 	})
 }

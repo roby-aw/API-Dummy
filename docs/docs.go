@@ -73,6 +73,29 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/admin/historycustomer": {
+            "get": {
+                "description": "History User",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "History",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dummy.History"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/admin/login": {
             "post": {
                 "description": "Login Admin",
