@@ -135,7 +135,7 @@ func (Controller *Controller) ManageCustomerPoint(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
-		"messages": "success get dashboard",
+		"messages": "success get manage point customer",
 		"result":   arr,
 	})
 }
