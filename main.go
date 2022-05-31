@@ -16,7 +16,7 @@ import (
 // @title API-Loyalty Point Agent
 // @version 1.0
 // @description Berikut API-Loyalty Point Agent
-// @host https://api-dummy.herokuapp.com
+// @host api-dummy.herokuapp.com
 // @BasePath /
 func main() {
 	port := os.Getenv("PORT")
