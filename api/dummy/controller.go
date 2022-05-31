@@ -80,6 +80,7 @@ func (Controller *Controller) Login(c echo.Context) error {
 // @tags User
 // @Accept json
 // @Produce json
+// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Param iduser path int true "id user"
 // @Success 200 {object} dummy.History
 // @Router /v1/history/{iduser} [get]
@@ -181,6 +182,7 @@ func (Controller *Controller) Register(c echo.Context) error {
 // @tags UserOrder
 // @Accept json
 // @Produce json
+// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Success 200 {object} map[string]interface{}
 // @Router /v1/order/cashout [post]
 func (Controller *Controller) OrderCashout(c echo.Context) error {
@@ -196,6 +198,7 @@ func (Controller *Controller) OrderCashout(c echo.Context) error {
 // @tags UserOrder
 // @Accept json
 // @Produce json
+// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Success 200 {object} map[string]interface{}
 // @Router /v1/order/emoney [post]
 func (Controller *Controller) OrderEmoney(c echo.Context) error {
@@ -211,6 +214,7 @@ func (Controller *Controller) OrderEmoney(c echo.Context) error {
 // @tags UserOrder
 // @Accept json
 // @Produce json
+// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Success 200 {object} map[string]interface{}
 // @Router /v1/order/pulsa [post]
 func (Controller *Controller) OrderPulsa(c echo.Context) error {
@@ -226,6 +230,7 @@ func (Controller *Controller) OrderPulsa(c echo.Context) error {
 // @tags UserOrder
 // @Accept json
 // @Produce json
+// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Success 200 {object} map[string]interface{}
 // @Router /v1/order/paketdata [post]
 func (Controller *Controller) OrderPaketData(c echo.Context) error {

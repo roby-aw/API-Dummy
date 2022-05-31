@@ -82,6 +82,12 @@ paths:
       - application/json
       description: History User
       parameters:
+      - default: Bearer <Add access token here>
+        description: Insert your access token
+        in: header
+        name: Authorization
+        required: true
+        type: string
       - description: id user
         in: path
         name: iduser
@@ -124,6 +130,13 @@ paths:
       consumes:
       - application/json
       description: Register user
+      parameters:
+      - default: Bearer <Add access token here>
+        description: Insert your access token
+        in: header
+        name: Authorization
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -140,6 +153,13 @@ paths:
       consumes:
       - application/json
       description: Emoney user
+      parameters:
+      - default: Bearer <Add access token here>
+        description: Insert your access token
+        in: header
+        name: Authorization
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -156,6 +176,13 @@ paths:
       consumes:
       - application/json
       description: PaketData user
+      parameters:
+      - default: Bearer <Add access token here>
+        description: Insert your access token
+        in: header
+        name: Authorization
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -172,6 +199,13 @@ paths:
       consumes:
       - application/json
       description: Pulsa user
+      parameters:
+      - default: Bearer <Add access token here>
+        description: Insert your access token
+        in: header
+        name: Authorization
+        required: true
+        type: string
       produces:
       - application/json
       responses:
