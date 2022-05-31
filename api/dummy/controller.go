@@ -484,6 +484,7 @@ func (Controller *Controller) Register(c echo.Context) error {
 // @tags UserOrder
 // @Accept json
 // @Produce json
+// @Success 200 {object} map[string]interface{}
 // @Router /v1/order/cashout [post]
 func (Controller *Controller) OrderCashout(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
