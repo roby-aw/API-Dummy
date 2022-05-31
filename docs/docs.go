@@ -50,6 +50,40 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/admin/login": {
+            "post": {
+                "description": "Login Admin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Login",
+                "parameters": [
+                    {
+                        "description": "Admin",
+                        "name": "LoginAdmin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/admin.LoginAdmin"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/admin.LoginAdmin"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/detailhistory/{id}": {
             "get": {
                 "description": "History/transaction User",
@@ -318,6 +352,21 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "admin.LoginAdmin": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
         "dummy.AuthLogin": {
             "type": "object",
             "properties": {

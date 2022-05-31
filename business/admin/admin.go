@@ -2,25 +2,19 @@ package admin
 
 import "github.com/golang-jwt/jwt/v4"
 
-type AdminSwagger struct {
-	Username string `json:"username" validate:"required"`
-	Email    string `json:"email" validate:"required,email"`
-	Name     string `json:"name" validate:"required"`
-	Password string `json:"password" validate:"required"`
-}
-
-type InputAdminToken struct {
+type LoginAdmin struct {
 	Username string `json:"username" validate:"required"`
 	Password string `json:"password" validate:"required"`
 }
 
 type Admin struct {
 	ID       int    `gorm:"primaryKey"`
-	Username string `json:"username" validate:"required"`
 	Email    string `json:"email" validate:"required,email"`
 	Name     string `json:"name" validate:"required"`
 	Password string `json:"password" validate:"required"`
+	Token    string `json:"token"`
 }
+
 type Kota struct {
 	ID                 int    `json:"id"`
 	Rajaongkir_city_id int    `json:"rajaongkir_city_id" validate:"required"`

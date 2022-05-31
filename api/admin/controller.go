@@ -1,10 +1,9 @@
 package admin
 
 import (
-	"api-redeem-point/business/admin"
 	adminBusiness "api-redeem-point/business/admin"
+	"fmt"
 	"net/http"
-	"strconv"
 
 	"github.com/labstack/echo/v4"
 )
@@ -31,76 +30,35 @@ func (Controller *Controller) GetAdmins(c echo.Context) error {
 	})
 }
 
-func (Controller *Controller) GetAdminByID(c echo.Context) error {
-	id, _ := strconv.Atoi(c.Param("id"))
-	admin, err := Controller.service.GetAdminByID(id)
+// Create godoc
+// @Summary Login
+// @description Login Admin
+// @tags Admin
+// @Accept json
+// @Produce json
+// @Param LoginAdmin body admin.LoginAdmin true "Admin"
+// @Success 200 {object} admin.LoginAdmin
+// @Router /v1/admin/login [post]
+func (Controller *Controller) LoginAdmin(c echo.Context) error {
+	var err error
+	result := adminBusiness.Admin{
+		ID:       1,
+		Name:     "testadmin",
+		Email:    "testadmin@gmail.com",
+		Password: "testpassword",
+		Token:    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTE2ODczODh9.dw2WuBIDJcb5dVT8iF_63POdhZFYOq4D1-kZTiCyo7c",
+	}
+	var req adminBusiness.Admin
+	c.Bind(&req)
+	if (req.Email != result.Email) || (req.Password != result.Password) {
+		err = fmt.Errorf("Email atau password salah")
+	}
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
-		"messages": "success get data admin",
-		"data":     admin,
-	})
-}
-
-func (Controller *Controller) CreateAdmin(c echo.Context) error {
-	admin := admin.Admin{}
-	c.Bind(&admin)
-	admins, err := Controller.service.CreateAdmin(&admin)
-	if err != nil {
-		return c.JSON(http.StatusBadRequest, map[string]interface{}{
-			"message": "failed",
-			"Error":   err.Error(),
-		})
-	}
-	return c.JSON(http.StatusCreated, map[string]interface{}{
-		"code":     201,
-		"messages": "success create data",
-		"data":     admins,
-	})
-}
-
-func (Controller *Controller) GetToken(c echo.Context) error {
-	var request adminBusiness.Admin
-
-	c.Bind(&request)
-	token, err := Controller.service.GetToken(&request)
-
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
-	return c.JSON(http.StatusOK, map[string]interface{}{
-		"code":    200,
-		"message": "success login",
-		"token":   token,
-	})
-}
-
-func (Controller *Controller) DeleteAdmin(c echo.Context) error {
-	id, _ := strconv.Atoi(c.Param("id"))
-	err := Controller.service.DeleteAdmin(id)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
-	return c.JSON(http.StatusOK, map[string]interface{}{
-		"code":     200,
-		"messages": "success delete admin",
-		"data id ": id,
-	})
-}
-
-func (Controller *Controller) UpdateAdmin(c echo.Context) error {
-	var admin *admin.Admin
-	id, _ := strconv.Atoi(c.Param("id"))
-	c.Bind(&admin)
-	admin, err := Controller.service.UpdateAdmin(id, admin)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-	}
-	return c.JSON(http.StatusOK, map[string]interface{}{
-		"code":     200,
-		"messages": "success update data admin",
-		"data":     admin,
+		"messages": "success login admin",
+		"result":   result,
 	})
 }

@@ -1,5 +1,15 @@
 basePath: /
 definitions:
+  admin.LoginAdmin:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
+    type: object
   dummy.AuthLogin:
     properties:
       email:
@@ -78,6 +88,28 @@ paths:
       summary: UpdateUser
       tags:
       - User
+  /v1/admin/login:
+    post:
+      consumes:
+      - application/json
+      description: Login Admin
+      parameters:
+      - description: Admin
+        in: body
+        name: LoginAdmin
+        required: true
+        schema:
+          $ref: '#/definitions/admin.LoginAdmin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.LoginAdmin'
+      summary: Login
+      tags:
+      - Admin
   /v1/detailhistory/{id}:
     get:
       consumes:
