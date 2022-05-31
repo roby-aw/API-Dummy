@@ -75,7 +75,7 @@ const docTemplate = `{
         },
         "/v1/admin/historycustomer": {
             "get": {
-                "description": "History User",
+                "description": "Customer history",
                 "consumes": [
                     "application/json"
                 ],
@@ -83,9 +83,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "User"
+                    "Admin"
                 ],
-                "summary": "History",
+                "summary": "Customer history",
                 "responses": {
                     "200": {
                         "description": "OK",

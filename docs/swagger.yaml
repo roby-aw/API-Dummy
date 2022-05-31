@@ -138,7 +138,7 @@ paths:
     get:
       consumes:
       - application/json
-      description: History User
+      description: Customer history
       produces:
       - application/json
       responses:
@@ -146,9 +146,9 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/dummy.History'
-      summary: History
+      summary: Customer history
       tags:
-      - User
+      - Admin
   /v1/admin/login:
     post:
       consumes:
