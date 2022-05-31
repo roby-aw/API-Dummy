@@ -154,24 +154,28 @@ func (Controller *Controller) ManageCustomer(c echo.Context) error {
 	var err error
 	user1 := adminBusiness.User{
 		ID:       1,
+		Name:     "testuser1",
 		Email:    "testuser1@gmail.com",
 		Password: "testpassworduser1",
 		Alamat:   "testalamat",
 	}
 	user2 := adminBusiness.User{
 		ID:       2,
+		Name:     "testuser2",
 		Email:    "testuser2@gmail.com",
 		Password: "testpassworduser2",
 		Alamat:   "testalamat",
 	}
 	user3 := adminBusiness.User{
 		ID:       3,
+		Name:     "testuser3",
 		Email:    "testuser3@gmail.com",
 		Password: "testpassworduser3",
 		Alamat:   "testalamat",
 	}
 	user4 := adminBusiness.User{
 		ID:       4,
+		Name:     "testuser4",
 		Email:    "testuser4@gmail.com",
 		Password: "testpassworduser4",
 		Alamat:   "testalamat",
@@ -234,8 +238,8 @@ func (Controller *Controller) CustomerHistory(c echo.Context) error {
 }
 
 // Create godoc
-// @Summary Manage customer data
-// @description Manage customer data
+// @Summary Update customer data
+// @description Update customer data
 // @tags Admin
 // @Accept json
 // @Produce json
@@ -244,6 +248,27 @@ func (Controller *Controller) CustomerHistory(c echo.Context) error {
 // @Success 200 {object} admin.User
 // @Router /v1/admin/managecustomer/{id} [PUT]
 func (Controller *Controller) UpdateCustomer(c echo.Context) error {
+	var err error
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success update customer data",
+	})
+}
+
+// Create godoc
+// @Summary Update customer point
+// @description Update customer
+// @tags Admin
+// @Accept json
+// @Produce json
+// @Param iduser path int true "id user"
+// @Param Update Customer body admin.User true "User"
+// @Success 200 {object} admin.UserPoin
+// @Router /v1/admin/managecustomerpoint/{id} [PUT]
+func (Controller *Controller) UpdateCustomerPoint(c echo.Context) error {
 	var err error
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())

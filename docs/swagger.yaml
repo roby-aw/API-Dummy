@@ -25,6 +25,8 @@ definitions:
         type: string
       id:
         type: integer
+      name:
+        type: string
       password:
         type: string
     type: object
@@ -36,6 +38,8 @@ definitions:
         type: string
       id:
         type: integer
+      name:
+        type: string
       password:
         type: string
       poin:
@@ -190,7 +194,7 @@ paths:
     put:
       consumes:
       - application/json
-      description: Manage customer data
+      description: Update customer data
       parameters:
       - description: id user
         in: path
@@ -210,7 +214,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/admin.User'
-      summary: Manage customer data
+      summary: Update customer data
       tags:
       - Admin
   /v1/admin/managecustomerpoint:
@@ -226,6 +230,33 @@ paths:
           schema:
             $ref: '#/definitions/admin.UserPoin'
       summary: Manage Customer Point
+      tags:
+      - Admin
+  /v1/admin/managecustomerpoint/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update customer
+      parameters:
+      - description: id user
+        in: path
+        name: iduser
+        required: true
+        type: integer
+      - description: User
+        in: body
+        name: Customer
+        required: true
+        schema:
+          $ref: '#/definitions/admin.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.UserPoin'
+      summary: Update customer point
       tags:
       - Admin
   /v1/detailhistory/{id}:

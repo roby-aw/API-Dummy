@@ -155,7 +155,7 @@ const docTemplate = `{
         },
         "/v1/admin/managecustomer/{id}": {
             "put": {
-                "description": "Manage customer data",
+                "description": "Update customer data",
                 "consumes": [
                     "application/json"
                 ],
@@ -165,7 +165,7 @@ const docTemplate = `{
                 "tags": [
                     "Admin"
                 ],
-                "summary": "Manage customer data",
+                "summary": "Update customer data",
                 "parameters": [
                     {
                         "type": "integer",
@@ -207,6 +207,47 @@ const docTemplate = `{
                     "Admin"
                 ],
                 "summary": "Manage Customer Point",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/admin.UserPoin"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/managecustomerpoint/{id}": {
+            "put": {
+                "description": "Update customer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update customer point",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id user",
+                        "name": "iduser",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "User",
+                        "name": "Customer",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/admin.User"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -523,6 +564,9 @@ const docTemplate = `{
                 "id": {
                     "type": "integer"
                 },
+                "name": {
+                    "type": "string"
+                },
                 "password": {
                     "type": "string"
                 }
@@ -539,6 +583,9 @@ const docTemplate = `{
                 },
                 "id": {
                     "type": "integer"
+                },
+                "name": {
+                    "type": "string"
                 },
                 "password": {
                     "type": "string"
