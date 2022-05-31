@@ -22,7 +22,7 @@ definitions:
       token:
         type: string
     type: object
-host: https://api-dummy.herokuapp.com
+host: api-dummy.herokuapp.com
 info:
   contact: {}
   description: Berikut API-Loyalty Point Agent
