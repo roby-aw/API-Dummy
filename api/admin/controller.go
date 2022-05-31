@@ -192,9 +192,9 @@ func (Controller *Controller) ManageCustomer(c echo.Context) error {
 }
 
 // Create godoc
-// @Summary History
-// @description History User
-// @tags User
+// @Summary Customer history
+// @description Customer history
+// @tags Admin
 // @Accept json
 // @Produce json
 // @Success 200 {object} dummy.History
