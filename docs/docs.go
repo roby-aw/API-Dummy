@@ -16,6 +16,38 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/v1/detailhistory/{id}": {
+            "get": {
+                "description": "History/transaction User",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Detail History/transaction",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id detail history",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dummy.DetailTransaction"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/history/{iduser}": {
             "get": {
                 "description": "History User",
@@ -92,6 +124,29 @@ const docTemplate = `{
                 },
                 "password": {
                     "type": "string"
+                }
+            }
+        },
+        "dummy.DetailTransaction": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "jenis_transaction": {
+                    "type": "string"
+                },
+                "nama_bank": {
+                    "type": "string"
+                },
+                "no_rekening": {
+                    "type": "integer"
+                },
+                "poin_account": {
+                    "type": "integer"
+                },
+                "poin_redeem": {
+                    "type": "integer"
                 }
             }
         },

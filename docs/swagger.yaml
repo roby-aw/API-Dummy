@@ -7,6 +7,21 @@ definitions:
       password:
         type: string
     type: object
+  dummy.DetailTransaction:
+    properties:
+      id:
+        type: integer
+      jenis_transaction:
+        type: string
+      nama_bank:
+        type: string
+      no_rekening:
+        type: integer
+      poin_account:
+        type: integer
+      poin_redeem:
+        type: integer
+    type: object
   dummy.History:
     properties:
       id:
@@ -40,6 +55,27 @@ info:
   title: API-Loyalty Point Agent
   version: "1.0"
 paths:
+  /v1/detailhistory/{id}:
+    get:
+      consumes:
+      - application/json
+      description: History/transaction User
+      parameters:
+      - description: id detail history
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dummy.DetailTransaction'
+      summary: Detail History/transaction
+      tags:
+      - User
   /v1/history/{iduser}:
     get:
       consumes:

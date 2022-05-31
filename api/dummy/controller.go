@@ -124,6 +124,15 @@ func (Controller *Controller) History(c echo.Context) error {
 	})
 }
 
+// Create godoc
+// @Summary Detail History/transaction
+// @description History/transaction User
+// @tags User
+// @Accept json
+// @Produce json
+// @Param id path int true "id detail history"
+// @Success 200 {object} dummy.DetailTransaction
+// @Router /v1/detailhistory/{id} [get]
 func (Controller *Controller) DetailTransaction(c echo.Context) error {
 	var err error
 	detailtransaction := dummyBussiness.DetailTransaction{
