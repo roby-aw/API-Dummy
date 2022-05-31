@@ -40,11 +40,17 @@ info:
   title: API-Loyalty Point Agent
   version: "1.0"
 paths:
-  /v1/history:
+  /v1/history/{iduser}:
     get:
       consumes:
       - application/json
       description: History User
+      parameters:
+      - description: id user
+        in: path
+        name: iduser
+        required: true
+        type: integer
       produces:
       - application/json
       responses:

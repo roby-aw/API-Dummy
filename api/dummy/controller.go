@@ -80,8 +80,9 @@ func (Controller *Controller) Login(c echo.Context) error {
 // @tags User
 // @Accept json
 // @Produce json
+// @Param iduser path int true "id user"
 // @Success 200 {object} dummy.History
-// @Router /v1/history [get]
+// @Router /v1/history/{iduser} [get]
 func (Controller *Controller) History(c echo.Context) error {
 	History1 := &dummyBussiness.History{
 		ID:             1,
@@ -106,6 +107,10 @@ func (Controller *Controller) History(c echo.Context) error {
 	arr = append(arr, *History2)
 	arr = append(arr, *History3)
 	var err error
+	iduser, _ := strconv.Atoi(c.Param("iduser"))
+	if iduser != 1 {
+		err = fmt.Errorf("iduser tidak ditemukan")
+	}
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"code":     400,

@@ -18,8 +18,8 @@ func RegistrationPath(e *echo.Echo, controller Controller) {
 	c := e.Group("/v1")
 	c.GET("/foods/:name", controller.DummyController.GetFoodByName)
 	c.POST("/login", controller.DummyController.Login)
-	c.GET("/history", controller.DummyController.History)
-	c.GET("/history/:id", controller.DummyController.DetailTransaction)
+	c.GET("/history/:iduser", controller.DummyController.History)
+	c.GET("/detailhistory/:id", controller.DummyController.DetailTransaction)
 	// product
 	f := c.Group("/product")
 	f.GET("/cashout", controller.DummyController.ProductCashout)

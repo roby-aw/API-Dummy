@@ -16,7 +16,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/v1/history": {
+        "/v1/history/{iduser}": {
             "get": {
                 "description": "History User",
                 "consumes": [
@@ -29,6 +29,15 @@ const docTemplate = `{
                     "User"
                 ],
                 "summary": "History",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id user",
+                        "name": "iduser",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
