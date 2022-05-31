@@ -26,5 +26,6 @@ func RegistrationPath(e *echo.Echo, controller Controller) {
 	// f.GET("/pulsa", controller.DummyController.ProductPulsa)
 	// f.GET("/paketdata", controller.DummyController.ProductPaketData)
 	//admin
-
+	g := c.Group("/admin")
+	g.POST("/login", controller.AdminControlller.LoginAdmin)
 }
