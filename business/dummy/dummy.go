@@ -1,6 +1,10 @@
 package dummy
 
-import "gorm.io/gorm"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type Food struct {
 	gorm.Model
@@ -25,4 +29,44 @@ type Login struct {
 type AuthLogin struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
+}
+
+type History struct {
+	ID             int       `json:"id"`
+	Tipe_transaksi string    `json:"tipe_transaksi"`
+	Tanggal        time.Time `json:"tanggal"`
+	Status         string    `json:"status"`
+}
+
+type DetailTransaction struct {
+	ID                int    `json:"id"`
+	Jenis_transaction string `json:"jenis_transaction"`
+	Nama_bank         string `json:"nama_bank"`
+	No_rekening       int    `json:"no_rekening"`
+	Poin_account      int    `json:"poin_account"`
+	Poin_redeem       int    `json:"poin_redeem"`
+}
+
+type ProductCashout struct {
+	ID    int `json:"id"`
+	Harga int `json:"harga"`
+	Poin  int `json:"poin"`
+}
+type ProductEmoney struct {
+	ID    int `json:"id"`
+	Harga int `json:"harga"`
+	Poin  int `json:"poin"`
+}
+type ProductPulsa struct {
+	ID    int `json:"id"`
+	Harga int `json:"harga"`
+	Poin  int `json:"poin"`
+}
+
+type ProductPaketData struct {
+	ID    int    `json:"id"`
+	Nama  string `json:"Internet"`
+	Kuota string `json:"kuota"`
+	Harga int    `json:"harga"`
+	Poin  int    `json:"poin"`
 }

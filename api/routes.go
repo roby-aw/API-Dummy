@@ -14,9 +14,18 @@ type Controller struct {
 }
 
 func RegistrationPath(e *echo.Echo, controller Controller) {
+	// user
 	c := e.Group("/v1")
 	c.GET("/foods/:name", controller.DummyController.GetFoodByName)
 	c.POST("/login", controller.DummyController.Login)
+	c.GET("/history", controller.DummyController.History)
+	c.GET("/history/:id", controller.DummyController.DetailTransaction)
+	// product
+	f := c.Group("/product")
+	f.GET("/cashout", controller.DummyController.ProductCashout)
+	f.GET("/emoney", controller.DummyController.ProductEmoney)
+	f.GET("/pulsa", controller.DummyController.ProductPulsa)
+	f.GET("/paketdata", controller.DummyController.ProductPaketData)
 	//admin
 	g := e.Group("/admin")
 	g.POST("", controller.AdminControlller.CreateAdmin)
