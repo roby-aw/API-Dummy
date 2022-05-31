@@ -27,6 +27,17 @@ definitions:
         type: integer
       password:
         type: string
+    type: object
+  admin.UserPoin:
+    properties:
+      alamat:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
       poin:
         type: integer
     type: object
@@ -171,7 +182,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/admin.User'
+            $ref: '#/definitions/admin.UserPoin'
       summary: Manage Customer Point
       tags:
       - Admin

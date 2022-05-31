@@ -93,39 +93,39 @@ func (Controller *Controller) Dashboard(c echo.Context) error {
 // @tags Admin
 // @Accept json
 // @Produce json
-// @Success 200 {object} admin.User
+// @Success 200 {object} admin.UserPoin
 // @Router /v1/admin/managecustomerpoint [get]
 func (Controller *Controller) ManageCustomerPoint(c echo.Context) error {
 	var err error
-	user1 := adminBusiness.User{
+	user1 := adminBusiness.UserPoin{
 		ID:       1,
 		Email:    "testuser1@gmail.com",
 		Password: "testpassworduser1",
 		Alamat:   "testalamat",
 		Poin:     420000,
 	}
-	user2 := adminBusiness.User{
+	user2 := adminBusiness.UserPoin{
 		ID:       2,
 		Email:    "testuser2@gmail.com",
 		Password: "testpassworduser2",
 		Alamat:   "testalamat",
 		Poin:     503000,
 	}
-	user3 := adminBusiness.User{
+	user3 := adminBusiness.UserPoin{
 		ID:       3,
 		Email:    "testuser3@gmail.com",
 		Password: "testpassworduser3",
 		Alamat:   "testalamat",
 		Poin:     520000,
 	}
-	user4 := adminBusiness.User{
+	user4 := adminBusiness.UserPoin{
 		ID:       4,
 		Email:    "testuser4@gmail.com",
 		Password: "testpassworduser4",
 		Alamat:   "testalamat",
 		Poin:     560000,
 	}
-	var arr []adminBusiness.User
+	var arr []adminBusiness.UserPoin
 	arr = append(arr, user1)
 	arr = append(arr, user2)
 	arr = append(arr, user3)

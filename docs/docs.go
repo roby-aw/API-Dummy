@@ -147,7 +147,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/admin.User"
+                            "$ref": "#/definitions/admin.UserPoin"
                         }
                     }
                 }
@@ -448,6 +448,23 @@ const docTemplate = `{
             }
         },
         "admin.User": {
+            "type": "object",
+            "properties": {
+                "alamat": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "admin.UserPoin": {
             "type": "object",
             "properties": {
                 "alamat": {

@@ -19,6 +19,12 @@ type User struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
 	Alamat   string `json:"alamat"`
+}
+type UserPoin struct {
+	ID       int    `json:"id"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
+	Alamat   string `json:"alamat"`
 	Poin     int    `json:"poin"`
 }
 
