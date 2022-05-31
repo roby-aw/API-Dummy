@@ -1,0 +1,54 @@
+basePath: /
+definitions:
+  dummy.AuthLogin:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  dummy.Login:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+      pin:
+        type: integer
+      poin:
+        type: integer
+      token:
+        type: string
+    type: object
+host: https://api-dummy.herokuapp.com
+info:
+  contact: {}
+  description: Berikut API-Loyalty Point Agent
+  title: API-Loyalty Point Agent
+  version: "1.0"
+paths:
+  /v1/login:
+    post:
+      consumes:
+      - application/json
+      description: Login user
+      parameters:
+      - description: user
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dummy.AuthLogin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dummy.Login'
+      summary: Login
+      tags:
+      - User
+swagger: "2.0"

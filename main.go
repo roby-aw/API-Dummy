@@ -12,10 +12,10 @@ import (
 	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
-// @title API Jasa Pengiriman
+// @title API-Loyalty Point Agent
 // @version 1.0
-// @description Berikut API Jasa Pengiriman
-// @host localhost:8080
+// @description Berikut API-Loyalty Point Agent
+// @host https://api-dummy.herokuapp.com
 // @BasePath /
 func main() {
 	port := os.Getenv("PORT")

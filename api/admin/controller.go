@@ -19,15 +19,6 @@ func NewController(service adminBusiness.Service) *Controller {
 	}
 }
 
-// Create godoc
-// @Summary Get All admin
-// @description Get all admin with data
-// @tags Admin using Token JWT
-// @Accept json
-// @Produce json
-// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Success 200 {object} []map[string]interface{}
-// @Router /admin [get]
 func (Controller *Controller) GetAdmins(c echo.Context) error {
 	admins, err := Controller.service.GetAdmins()
 	if err != nil {
@@ -40,15 +31,6 @@ func (Controller *Controller) GetAdmins(c echo.Context) error {
 	})
 }
 
-// Create godoc
-// @Summary Get Admin By ID
-// @description Get Admin By ID
-// @tags admin
-// @Accept json
-// @Produce json
-// @Param id path int true "anything id"
-// @Success 200 {object} map[string]interface{}
-// @Router /admin/{id} [get]
 func (Controller *Controller) GetAdminByID(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 	admin, err := Controller.service.GetAdminByID(id)
@@ -62,16 +44,6 @@ func (Controller *Controller) GetAdminByID(c echo.Context) error {
 	})
 }
 
-// Create godoc
-// @Summary Create admin
-// @description create admin with data
-// @tags admin
-// @Accept json
-// @Produce json
-// @Param admin body admin.AdminSwagger true "admin"
-// @Success 201 {object} admin.Admin
-// @Failure 400 {object} map[string]interface{}
-// @Router /admin [post]
 func (Controller *Controller) CreateAdmin(c echo.Context) error {
 	admin := admin.Admin{}
 	c.Bind(&admin)
@@ -89,16 +61,6 @@ func (Controller *Controller) CreateAdmin(c echo.Context) error {
 	})
 }
 
-// Create godoc
-// @Summary Get Token
-// @description Get token for admin
-// @tags admin
-// @Accept json
-// @Produce json
-// @Param admin body admin.InputAdminToken true "admin"
-// @Success 200 {object} map[string]interface{}
-// @Failure 400
-// @Router /admin/token [post]
 func (Controller *Controller) GetToken(c echo.Context) error {
 	var request adminBusiness.Admin
 
@@ -115,17 +77,6 @@ func (Controller *Controller) GetToken(c echo.Context) error {
 	})
 }
 
-// Create godoc
-// @Summary Delete Admin
-// @description delete data admin
-// @tags admin
-// @Accept json
-// @Produce json
-// @Param id path int true "id admin"
-// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Success 200 {object} map[string]interface{}
-// @Failure 400
-// @Router /admin/{id} [delete]
 func (Controller *Controller) DeleteAdmin(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 	err := Controller.service.DeleteAdmin(id)
@@ -139,18 +90,6 @@ func (Controller *Controller) DeleteAdmin(c echo.Context) error {
 	})
 }
 
-// Create godoc
-// @Summary Update Admin
-// @description update data admin
-// @tags Admin using Token JWT
-// @Accept json
-// @Produce json
-// @Param id path int true "id admin"
-// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Param admin body admin.AdminSwagger true "admin"
-// @Success 200 {object} map[string]interface{}
-// @Failure 400
-// @Router /admin/{id} [PUT]
 func (Controller *Controller) UpdateAdmin(c echo.Context) error {
 	var admin *admin.Admin
 	id, _ := strconv.Atoi(c.Param("id"))

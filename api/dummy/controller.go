@@ -37,6 +37,15 @@ func (Controller *Controller) GetFoodByName(c echo.Context) error {
 	})
 }
 
+// Create godoc
+// @Summary Login
+// @description Login user
+// @tags User
+// @Accept json
+// @Produce json
+// @Param user body dummy.AuthLogin true "user"
+// @Success 200 {object} dummy.Login
+// @Router /v1/login [post]
 func (Controller *Controller) Login(c echo.Context) error {
 	result := &dummyBussiness.Login{
 		ID:       1,
