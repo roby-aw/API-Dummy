@@ -113,6 +113,32 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/v1/product/cashout": {
+            "get": {
+                "description": "Product CashOut user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Product CashOut",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/dummy.ProductCashout"
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -187,6 +213,20 @@ const docTemplate = `{
                 },
                 "token": {
                     "type": "string"
+                }
+            }
+        },
+        "dummy.ProductCashout": {
+            "type": "object",
+            "properties": {
+                "harga": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "poin": {
+                    "type": "integer"
                 }
             }
         }

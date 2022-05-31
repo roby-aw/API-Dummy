@@ -48,6 +48,15 @@ definitions:
       token:
         type: string
     type: object
+  dummy.ProductCashout:
+    properties:
+      harga:
+        type: integer
+      id:
+        type: integer
+      poin:
+        type: integer
+    type: object
 host: api-dummy.herokuapp.com
 info:
   contact: {}
@@ -119,4 +128,21 @@ paths:
       summary: Login
       tags:
       - User
+  /v1/product/cashout:
+    get:
+      consumes:
+      - application/json
+      description: Product CashOut user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dummy.ProductCashout'
+            type: array
+      summary: Product CashOut
+      tags:
+      - Product
 swagger: "2.0"

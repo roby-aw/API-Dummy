@@ -160,6 +160,14 @@ func (Controller *Controller) DetailTransaction(c echo.Context) error {
 	})
 }
 
+// Create godoc
+// @Summary Product CashOut
+// @description Product CashOut user
+// @tags Product
+// @Accept json
+// @Produce json
+// @Success 200 {object} []dummy.ProductCashout
+// @Router /v1/product/cashout [get]
 func (Controller *Controller) ProductCashout(c echo.Context) error {
 	var err error
 	product1 := dummyBussiness.ProductCashout{
