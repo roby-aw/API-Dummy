@@ -2,6 +2,7 @@ package main
 
 import (
 	"api-redeem-point/api"
+	_ "api-redeem-point/docs"
 	"fmt"
 	"log"
 	"net/http"
