@@ -17,6 +17,19 @@ definitions:
     - password
     - username
     type: object
+  admin.User:
+    properties:
+      alamat:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+      poin:
+        type: integer
+    type: object
   dummy.AuthLogin:
     properties:
       email:
@@ -143,7 +156,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/admin.Dashboard'
+            $ref: '#/definitions/admin.User'
       summary: Manage Customer Point
       tags:
       - Admin
