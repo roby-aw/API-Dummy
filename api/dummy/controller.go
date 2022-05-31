@@ -239,3 +239,35 @@ func (Controller *Controller) OrderPaketData(c echo.Context) error {
 		"messages": "success register",
 	})
 }
+
+// Create godoc
+// @Summary UpdateUser
+// @description UpdateUser
+// @tags User
+// @Accept json
+// @Produce json
+// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
+// @Success 200 {object} map[string]interface{}
+// @Router /v1/account [put]
+func (Controller *Controller) UpdateUser(c echo.Context) error {
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success register",
+	})
+}
+
+// Create godoc
+// @Summary Delete User
+// @description Delete User
+// @tags User
+// @Accept json
+// @Produce json
+// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
+// @Success 200 {object} map[string]interface{}
+// @Router /v1/account [DELETE]
+func (Controller *Controller) DeleteUser(c echo.Context) error {
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success register",
+	})
+}
