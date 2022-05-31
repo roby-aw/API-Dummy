@@ -186,6 +186,33 @@ paths:
       summary: Manage Customer
       tags:
       - Admin
+  /v1/admin/managecustomer/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Manage customer data
+      parameters:
+      - description: id user
+        in: path
+        name: iduser
+        required: true
+        type: integer
+      - description: User
+        in: body
+        name: Customer
+        required: true
+        schema:
+          $ref: '#/definitions/admin.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.User'
+      summary: Manage customer data
+      tags:
+      - Admin
   /v1/admin/managecustomerpoint:
     get:
       consumes:

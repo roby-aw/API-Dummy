@@ -153,6 +153,47 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/admin/managecustomer/{id}": {
+            "put": {
+                "description": "Manage customer data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Manage customer data",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id user",
+                        "name": "iduser",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "User",
+                        "name": "Customer",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/admin.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/admin.User"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/admin/managecustomerpoint": {
             "get": {
                 "description": "Manage Customer Point",

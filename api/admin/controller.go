@@ -232,3 +232,24 @@ func (Controller *Controller) CustomerHistory(c echo.Context) error {
 		"result":   arr,
 	})
 }
+
+// Create godoc
+// @Summary Manage customer data
+// @description Manage customer data
+// @tags Admin
+// @Accept json
+// @Produce json
+// @Param iduser path int true "id user"
+// @Param Update Customer body admin.User true "User"
+// @Success 200 {object} admin.User
+// @Router /v1/admin/managecustomer/{id} [PUT]
+func (Controller *Controller) UpdateCustomer(c echo.Context) error {
+	var err error
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success manage customer",
+	})
+}
