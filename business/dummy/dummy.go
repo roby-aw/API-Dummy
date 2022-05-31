@@ -22,6 +22,7 @@ type Food struct {
 type Login struct {
 	ID       int    `json:"id"`
 	Email    string `json:"email"`
+	Token    string `json:"token"`
 	Password string `json:"password"`
 	Poin     int    `json:"poin"`
 	Pin      int    `json:"pin"`

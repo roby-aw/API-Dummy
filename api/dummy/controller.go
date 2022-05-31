@@ -42,6 +42,7 @@ func (Controller *Controller) Login(c echo.Context) error {
 		ID:       1,
 		Email:    "test@gmail.com",
 		Password: "testpassword",
+		Token:    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTE2ODczODh9.dw2WuBIDJcb5dVT8iF_63POdhZFYOq4D1-kZTiCyo7c",
 		Poin:     500000,
 		Pin:      1234,
 	}
