@@ -21,11 +21,11 @@ func RegistrationPath(e *echo.Echo, controller Controller) {
 	c.GET("/history/:iduser", controller.DummyController.History)
 	c.GET("/detailhistory/:id", controller.DummyController.DetailTransaction)
 	// product
-	f := c.Group("/product")
-	f.GET("/cashout", controller.DummyController.ProductCashout)
-	f.GET("/emoney", controller.DummyController.ProductEmoney)
-	f.GET("/pulsa", controller.DummyController.ProductPulsa)
-	f.GET("/paketdata", controller.DummyController.ProductPaketData)
+	// f := c.Group("/product")
+	// f.GET("/cashout", controller.DummyController.ProductCashout)
+	// f.GET("/emoney", controller.DummyController.ProductEmoney)
+	// f.GET("/pulsa", controller.DummyController.ProductPulsa)
+	// f.GET("/paketdata", controller.DummyController.ProductPaketData)
 	//admin
 	g := e.Group("/admin")
 	g.POST("", controller.AdminControlller.CreateAdmin)
