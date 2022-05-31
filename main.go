@@ -2,8 +2,6 @@ package main
 
 import (
 	"api-redeem-point/api"
-	"api-redeem-point/config"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -19,7 +17,6 @@ import (
 // @host localhost:8080
 // @BasePath /
 func main() {
-	config := config.GetConfig()
 
 	e := echo.New()
 	handleSwagger := echoSwagger.WrapHandler
@@ -33,8 +30,7 @@ func main() {
 	api.RegistrationPath(e, api.Controller{})
 
 	go func() {
-		address := fmt.Sprintf(":%d", config.App.Port)
-		if err := e.Start(address); err != nil {
+		if err := e.Start(":8080"); err != nil {
 			log.Fatal(err)
 		}
 	}()
