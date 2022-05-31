@@ -166,7 +166,12 @@ paths:
       description: Register user
       produces:
       - application/json
-      responses: {}
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
       summary: Order Cashout
       tags:
       - UserOrder
@@ -245,7 +250,12 @@ paths:
       description: Register user
       produces:
       - application/json
-      responses: {}
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
       summary: Register
       tags:
       - User

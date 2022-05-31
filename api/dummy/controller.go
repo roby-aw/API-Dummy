@@ -470,6 +470,7 @@ func (Controller *Controller) ProductPaketData(c echo.Context) error {
 // @tags User
 // @Accept json
 // @Produce json
+// @Success 200 {object} map[string]interface{}
 // @Router /v1/register [post]
 func (Controller *Controller) Register(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{

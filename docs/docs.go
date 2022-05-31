@@ -127,7 +127,15 @@ const docTemplate = `{
                     "UserOrder"
                 ],
                 "summary": "Order Cashout",
-                "responses": {}
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
             }
         },
         "/v1/product/cashout": {
@@ -247,7 +255,15 @@ const docTemplate = `{
                     "User"
                 ],
                 "summary": "Register",
-                "responses": {}
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                }
             }
         }
     },
