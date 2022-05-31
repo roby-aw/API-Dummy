@@ -8,8 +8,6 @@ import (
 	"net/http"
 	"os"
 
-	_ "api-redeem-point/docs"
-
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	echoSwagger "github.com/swaggo/echo-swagger"
