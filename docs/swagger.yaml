@@ -7,6 +7,17 @@ definitions:
       password:
         type: string
     type: object
+  dummy.History:
+    properties:
+      id:
+        type: integer
+      status:
+        type: string
+      tanggal:
+        type: string
+      tipe_transaksi:
+        type: string
+    type: object
   dummy.Login:
     properties:
       email:
@@ -29,6 +40,21 @@ info:
   title: API-Loyalty Point Agent
   version: "1.0"
 paths:
+  /v1/history:
+    get:
+      consumes:
+      - application/json
+      description: History User
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dummy.History'
+      summary: History
+      tags:
+      - User
   /v1/login:
     post:
       consumes:

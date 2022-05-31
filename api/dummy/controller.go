@@ -74,6 +74,14 @@ func (Controller *Controller) Login(c echo.Context) error {
 	})
 }
 
+// Create godoc
+// @Summary History
+// @description History User
+// @tags User
+// @Accept json
+// @Produce json
+// @Success 200 {object} dummy.History
+// @Router /v1/history [get]
 func (Controller *Controller) History(c echo.Context) error {
 	History1 := &dummyBussiness.History{
 		ID:             1,
