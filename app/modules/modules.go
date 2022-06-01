@@ -7,7 +7,6 @@ import (
 	adminBusiness "api-redeem-point/business/admin"
 	dummyBusiness "api-redeem-point/business/dummy"
 	"api-redeem-point/config"
-	adminRepo "api-redeem-point/repository/admin"
 	dummyRepo "api-redeem-point/repository/dummy"
 	"api-redeem-point/utils"
 )

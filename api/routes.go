@@ -16,6 +16,7 @@ func RegistrationPath(e *echo.Echo, controller Controller) {
 	// user
 	c := e.Group("/v1")
 	c.POST("/login", controller.DummyController.Login)
+	c.POST("/register", controller.DummyController.Register)
 	c.GET("/history/:iduser", controller.DummyController.History)
 	c.GET("/detailhistory/:id", controller.DummyController.DetailTransaction)
 	// product
