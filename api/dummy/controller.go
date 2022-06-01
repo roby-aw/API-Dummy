@@ -156,6 +156,7 @@ func (Controller *Controller) DetailTransaction(c echo.Context) error {
 func (Controller *Controller) Register(c echo.Context) error {
 	result := &dummyBussiness.Register{
 		Email:    "test@gmail.com",
+		No_hp:    "063542251",
 		Password: "testpassword",
 		Pin:      1234,
 	}
