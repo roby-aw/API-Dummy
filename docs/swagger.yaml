@@ -13,9 +13,6 @@ definitions:
         type: string
       password:
         type: string
-    required:
-    - email
-    - password
     type: object
   admin.User:
     properties:
@@ -50,6 +47,15 @@ definitions:
       email:
         type: string
       password:
+        type: string
+    type: object
+  dummy.Bank:
+    properties:
+      amount:
+        type: integer
+      bankcode:
+        type: string
+      no_rekening:
         type: string
     type: object
   dummy.DetailTransaction:
@@ -131,8 +137,7 @@ paths:
         "200":
           description: OK
           schema:
-            additionalProperties: true
-            type: object
+            $ref: '#/definitions/dummy.Register'
       summary: UpdateUser
       tags:
       - User
@@ -346,7 +351,7 @@ paths:
     post:
       consumes:
       - application/json
-      description: Register user
+      description: Order Cashout
       parameters:
       - default: Bearer <Add access token here>
         description: Insert your access token
@@ -354,14 +359,19 @@ paths:
         name: Authorization
         required: true
         type: string
+      - description: inputdatacashout
+        in: body
+        name: InputDataCashout
+        required: true
+        schema:
+          $ref: '#/definitions/dummy.Bank'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            additionalProperties: true
-            type: object
+            $ref: '#/definitions/dummy.Bank'
       summary: Order Cashout
       tags:
       - UserOrder

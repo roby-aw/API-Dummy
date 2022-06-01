@@ -87,3 +87,9 @@ type UpdateUser struct {
 	Password string `json:"password"`
 	Pin      int    `json:"pin"`
 }
+
+type Bank struct {
+	BankCode    string `json:"bankcode"`
+	No_rekening string `json:"no_rekening"`
+	Amount      int    `json:"amount"`
+}

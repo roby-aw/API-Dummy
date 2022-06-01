@@ -43,8 +43,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": true
+                            "$ref": "#/definitions/dummy.Register"
                         }
                     }
                 }
@@ -366,7 +365,7 @@ const docTemplate = `{
         },
         "/v1/order/cashout": {
             "post": {
-                "description": "Register user",
+                "description": "Order Cashout",
                 "consumes": [
                     "application/json"
                 ],
@@ -385,14 +384,22 @@ const docTemplate = `{
                         "name": "Authorization",
                         "in": "header",
                         "required": true
+                    },
+                    {
+                        "description": "inputdatacashout",
+                        "name": "InputDataCashout",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dummy.Bank"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": true
+                            "$ref": "#/definitions/dummy.Bank"
                         }
                     }
                 }
@@ -549,10 +556,6 @@ const docTemplate = `{
         },
         "admin.LoginAdmin": {
             "type": "object",
-            "required": [
-                "email",
-                "password"
-            ],
             "properties": {
                 "email": {
                     "type": "string"
@@ -612,6 +615,20 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "dummy.Bank": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "bankcode": {
+                    "type": "string"
+                },
+                "no_rekening": {
                     "type": "string"
                 }
             }

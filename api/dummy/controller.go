@@ -170,12 +170,13 @@ func (Controller *Controller) Register(c echo.Context) error {
 
 // Create godoc
 // @Summary Order Cashout
-// @description Register user
+// @description Order Cashout
 // @tags UserOrder
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Success 200 {object} map[string]interface{}
+// @Param InputDataCashout body dummy.Bank true "inputdatacashout"
+// @Success 200 {object} dummy.Bank
 // @Router /v1/order/cashout [post]
 func (Controller *Controller) OrderCashout(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
@@ -239,7 +240,7 @@ func (Controller *Controller) OrderPaketData(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Success 200 {object} map[string]interface{}
+// @Success 200 {object} dummy.Register
 // @Router /v1/account [put]
 func (Controller *Controller) UpdateUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{

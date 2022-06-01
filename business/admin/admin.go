@@ -3,8 +3,8 @@ package admin
 import "github.com/golang-jwt/jwt/v4"
 
 type LoginAdmin struct {
-	Email    string `json:"email" validate:"required"`
-	Password string `json:"password" validate:"required"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 type Admin struct {
