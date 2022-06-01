@@ -439,6 +439,13 @@ paths:
       consumes:
       - application/json
       description: Register user
+      parameters:
+      - description: user
+        in: body
+        name: RegisterUser
+        required: true
+        schema:
+          $ref: '#/definitions/dummy.Register'
       produces:
       - application/json
       responses:

@@ -513,6 +513,17 @@ const docTemplate = `{
                     "User"
                 ],
                 "summary": "Register",
+                "parameters": [
+                    {
+                        "description": "user",
+                        "name": "RegisterUser",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dummy.Register"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
