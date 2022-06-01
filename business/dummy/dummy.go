@@ -19,6 +19,14 @@ type Food struct {
 	Visited     int    `json:"visited"`
 }
 
+type Register struct {
+	Name     string `json:"name"`
+	Email    string `json:"email"`
+	No_hp    string `json:"token"`
+	Password string `json:"password"`
+	Pin      int    `json:"pin"`
+}
+
 type Login struct {
 	ID       int    `json:"id"`
 	Email    string `json:"email"`

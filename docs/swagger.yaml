@@ -93,6 +93,19 @@ definitions:
       token:
         type: string
     type: object
+  dummy.Register:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+      pin:
+        type: integer
+      token:
+        type: string
+    type: object
 host: api-dummy.herokuapp.com
 info:
   contact: {}
@@ -432,8 +445,7 @@ paths:
         "200":
           description: OK
           schema:
-            additionalProperties: true
-            type: object
+            $ref: '#/definitions/dummy.Register'
       summary: Register
       tags:
       - User

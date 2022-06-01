@@ -150,12 +150,18 @@ func (Controller *Controller) DetailTransaction(c echo.Context) error {
 // @tags User
 // @Accept json
 // @Produce json
-// @Success 200 {object} map[string]interface{}
+// @Success 200 {object} dummy.Register
 // @Router /v1/register [post]
 func (Controller *Controller) Register(c echo.Context) error {
+	result := &dummyBussiness.Register{
+		Email:    "test@gmail.com",
+		Password: "testpassword",
+		Pin:      1234,
+	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success register",
+		"result":   result,
 	})
 }
 

@@ -517,8 +517,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": true
+                            "$ref": "#/definitions/dummy.Register"
                         }
                     }
                 }
@@ -662,6 +661,26 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "poin": {
+                    "type": "integer"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "dummy.Register": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "pin": {
                     "type": "integer"
                 },
                 "token": {
