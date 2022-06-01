@@ -155,6 +155,7 @@ func (Controller *Controller) DetailTransaction(c echo.Context) error {
 // @Router /v1/register [post]
 func (Controller *Controller) Register(c echo.Context) error {
 	result := &dummyBussiness.Register{
+		Name:     "ininamatest",
 		Email:    "test@gmail.com",
 		No_hp:    "063542251",
 		Password: "testpassword",
