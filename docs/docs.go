@@ -515,7 +515,7 @@ const docTemplate = `{
                 "summary": "Register",
                 "parameters": [
                     {
-                        "description": "user",
+                        "description": "Register",
                         "name": "RegisterUser",
                         "in": "body",
                         "required": true,
@@ -688,14 +688,14 @@ const docTemplate = `{
                 "name": {
                     "type": "string"
                 },
+                "no_hp": {
+                    "type": "string"
+                },
                 "password": {
                     "type": "string"
                 },
                 "pin": {
                     "type": "integer"
-                },
-                "token": {
-                    "type": "string"
                 }
             }
         }

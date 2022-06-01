@@ -99,12 +99,12 @@ definitions:
         type: string
       name:
         type: string
+      no_hp:
+        type: string
       password:
         type: string
       pin:
         type: integer
-      token:
-        type: string
     type: object
 host: api-dummy.herokuapp.com
 info:
@@ -440,7 +440,7 @@ paths:
       - application/json
       description: Register user
       parameters:
-      - description: user
+      - description: Register
         in: body
         name: RegisterUser
         required: true

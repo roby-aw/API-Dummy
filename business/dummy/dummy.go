@@ -22,7 +22,7 @@ type Food struct {
 type Register struct {
 	Name     string `json:"name"`
 	Email    string `json:"email"`
-	No_hp    string `json:"token"`
+	No_hp    string `json:"no_hp"`
 	Password string `json:"password"`
 	Pin      int    `json:"pin"`
 }

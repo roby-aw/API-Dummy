@@ -150,7 +150,7 @@ func (Controller *Controller) DetailTransaction(c echo.Context) error {
 // @tags User
 // @Accept json
 // @Produce json
-// @Param RegisterUser body dummy.Register true "user"
+// @Param RegisterUser body dummy.Register true "Register"
 // @Success 200 {object} dummy.Register
 // @Router /v1/register [post]
 func (Controller *Controller) Register(c echo.Context) error {
