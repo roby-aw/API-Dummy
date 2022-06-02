@@ -93,3 +93,14 @@ type Bank struct {
 	No_rekening string `json:"no_rekening"`
 	Amount      int    `json:"amount"`
 }
+
+type Disbursement struct {
+	UserID                  string `json:"user_id"`
+	ExternalID              string `json:"external_id"`
+	Amount                  int    `json:"amount"`
+	BankCode                string `json:"bank_code"`
+	AccountHolderName       string `json:"account_holder_name"`
+	DisbursementDescription string `json:"disbursement_description"`
+	Status                  string `json:"status"`
+	ID                      string `json:"id"`
+}

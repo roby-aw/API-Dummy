@@ -2,6 +2,7 @@ package dummy
 
 import (
 	dummyBussiness "api-redeem-point/business/dummy"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"strconv"
@@ -246,5 +247,27 @@ func (Controller *Controller) UpdateUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success register",
+	})
+}
+
+func (Controller *Controller) CallbackXendit(c echo.Context) error {
+	req := c.Request()
+	decoder := json.NewDecoder(req.Body)
+	disbursermentData := dummyBussiness.Disbursement{}
+	err := decoder.Decode(&disbursermentData)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+
+	defer req.Body.Close()
+	disbursement, _ := json.Marshal(disbursermentData)
+
+	responseWriter := c.Response().Writer
+	responseWriter.Header().Set(echo.HeaderContentType, echo.MIMEApplicationJSONCharsetUTF8)
+	responseWriter.WriteHeader(200)
+	fmt.Fprintf(responseWriter, "%s", disbursement)
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"res": responseWriter,
+		"dis": disbursement,
 	})
 }
