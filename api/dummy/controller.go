@@ -267,7 +267,6 @@ func (Controller *Controller) CallbackXendit(c echo.Context) error {
 	responseWriter.Header().Set(echo.HeaderContentType, echo.MIMEApplicationJSONCharsetUTF8)
 	responseWriter.WriteHeader(200)
 	fmt.Fprintf(responseWriter, "%s", disbursement)
-	fmt.Printf("%s", disbursement)
 	fmt.Println(resbank)
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"res": responseWriter,
