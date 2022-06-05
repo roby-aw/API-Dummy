@@ -5,6 +5,7 @@ import (
 	"api-redeem-point/business/dummy"
 	dummyBussiness "api-redeem-point/business/dummy"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 	"strconv"
@@ -24,6 +25,7 @@ func NewController(service dummyBussiness.Service) *Controller {
 }
 
 var Stockproduct []dummy.StockProduct
+var Customer []dummy.Customer
 
 func InitiateDB() {
 	product1 := dummy.StockProduct{
@@ -38,6 +40,17 @@ func InitiateDB() {
 	}
 	Stockproduct = append(Stockproduct, product1)
 	Stockproduct = append(Stockproduct, product2)
+
+	Customer1 := dummy.Customer{
+		ID:       1,
+		Email:    "test@gmail.com",
+		Password: "testpassword",
+		Token:    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTE2ODczODh9.dw2WuBIDJcb5dVT8iF_63POdhZFYOq4D1-kZTiCyo7c",
+		Poin:     500000,
+		Pin:      1234,
+	}
+
+	Customer = append(Customer, Customer1)
 }
 
 // Create godoc
@@ -50,19 +63,17 @@ func InitiateDB() {
 // @Success 200 {object} dummy.Login
 // @Router /v1/login [post]
 func (Controller *Controller) Login(c echo.Context) error {
-	result := &dummyBussiness.Login{
-		ID:       1,
-		Email:    "test@gmail.com",
-		Password: "testpassword",
-		Token:    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTE2ODczODh9.dw2WuBIDJcb5dVT8iF_63POdhZFYOq4D1-kZTiCyo7c",
-		Poin:     500000,
-		Pin:      1234,
-	}
 	var req dummyBussiness.AuthLogin
+	var tmpCustomer dummy.Customer
 	var err error
 	c.Bind(&req)
-	if (req.Email != result.Email) || (req.Password != result.Password) {
-		err = fmt.Errorf("Email atau password salah")
+	for _, v := range Customer {
+		if v.Email == req.Email && v.Password == req.Password {
+			tmpCustomer = v
+		}
+	}
+	if tmpCustomer.Email == "" && tmpCustomer.Password == "" {
+		err = errors.New("Email Atau Password salah")
 	}
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
@@ -73,7 +84,7 @@ func (Controller *Controller) Login(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success login",
-		"result":   result,
+		"result":   tmpCustomer,
 	})
 }
 

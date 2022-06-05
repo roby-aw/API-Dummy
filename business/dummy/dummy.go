@@ -27,7 +27,7 @@ type Register struct {
 	Pin      int    `json:"pin"`
 }
 
-type Login struct {
+type Customer struct {
 	ID       int    `json:"id"`
 	Email    string `json:"email"`
 	Token    string `json:"token"`
