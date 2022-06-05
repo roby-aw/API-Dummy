@@ -313,8 +313,8 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "id user",
-                        "name": "iduser",
+                        "description": "id customer",
+                        "name": "idcustomer",
                         "in": "path",
                         "required": true
                     }

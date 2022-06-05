@@ -349,9 +349,9 @@ paths:
         name: Authorization
         required: true
         type: string
-      - description: id user
+      - description: id customer
         in: path
-        name: iduser
+        name: idcustomer
         required: true
         type: integer
       produces:
