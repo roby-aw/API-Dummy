@@ -196,8 +196,7 @@ func (Controller *Controller) Register(c echo.Context) error {
 			err = errors.New("Email sudah digunakan")
 		}
 	}
-	ID := len(Customer)
-	tmpCustomer.ID = ID
+	tmpCustomer.ID = len(Customer) + 1
 	tmpCustomer.Name = req.Name
 	tmpCustomer.Email = req.Email
 	tmpCustomer.Password = req.Password
