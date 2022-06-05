@@ -120,7 +120,7 @@ func (Controller *Controller) Login(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Param iduser path int true "id user"
+// @Param idcustomer path int true "id customer"
 // @Success 200 {object} dummy.History
 // @Router /v1/history/{idcustomer} [get]
 func (Controller *Controller) History(c echo.Context) error {
