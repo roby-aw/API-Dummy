@@ -211,7 +211,7 @@ func (Controller *Controller) Register(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success register",
-		"result":   tmpCustomer,
+		"result":   req,
 	})
 }
 
