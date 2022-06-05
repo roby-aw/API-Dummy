@@ -286,10 +286,12 @@ func (Controller *Controller) CallbackXendit(c echo.Context) error {
 // @Router /v1/stockproduct [get]
 func (Controller *Controller) StockProduct(c echo.Context) error {
 	product1 := dummy.StockProduct{
+		ID:      1,
 		Product: "Pulsa dan Paket Data",
 		Stock:   800000,
 	}
 	product2 := dummy.StockProduct{
+		ID:      2,
 		Product: "EMoney dan Cashout",
 		Stock:   800000,
 	}
