@@ -24,13 +24,14 @@ type Register struct {
 	Email    string `json:"email"`
 	No_hp    string `json:"no_hp"`
 	Password string `json:"password"`
-	Pin      int    `json:"pin"`
 }
 
 type Customer struct {
 	ID       int    `json:"id"`
+	Name     string `json:"name"`
 	Email    string `json:"email"`
 	Token    string `json:"token"`
+	No_hp    string `json:"no_hp"`
 	Password string `json:"password"`
 	Poin     int    `json:"poin"`
 	Pin      int    `json:"pin"`
@@ -113,4 +114,8 @@ type StockProduct struct {
 
 type InputStockProduct struct {
 	Stock int `json:"stock"`
+}
+
+type InputPin struct {
+	Pin int `json:"pin"`
 }

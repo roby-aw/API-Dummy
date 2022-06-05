@@ -43,8 +43,10 @@ func InitiateDB() {
 
 	Customer1 := dummy.Customer{
 		ID:       1,
+		Name:     "testname",
 		Email:    "test@gmail.com",
 		Password: "testpassword",
+		No_hp:    "0856356214",
 		Token:    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTE2ODczODh9.dw2WuBIDJcb5dVT8iF_63POdhZFYOq4D1-kZTiCyo7c",
 		Poin:     500000,
 		Pin:      1234,
@@ -185,17 +187,31 @@ func (Controller *Controller) DetailTransaction(c echo.Context) error {
 // @Success 200 {object} dummy.Register
 // @Router /v1/register [post]
 func (Controller *Controller) Register(c echo.Context) error {
-	result := &dummyBussiness.Register{
-		Name:     "ininamatest",
-		Email:    "test@gmail.com",
-		No_hp:    "063542251",
-		Password: "testpassword",
-		Pin:      1234,
+	var req dummyBussiness.Register
+	var tmpCustomer dummy.Customer
+	var err error
+	c.Bind(&req)
+	for _, v := range Customer {
+		if v.Email == req.Email {
+			err = errors.New("Email sudah digunakan")
+		}
+	}
+	tmpCustomer.ID = len(Customer)
+	tmpCustomer.Name = req.Name
+	tmpCustomer.Email = req.Email
+	tmpCustomer.Password = req.Password
+	tmpCustomer.No_hp = req.No_hp
+	Customer = append(Customer, tmpCustomer)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"code":     400,
+			"messages": err.Error(),
+		})
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success register",
-		"result":   result,
+		"result":   tmpCustomer,
 	})
 }
 
