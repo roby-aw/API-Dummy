@@ -84,6 +84,13 @@ definitions:
       tipe_transaksi:
         type: string
     type: object
+  dummy.InputStockProduct:
+    properties:
+      product:
+        type: string
+      stock:
+        type: integer
+    type: object
   dummy.Login:
     properties:
       email:
@@ -499,6 +506,33 @@ paths:
           schema:
             $ref: '#/definitions/response.ResponseGetProduct'
       summary: Get Stock Product
+      tags:
+      - Product
+  /v1/stockproduct/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Stock Product
+      parameters:
+      - description: id product
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update Stock Product
+        in: body
+        name: Product
+        required: true
+        schema:
+          $ref: '#/definitions/dummy.InputStockProduct'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseGetProduct'
+      summary: Update Stock Product
       tags:
       - Product
 swagger: "2.0"

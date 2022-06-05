@@ -110,3 +110,8 @@ type StockProduct struct {
 	Product string `json:"product"`
 	Stock   int    `json:"stock"`
 }
+
+type InputStockProduct struct {
+	Product string `json:"product"`
+	Stock   int    `json:"stock"`
+}

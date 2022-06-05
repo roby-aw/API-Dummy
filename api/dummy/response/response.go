@@ -7,3 +7,9 @@ type ResponseGetProduct struct {
 	Message string `json:"message"`
 	Result  []dummy.StockProduct
 }
+
+type ResponsePutProduct struct {
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+	Result  dummy.StockProduct
+}

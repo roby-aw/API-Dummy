@@ -563,6 +563,47 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/v1/stockproduct/{id}": {
+            "put": {
+                "description": "Update Stock Product",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Update Stock Product",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id product",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Update Stock Product",
+                        "name": "Product",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dummy.InputStockProduct"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseGetProduct"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -693,6 +734,17 @@ const docTemplate = `{
                 },
                 "tipe_transaksi": {
                     "type": "string"
+                }
+            }
+        },
+        "dummy.InputStockProduct": {
+            "type": "object",
+            "properties": {
+                "product": {
+                    "type": "string"
+                },
+                "stock": {
+                    "type": "integer"
                 }
             }
         },

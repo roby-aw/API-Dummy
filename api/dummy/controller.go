@@ -23,6 +23,23 @@ func NewController(service dummyBussiness.Service) *Controller {
 	}
 }
 
+var Stockproduct []dummy.StockProduct
+
+func initiateDB() {
+	product1 := dummy.StockProduct{
+		ID:      1,
+		Product: "Pulsa dan Paket Data",
+		Stock:   800000,
+	}
+	product2 := dummy.StockProduct{
+		ID:      2,
+		Product: "EMoney dan Cashout",
+		Stock:   800000,
+	}
+	Stockproduct = append(Stockproduct, product1)
+	Stockproduct = append(Stockproduct, product2)
+}
+
 // Create godoc
 // @Summary Login
 // @description Login user
@@ -285,19 +302,6 @@ func (Controller *Controller) CallbackXendit(c echo.Context) error {
 // @Success 200 {object} response.ResponseGetProduct
 // @Router /v1/stockproduct [get]
 func (Controller *Controller) StockProduct(c echo.Context) error {
-	product1 := dummy.StockProduct{
-		ID:      1,
-		Product: "Pulsa dan Paket Data",
-		Stock:   800000,
-	}
-	product2 := dummy.StockProduct{
-		ID:      2,
-		Product: "EMoney dan Cashout",
-		Stock:   800000,
-	}
-	var arr []dummy.StockProduct
-	arr = append(arr, product1)
-	arr = append(arr, product2)
 	var err error
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
@@ -305,6 +309,35 @@ func (Controller *Controller) StockProduct(c echo.Context) error {
 	return c.JSON(http.StatusOK, response.ResponseGetProduct{
 		Code:    200,
 		Message: "Success get stock product",
-		Result:  arr,
+		Result:  Stockproduct,
+	})
+}
+
+// Create godoc
+// @Summary Update Stock Product
+// @description Update Stock Product
+// @tags Product
+// @Accept json
+// @Produce json
+// @Param id path int true "id product"
+// @Param Update Stock Product body dummy.InputStockProduct true "Update Stock Product"
+// @Success 200 {object} response.ResponseGetProduct
+// @Router /v1/stockproduct/{id} [put]
+func (Controller *Controller) ManageStockProduct(c echo.Context) error {
+	var stock *dummy.InputStockProduct
+	id, _ := strconv.Atoi(c.Param("id"))
+	c.Bind(&stock)
+	id = id - 1
+	product := Stockproduct[id]
+	product.Product = stock.Product
+	product.Stock = product.Stock + stock.Stock
+	var err error
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, response.ResponsePutProduct{
+		Code:    200,
+		Message: "Success update stock product",
+		Result:  product,
 	})
 }
