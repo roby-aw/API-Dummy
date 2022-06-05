@@ -328,9 +328,8 @@ func (Controller *Controller) ManageStockProduct(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 	c.Bind(&stock)
 	id = id - 1
+	Stockproduct[id].Stock = stock.Stock
 	product := Stockproduct[id]
-	product.Stock = product.Stock + stock.Stock
-	Stockproduct[0] = product
 	var err error
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
