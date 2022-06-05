@@ -64,6 +64,7 @@ func InitiateDB() {
 		Poin_redeem:       50000,
 		Amount:            50000,
 		Keterangan:        "Redeem Cashout - 10000",
+		Status:            "COMPLETED",
 	}
 	transaction2 := dummy.DetailTransaction{
 		ID:                2,
@@ -73,6 +74,7 @@ func InitiateDB() {
 		Poin_account:      70000,
 		Poin_redeem:       10000,
 		Keterangan:        "Redeem Pulsa - 10000",
+		Status:            "COMPLETED",
 	}
 	DetailTransaction = append(DetailTransaction, transaction1)
 	DetailTransaction = append(DetailTransaction, transaction2)
@@ -133,6 +135,7 @@ func (Controller *Controller) History(c echo.Context) error {
 			dethistory.ID = v.ID
 			dethistory.Keterangan = v.Keterangan
 			dethistory.Tanggal = v.Tanggal
+			dethistory.Status = v.Status
 
 			History = append(History, dethistory)
 		}

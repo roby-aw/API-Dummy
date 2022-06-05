@@ -60,6 +60,7 @@ type DetailTransaction struct {
 	Poin_redeem       int       `json:"poin_redeem"`
 	Amount            int       `json:"amount"`
 	Keterangan        string    `json:"keterangan"`
+	Status            string    `json:"status"`
 	Tanggal           time.Time `json:"tanggal"`
 }
 
