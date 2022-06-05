@@ -289,7 +289,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/v1/history/{iduser}": {
+        "/v1/history/{idcustomer}": {
             "get": {
                 "description": "History User",
                 "consumes": [
@@ -729,23 +729,41 @@ const docTemplate = `{
         "dummy.DetailTransaction": {
             "type": "object",
             "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "an_bank": {
+                    "type": "string"
+                },
+                "customer_id": {
+                    "type": "integer"
+                },
                 "id": {
                     "type": "integer"
                 },
                 "jenis_transaction": {
                     "type": "string"
                 },
-                "nama_bank": {
+                "keterangan": {
+                    "type": "string"
+                },
+                "no_hp": {
                     "type": "string"
                 },
                 "no_rekening": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "poin_account": {
                     "type": "integer"
                 },
                 "poin_redeem": {
                     "type": "integer"
+                },
+                "tanggal": {
+                    "type": "string"
+                },
+                "transaction_id": {
+                    "type": "string"
                 }
             }
         },
@@ -755,13 +773,13 @@ const docTemplate = `{
                 "id": {
                     "type": "integer"
                 },
+                "keterangan": {
+                    "type": "string"
+                },
                 "status": {
                     "type": "string"
                 },
                 "tanggal": {
-                    "type": "string"
-                },
-                "tipe_transaksi": {
                     "type": "string"
                 }
             }

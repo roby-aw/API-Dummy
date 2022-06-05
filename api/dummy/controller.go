@@ -9,7 +9,6 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"time"
 
 	"github.com/labstack/echo/v4"
 )
@@ -26,6 +25,7 @@ func NewController(service dummyBussiness.Service) *Controller {
 
 var Stockproduct []dummy.StockProduct
 var Customer []dummy.Customer
+var DetailTransaction []dummy.DetailTransaction
 
 func InitiateDB() {
 	product1 := dummy.StockProduct{
@@ -51,8 +51,31 @@ func InitiateDB() {
 		Poin:     500000,
 		Pin:      1234,
 	}
-
 	Customer = append(Customer, Customer1)
+
+	transaction1 := dummy.DetailTransaction{
+		ID:                1,
+		Customer_id:       1,
+		Transaction_id:    "EM25434353",
+		Jenis_transaction: "Redeem Cashout/Emoney",
+		An_bank:           "BRI",
+		No_rekening:       "2563532554",
+		Poin_account:      52000,
+		Poin_redeem:       50000,
+		Amount:            50000,
+		Keterangan:        "Redeem Cashout - 10000",
+	}
+	transaction2 := dummy.DetailTransaction{
+		ID:                2,
+		Customer_id:       1,
+		Transaction_id:    "P45574568",
+		Jenis_transaction: "Redeem Pulsa/PaketData",
+		Poin_account:      70000,
+		Poin_redeem:       10000,
+		Keterangan:        "Redeem Pulsa - 10000",
+	}
+	DetailTransaction = append(DetailTransaction, transaction1)
+	DetailTransaction = append(DetailTransaction, transaction2)
 }
 
 // Create godoc
@@ -99,34 +122,23 @@ func (Controller *Controller) Login(c echo.Context) error {
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Param iduser path int true "id user"
 // @Success 200 {object} dummy.History
-// @Router /v1/history/{iduser} [get]
+// @Router /v1/history/{idcustomer} [get]
 func (Controller *Controller) History(c echo.Context) error {
-	History1 := &dummyBussiness.History{
-		ID:             1,
-		Tipe_transaksi: "Redeem CashOut",
-		Tanggal:        time.Date(2022, 5, 16, 156, 24, 34, 534, time.UTC),
-		Status:         "Sukses",
-	}
-	History2 := &dummyBussiness.History{
-		ID:             5,
-		Tipe_transaksi: "Redeem paket data",
-		Tanggal:        time.Date(2022, 5, 17, 156, 24, 34, 534, time.UTC),
-		Status:         "Sukses",
-	}
-	History3 := &dummyBussiness.History{
-		ID:             7,
-		Tipe_transaksi: "Redeem CashOut",
-		Tanggal:        time.Date(2022, 5, 18, 156, 24, 34, 534, time.UTC),
-		Status:         "Pending",
-	}
-	var arr []dummyBussiness.History
-	arr = append(arr, *History1)
-	arr = append(arr, *History2)
-	arr = append(arr, *History3)
 	var err error
-	iduser, _ := strconv.Atoi(c.Param("iduser"))
-	if iduser != 1 {
-		err = fmt.Errorf("iduser tidak ditemukan")
+	var History []dummy.History
+	iduser, _ := strconv.Atoi(c.Param("idcustomer"))
+	for _, v := range DetailTransaction {
+		if v.Customer_id == iduser {
+			var dethistory dummy.History
+			dethistory.ID = v.ID
+			dethistory.Keterangan = v.Keterangan
+			dethistory.Tanggal = v.Tanggal
+
+			History = append(History, dethistory)
+		}
+	}
+	if History[0].Keterangan == "" {
+		err = errors.New("ID User tidak ada history")
 	}
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
@@ -137,7 +149,7 @@ func (Controller *Controller) History(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success get history",
-		"result":   arr,
+		"result":   History,
 	})
 }
 
@@ -155,8 +167,7 @@ func (Controller *Controller) DetailTransaction(c echo.Context) error {
 	detailtransaction := dummyBussiness.DetailTransaction{
 		ID:                1,
 		Jenis_transaction: "Redeem Cashout",
-		Nama_bank:         "BNI",
-		No_rekening:       12354665,
+		An_bank:           "BNI",
 		Poin_account:      500000,
 		Poin_redeem:       100000,
 	}

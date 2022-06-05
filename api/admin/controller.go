@@ -206,22 +206,22 @@ func (Controller *Controller) ManageCustomer(c echo.Context) error {
 func (Controller *Controller) CustomerHistory(c echo.Context) error {
 	var err error
 	History1 := &dummy.History{
-		ID:             1,
-		Tipe_transaksi: "Redeem CashOut",
-		Tanggal:        time.Date(2022, 5, 16, 156, 24, 34, 534, time.UTC),
-		Status:         "Sukses",
+		ID:         1,
+		Keterangan: "Redeem CashOut",
+		Tanggal:    time.Date(2022, 5, 16, 156, 24, 34, 534, time.UTC),
+		Status:     "Sukses",
 	}
 	History2 := &dummy.History{
-		ID:             5,
-		Tipe_transaksi: "Redeem paket data",
-		Tanggal:        time.Date(2022, 5, 17, 156, 24, 34, 534, time.UTC),
-		Status:         "Sukses",
+		ID:         5,
+		Keterangan: "Redeem paket data",
+		Tanggal:    time.Date(2022, 5, 17, 156, 24, 34, 534, time.UTC),
+		Status:     "Sukses",
 	}
 	History3 := &dummy.History{
-		ID:             7,
-		Tipe_transaksi: "Redeem CashOut",
-		Tanggal:        time.Date(2022, 5, 18, 156, 24, 34, 534, time.UTC),
-		Status:         "Pending",
+		ID:         7,
+		Keterangan: "Redeem CashOut",
+		Tanggal:    time.Date(2022, 5, 18, 156, 24, 34, 534, time.UTC),
+		Status:     "Pending",
 	}
 	var arr []dummy.History
 	arr = append(arr, *History1)

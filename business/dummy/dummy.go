@@ -42,19 +42,25 @@ type AuthLogin struct {
 }
 
 type History struct {
-	ID             int       `json:"id"`
-	Tipe_transaksi string    `json:"tipe_transaksi"`
-	Tanggal        time.Time `json:"tanggal"`
-	Status         string    `json:"status"`
+	ID         int       `json:"id"`
+	Keterangan string    `json:"keterangan"`
+	Tanggal    time.Time `json:"tanggal"`
+	Status     string    `json:"status"`
 }
 
 type DetailTransaction struct {
-	ID                int    `json:"id"`
-	Jenis_transaction string `json:"jenis_transaction"`
-	Nama_bank         string `json:"nama_bank"`
-	No_rekening       int    `json:"no_rekening"`
-	Poin_account      int    `json:"poin_account"`
-	Poin_redeem       int    `json:"poin_redeem"`
+	ID                int       `json:"id"`
+	Customer_id       int       `json:"customer_id"`
+	Transaction_id    string    `json:"transaction_id"`
+	Jenis_transaction string    `json:"jenis_transaction"`
+	An_bank           string    `json:"an_bank"`
+	No_rekening       string    `json:"no_rekening"`
+	No_hp             string    `json:"no_hp"`
+	Poin_account      int       `json:"poin_account"`
+	Poin_redeem       int       `json:"poin_redeem"`
+	Amount            int       `json:"amount"`
+	Keterangan        string    `json:"keterangan"`
+	Tanggal           time.Time `json:"tanggal"`
 }
 
 type ProductCashout struct {
