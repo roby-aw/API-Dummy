@@ -2,6 +2,7 @@ package main
 
 import (
 	"api-redeem-point/api"
+	"api-redeem-point/api/dummy"
 	_ "api-redeem-point/docs"
 	"fmt"
 	"log"
@@ -19,6 +20,7 @@ import (
 // @host api-dummy.herokuapp.com
 // @BasePath /
 func main() {
+	dummy.InitiateDB()
 	port := os.Getenv("PORT")
 	e := echo.New()
 	handleSwagger := echoSwagger.WrapHandler

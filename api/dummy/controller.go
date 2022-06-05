@@ -25,7 +25,7 @@ func NewController(service dummyBussiness.Service) *Controller {
 
 var Stockproduct []dummy.StockProduct
 
-func initiateDB() {
+func InitiateDB() {
 	product1 := dummy.StockProduct{
 		ID:      1,
 		Product: "Pulsa dan Paket Data",
