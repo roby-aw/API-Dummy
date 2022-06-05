@@ -58,6 +58,25 @@ definitions:
       no_rekening:
         type: string
     type: object
+  dummy.Customer:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      no_hp:
+        type: string
+      password:
+        type: string
+      pin:
+        type: integer
+      poin:
+        type: integer
+      token:
+        type: string
+    type: object
   dummy.DetailTransaction:
     properties:
       id:
@@ -89,21 +108,6 @@ definitions:
       stock:
         type: integer
     type: object
-  dummy.Login:
-    properties:
-      email:
-        type: string
-      id:
-        type: integer
-      password:
-        type: string
-      pin:
-        type: integer
-      poin:
-        type: integer
-      token:
-        type: string
-    type: object
   dummy.Register:
     properties:
       email:
@@ -114,8 +118,6 @@ definitions:
         type: string
       password:
         type: string
-      pin:
-        type: integer
     type: object
   dummy.StockProduct:
     properties:
@@ -368,7 +370,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/dummy.Login'
+            $ref: '#/definitions/dummy.Customer'
       summary: Login
       tags:
       - User

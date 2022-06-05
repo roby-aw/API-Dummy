@@ -357,7 +357,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dummy.Login"
+                            "$ref": "#/definitions/dummy.Customer"
                         }
                     }
                 }
@@ -697,6 +697,35 @@ const docTemplate = `{
                 }
             }
         },
+        "dummy.Customer": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "no_hp": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "pin": {
+                    "type": "integer"
+                },
+                "poin": {
+                    "type": "integer"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
         "dummy.DetailTransaction": {
             "type": "object",
             "properties": {
@@ -745,29 +774,6 @@ const docTemplate = `{
                 }
             }
         },
-        "dummy.Login": {
-            "type": "object",
-            "properties": {
-                "email": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "integer"
-                },
-                "password": {
-                    "type": "string"
-                },
-                "pin": {
-                    "type": "integer"
-                },
-                "poin": {
-                    "type": "integer"
-                },
-                "token": {
-                    "type": "string"
-                }
-            }
-        },
         "dummy.Register": {
             "type": "object",
             "properties": {
@@ -782,9 +788,6 @@ const docTemplate = `{
                 },
                 "password": {
                     "type": "string"
-                },
-                "pin": {
-                    "type": "integer"
                 }
             }
         },
