@@ -112,6 +112,26 @@ definitions:
       pin:
         type: integer
     type: object
+  dummy.StockProduct:
+    properties:
+      id:
+        type: integer
+      product:
+        type: string
+      stock:
+        type: integer
+    type: object
+  response.ResponseGetProduct:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      result:
+        items:
+          $ref: '#/definitions/dummy.StockProduct'
+        type: array
+    type: object
 host: api-dummy.herokuapp.com
 info:
   contact: {}
@@ -466,4 +486,19 @@ paths:
       summary: Register
       tags:
       - User
+  /v1/stockproduct:
+    get:
+      consumes:
+      - application/json
+      description: Get Stock Product
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseGetProduct'
+      summary: Get Stock Product
+      tags:
+      - Product
 swagger: "2.0"

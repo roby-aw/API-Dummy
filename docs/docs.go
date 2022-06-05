@@ -540,6 +540,29 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/v1/stockproduct": {
+            "get": {
+                "description": "Get Stock Product",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Get Stock Product",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseGetProduct"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -713,6 +736,37 @@ const docTemplate = `{
                 },
                 "pin": {
                     "type": "integer"
+                }
+            }
+        },
+        "dummy.StockProduct": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "product": {
+                    "type": "string"
+                },
+                "stock": {
+                    "type": "integer"
+                }
+            }
+        },
+        "response.ResponseGetProduct": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dummy.StockProduct"
+                    }
                 }
             }
         }

@@ -1,6 +1,8 @@
 package dummy
 
 import (
+	"api-redeem-point/api/dummy/response"
+	"api-redeem-point/business/dummy"
 	dummyBussiness "api-redeem-point/business/dummy"
 	"encoding/json"
 	"fmt"
@@ -271,5 +273,36 @@ func (Controller *Controller) CallbackXendit(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"res": responseWriter,
 		"dis": disbursement,
+	})
+}
+
+// Create godoc
+// @Summary Get Stock Product
+// @description Get Stock Product
+// @tags Product
+// @Accept json
+// @Produce json
+// @Success 200 {object} response.ResponseGetProduct
+// @Router /v1/stockproduct [get]
+func (Controller *Controller) StockProduct(c echo.Context) error {
+	product1 := dummy.StockProduct{
+		Product: "Pulsa dan Paket Data",
+		Stock:   800000,
+	}
+	product2 := dummy.StockProduct{
+		Product: "EMoney dan Cashout",
+		Stock:   800000,
+	}
+	var arr []dummy.StockProduct
+	arr = append(arr, product1)
+	arr = append(arr, product2)
+	var err error
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, response.ResponseGetProduct{
+		Code:    200,
+		Message: "Success get stock product",
+		Result:  arr,
 	})
 }

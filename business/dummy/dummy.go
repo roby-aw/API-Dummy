@@ -104,3 +104,9 @@ type Disbursement struct {
 	Status                  string `json:"status"`
 	ID                      string `json:"id"`
 }
+
+type StockProduct struct {
+	ID      int    `gorm:"primarykey"`
+	Product string `json:"product"`
+	Stock   int    `json:"stock"`
+}
