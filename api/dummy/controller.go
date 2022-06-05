@@ -62,7 +62,7 @@ func InitiateDB() {
 // @Accept json
 // @Produce json
 // @Param user body dummy.AuthLogin true "user"
-// @Success 200 {object} dummy.Login
+// @Success 200 {object} dummy.Customer
 // @Router /v1/login [post]
 func (Controller *Controller) Login(c echo.Context) error {
 	var req dummyBussiness.AuthLogin
