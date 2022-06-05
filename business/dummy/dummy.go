@@ -112,6 +112,5 @@ type StockProduct struct {
 }
 
 type InputStockProduct struct {
-	Product string `json:"product"`
-	Stock   int    `json:"stock"`
+	Stock int `json:"stock"`
 }

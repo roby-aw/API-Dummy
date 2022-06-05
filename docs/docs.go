@@ -740,9 +740,6 @@ const docTemplate = `{
         "dummy.InputStockProduct": {
             "type": "object",
             "properties": {
-                "product": {
-                    "type": "string"
-                },
                 "stock": {
                     "type": "integer"
                 }

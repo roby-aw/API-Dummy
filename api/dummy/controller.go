@@ -329,7 +329,6 @@ func (Controller *Controller) ManageStockProduct(c echo.Context) error {
 	c.Bind(&stock)
 	id = id - 1
 	product := Stockproduct[id]
-	product.Product = stock.Product
 	product.Stock = product.Stock + stock.Stock
 	var err error
 	if err != nil {

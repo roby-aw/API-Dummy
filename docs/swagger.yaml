@@ -86,8 +86,6 @@ definitions:
     type: object
   dummy.InputStockProduct:
     properties:
-      product:
-        type: string
       stock:
         type: integer
     type: object
