@@ -42,10 +42,11 @@ type AuthLogin struct {
 }
 
 type History struct {
-	ID         int       `json:"id"`
-	Keterangan string    `json:"keterangan"`
-	Tanggal    time.Time `json:"tanggal"`
-	Status     string    `json:"status"`
+	ID             int       `json:"id"`
+	Transaction_id string    `json:"transaction_id"`
+	Keterangan     string    `json:"keterangan"`
+	Tanggal        time.Time `json:"tanggal"`
+	Status         string    `json:"status"`
 }
 
 type DetailTransaction struct {

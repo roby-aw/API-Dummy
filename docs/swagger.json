@@ -752,6 +752,9 @@
                 "poin_redeem": {
                     "type": "integer"
                 },
+                "status": {
+                    "type": "string"
+                },
                 "tanggal": {
                     "type": "string"
                 },
@@ -773,6 +776,9 @@
                     "type": "string"
                 },
                 "tanggal": {
+                    "type": "string"
+                },
+                "transaction_id": {
                     "type": "string"
                 }
             }

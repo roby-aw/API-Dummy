@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/labstack/echo/v4"
 )
@@ -133,8 +134,9 @@ func (Controller *Controller) History(c echo.Context) error {
 		if v.Customer_id == iduser {
 			var dethistory dummy.History
 			dethistory.ID = v.ID
+			dethistory.Transaction_id = v.Transaction_id
 			dethistory.Keterangan = v.Keterangan
-			dethistory.Tanggal = v.Tanggal
+			dethistory.Tanggal = time.Now()
 			dethistory.Status = v.Status
 
 			History = append(History, dethistory)

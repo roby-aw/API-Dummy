@@ -99,6 +99,8 @@ definitions:
         type: integer
       poin_redeem:
         type: integer
+      status:
+        type: string
       tanggal:
         type: string
       transaction_id:
@@ -113,6 +115,8 @@ definitions:
       status:
         type: string
       tanggal:
+        type: string
+      transaction_id:
         type: string
     type: object
   dummy.InputStockProduct:

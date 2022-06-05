@@ -759,6 +759,9 @@ const docTemplate = `{
                 "poin_redeem": {
                     "type": "integer"
                 },
+                "status": {
+                    "type": "string"
+                },
                 "tanggal": {
                     "type": "string"
                 },
@@ -780,6 +783,9 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "tanggal": {
+                    "type": "string"
+                },
+                "transaction_id": {
                     "type": "string"
                 }
             }
