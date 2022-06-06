@@ -42,6 +42,7 @@ func RegistrationPath(e *echo.Echo, controller Controller) {
 	m := c.Group("/mitra")
 	m.POST("/login", controller.DummyController.LoginMitra)
 	m.POST("/register", controller.DummyController.Register)
+	m.POST("/inputpoin", controller.DummyController.InputPoin)
 
 	c.POST("/callback", controller.DummyController.CallbackXendit)
 }
