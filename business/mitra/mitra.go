@@ -21,8 +21,7 @@ type MitraRegister struct {
 }
 
 type InputPoinMitra struct {
-	IDMitra      int `json:"idmitra"`
-	IDCustomer   int `json:"idcustomer"`
-	Poin_account int `json:"poin_account"`
-	Amount       int `json:"amount"`
+	IDMitra    int `json:"idmitra"`
+	IDCustomer int `json:"idcustomer"`
+	Amount     int `json:"amount"`
 }

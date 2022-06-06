@@ -956,9 +956,6 @@ const docTemplate = `{
                 },
                 "idmitra": {
                     "type": "integer"
-                },
-                "poin_account": {
-                    "type": "integer"
                 }
             }
         },
