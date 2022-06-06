@@ -363,6 +363,37 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/mitra/inputpoin": {
+            "post": {
+                "description": "Input Poin Mitra",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mitra"
+                ],
+                "summary": "Input Poin Mitra",
+                "parameters": [
+                    {
+                        "description": "InputPoinMitra",
+                        "name": "InputPoin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/mitra.InputPoinMitra"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/v1/mitra/login": {
             "post": {
                 "description": "Login Mitra",
@@ -911,6 +942,23 @@ const docTemplate = `{
                 },
                 "password": {
                     "type": "string"
+                }
+            }
+        },
+        "mitra.InputPoinMitra": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "idcustomer": {
+                    "type": "integer"
+                },
+                "idmitra": {
+                    "type": "integer"
+                },
+                "poin_account": {
+                    "type": "integer"
                 }
             }
         },

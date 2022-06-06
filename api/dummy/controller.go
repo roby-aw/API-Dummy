@@ -2,7 +2,6 @@ package dummy
 
 import (
 	"api-redeem-point/api/dummy/response"
-	apiMitra "api-redeem-point/api/mitra"
 	"api-redeem-point/business/dummy"
 	dummyBussiness "api-redeem-point/business/dummy"
 	"api-redeem-point/business/mitra"
@@ -26,6 +25,7 @@ func NewController(service dummyBussiness.Service) *Controller {
 	}
 }
 
+var AccountMitra []mitra.Mitra
 var Stockproduct []dummy.StockProduct
 var Customer []dummy.Customer
 var DetailTransaction []dummy.DetailTransaction
@@ -102,8 +102,8 @@ func InitiateDB() {
 		Alamat:    "Jl. Mitra",
 	}
 
-	apiMitra.AccountMitra = append(apiMitra.AccountMitra, mitra1)
-	apiMitra.AccountMitra = append(apiMitra.AccountMitra, mitra2)
+	AccountMitra = append(AccountMitra, mitra1)
+	AccountMitra = append(AccountMitra, mitra2)
 }
 
 // Create godoc
@@ -406,5 +406,122 @@ func (Controller *Controller) ManageStockProduct(c echo.Context) error {
 		Code:    200,
 		Message: "Success update stock product",
 		Result:  product,
+	})
+}
+
+// Create godoc
+// @Summary Login Mitra
+// @description Login Mitra
+// @tags Mitra
+// @Accept json
+// @Produce json
+// @Param mitra body mitra.AuthMitra true "mitra"
+// @Success 200 {object} mitra.Mitra
+// @Router /v1/mitra/login [post]
+func (Controller *Controller) LoginMitra(c echo.Context) error {
+	var req mitra.AuthMitra
+	var tmpMitra mitra.Mitra
+	var err error
+	c.Bind(&req)
+	for _, v := range AccountMitra {
+		if v.Email == req.Email && v.Password == req.Password {
+			tmpMitra = v
+		}
+	}
+	if tmpMitra.Email == "" && tmpMitra.Password == "" {
+		err = errors.New("Email Atau Password salah")
+	}
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"code":     400,
+			"messages": err.Error(),
+		})
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success login",
+		"result":   tmpMitra,
+	})
+}
+
+// Create godoc
+// @Summary Register Mitra
+// @description Register Mitra
+// @tags Mitra
+// @Accept json
+// @Produce json
+// @Param RegisterMitra body mitra.MitraRegister true "MitraRegister"
+// @Success 200 {object} mitra.MitraRegister
+// @Router /v1/mitra/register [post]
+func (Controller *Controller) RegisterMitra(c echo.Context) error {
+	var req mitra.MitraRegister
+	var tmpMitra mitra.Mitra
+	var err error
+	c.Bind(&req)
+	for _, v := range AccountMitra {
+		if v.Email == req.Email {
+			err = errors.New("Email sudah digunakan")
+		}
+	}
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"code":     400,
+			"messages": err.Error(),
+		})
+	}
+
+	tmpMitra.ID = len(AccountMitra) + 1
+	tmpMitra.Nama_toko = req.Nama_toko
+	tmpMitra.Email = req.Email
+	tmpMitra.Password = req.Password
+	tmpMitra.Alamat = req.Alamat
+	AccountMitra = append(AccountMitra, tmpMitra)
+
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success register",
+		"result":   req,
+	})
+}
+
+// Create godoc
+// @Summary Input Poin Mitra
+// @description Input Poin Mitra
+// @tags Mitra
+// @Accept json
+// @Produce json
+// @Param InputPoin body mitra.InputPoinMitra true "InputPoinMitra"
+// @Success 200
+// @Router /v1/mitra/inputpoin [post]
+func (Controller *Controller) InputPoin(c echo.Context) error {
+	var req mitra.InputPoinMitra
+	var data dummy.DetailTransaction
+	var err error
+	c.Bind(&req)
+	for _, v := range AccountMitra {
+		if v.ID != req.IDCustomer {
+			err = errors.New("User tidak ada")
+		}
+	}
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"code":     400,
+			"messages": err.Error(),
+		})
+	}
+	var i int
+	price := req.Amount
+	for i = 0; price > 1; i = i + 100 {
+		price = price - 10000
+	}
+
+	data.ID = len(DetailTransaction) + 1
+	data.Customer_id = req.IDCustomer
+	data.Mitra_id = req.IDMitra
+	data.Amount = req.Amount
+	data.Poin_redeem = price
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success add poin",
 	})
 }

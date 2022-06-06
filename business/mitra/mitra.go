@@ -19,3 +19,10 @@ type MitraRegister struct {
 	Password  string `json:"password"`
 	Alamat    string `json:"alamat"`
 }
+
+type InputPoinMitra struct {
+	IDMitra      int `json:"idmitra"`
+	IDCustomer   int `json:"idcustomer"`
+	Poin_account int `json:"poin_account"`
+	Amount       int `json:"amount"`
+}

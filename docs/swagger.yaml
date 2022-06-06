@@ -155,6 +155,17 @@ definitions:
       password:
         type: string
     type: object
+  mitra.InputPoinMitra:
+    properties:
+      amount:
+        type: integer
+      idcustomer:
+        type: integer
+      idmitra:
+        type: integer
+      poin_account:
+        type: integer
+    type: object
   mitra.Mitra:
     properties:
       alamat:
@@ -425,6 +436,26 @@ paths:
       summary: Login
       tags:
       - User
+  /v1/mitra/inputpoin:
+    post:
+      consumes:
+      - application/json
+      description: Input Poin Mitra
+      parameters:
+      - description: InputPoinMitra
+        in: body
+        name: InputPoin
+        required: true
+        schema:
+          $ref: '#/definitions/mitra.InputPoinMitra'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Input Poin Mitra
+      tags:
+      - Mitra
   /v1/mitra/login:
     post:
       consumes:

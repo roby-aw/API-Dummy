@@ -134,3 +134,9 @@ type TransactionBank struct {
 	An_bank     string `json:"an_bank"`
 	No_rekening string `json:"no_rekening"`
 }
+
+type InputPoinMitra struct {
+	IDCustomer   int `json:"idcustomer"`
+	Poin_account int `json:"poin_account"`
+	Amount       int `json:"amount"`
+}
