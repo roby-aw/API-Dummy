@@ -58,7 +58,7 @@ func (Controller *Controller) LoginMitra(c echo.Context) error {
 // Create godoc
 // @Summary Register Mitra
 // @description Register Mitra
-// @tags User
+// @tags Mitra
 // @Accept json
 // @Produce json
 // @Param RegisterMitra body mitra.MitraRegister true "MitraRegister"

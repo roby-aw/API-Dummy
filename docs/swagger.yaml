@@ -468,7 +468,7 @@ paths:
             $ref: '#/definitions/mitra.MitraRegister'
       summary: Register Mitra
       tags:
-      - User
+      - Mitra
   /v1/order/cashout:
     post:
       consumes:

@@ -407,7 +407,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "User"
+                    "Mitra"
                 ],
                 "summary": "Register Mitra",
                 "parameters": [
