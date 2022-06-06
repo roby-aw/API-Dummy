@@ -521,11 +521,8 @@ func (Controller *Controller) InputPoin(c echo.Context) error {
 	data.Amount = req.Amount
 	data.Poin_redeem = price
 
-	for _, v := range Customer {
-		if v.ID == data.Customer_id {
-			v.Poin = v.Poin + i
-		}
-	}
+	acc := Customer[data.ID]
+	acc.Poin = acc.Poin + i
 
 	DetailTransaction = append(DetailTransaction, data)
 
