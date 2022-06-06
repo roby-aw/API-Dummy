@@ -523,8 +523,8 @@ func (Controller *Controller) InputPoin(c echo.Context) error {
 	data.Status_poin = "IN"
 	data.Poin_account = Customer[req.IDCustomer-1].Poin
 
-	acc := Customer[req.IDCustomer-1]
-	acc.Poin = acc.Poin + i
+	acc := Customer[req.IDCustomer-1].Poin
+	Customer[req.IDCustomer-1].Poin = acc + i
 
 	DetailTransaction = append(DetailTransaction, data)
 
