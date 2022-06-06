@@ -157,14 +157,16 @@ func (Controller *Controller) History(c echo.Context) error {
 	iduser, _ := strconv.Atoi(c.Param("idcustomer"))
 	for _, v := range DetailTransaction {
 		if v.Customer_id == iduser {
-			var dethistory dummy.History
-			dethistory.ID = v.ID
-			dethistory.Transaction_id = v.Transaction_id
-			dethistory.Keterangan = v.Keterangan
-			dethistory.Tanggal = time.Now()
-			dethistory.Status = v.Status_transaction
+			if v.Status_poin == "IN" {
+				var dethistory dummy.History
+				dethistory.ID = v.ID
+				dethistory.Transaction_id = v.Transaction_id
+				dethistory.Keterangan = v.Keterangan
+				dethistory.Tanggal = time.Now()
+				dethistory.Status = v.Status_transaction
 
-			History = append(History, dethistory)
+				History = append(History, dethistory)
+			}
 		}
 	}
 	if History[0].Keterangan == "" {
