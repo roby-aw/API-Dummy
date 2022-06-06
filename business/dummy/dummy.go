@@ -50,19 +50,21 @@ type History struct {
 }
 
 type DetailTransaction struct {
-	ID                int       `json:"id"`
-	Customer_id       int       `json:"customer_id"`
-	Transaction_id    string    `json:"transaction_id"`
-	Jenis_transaction string    `json:"jenis_transaction"`
-	An_bank           string    `json:"an_bank"`
-	No_rekening       string    `json:"no_rekening"`
-	No_hp             string    `json:"no_hp"`
-	Poin_account      int       `json:"poin_account"`
-	Poin_redeem       int       `json:"poin_redeem"`
-	Amount            int       `json:"amount"`
-	Keterangan        string    `json:"keterangan"`
-	Status            string    `json:"status"`
-	Tanggal           time.Time `json:"tanggal"`
+	ID                 int       `json:"id"`
+	Customer_id        int       `json:"customer_id"`
+	Mitra_id           int       `json:"mitra_id"`
+	Transaction_id     string    `json:"transaction_id"`
+	CreatedAt          time.Time `json:"createdat"`
+	Jenis_transaction  string    `json:"jenis_transaction"`
+	Bank_Provider      string    `json:"bank_provider"`
+	AN_Rekening        string    `json:"an_rekening"`
+	Nomor              string    `json:"nomor"`
+	Poin_account       int       `json:"poin_account"`
+	Poin_redeem        int       `json:"poin_redeem"`
+	Amount             int       `json:"amount"`
+	Keterangan         string    `json:"keterangan"`
+	Status_transaction string    `json:"status_transaction"`
+	Status_poin        string    `json:"status_poin"`
 }
 
 type ProductCashout struct {
@@ -126,4 +128,9 @@ type InputStockProduct struct {
 
 type InputPin struct {
 	Pin int `json:"pin"`
+}
+
+type TransactionBank struct {
+	An_bank     string `json:"an_bank"`
+	No_rekening string `json:"no_rekening"`
 }

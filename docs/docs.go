@@ -363,6 +363,74 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/mitra/login": {
+            "post": {
+                "description": "Login Mitra",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mitra"
+                ],
+                "summary": "Login Mitra",
+                "parameters": [
+                    {
+                        "description": "mitra",
+                        "name": "mitra",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/mitra.AuthMitra"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/mitra.Mitra"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/mitra/register": {
+            "post": {
+                "description": "Register Mitra",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register Mitra",
+                "parameters": [
+                    {
+                        "description": "MitraRegister",
+                        "name": "RegisterMitra",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/mitra.MitraRegister"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/mitra.MitraRegister"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/order/cashout": {
             "post": {
                 "description": "Order Cashout",
@@ -732,7 +800,13 @@ const docTemplate = `{
                 "amount": {
                     "type": "integer"
                 },
-                "an_bank": {
+                "an_rekening": {
+                    "type": "string"
+                },
+                "bank_provider": {
+                    "type": "string"
+                },
+                "createdat": {
                     "type": "string"
                 },
                 "customer_id": {
@@ -747,10 +821,10 @@ const docTemplate = `{
                 "keterangan": {
                     "type": "string"
                 },
-                "no_hp": {
-                    "type": "string"
+                "mitra_id": {
+                    "type": "integer"
                 },
-                "no_rekening": {
+                "nomor": {
                     "type": "string"
                 },
                 "poin_account": {
@@ -759,10 +833,10 @@ const docTemplate = `{
                 "poin_redeem": {
                     "type": "integer"
                 },
-                "status": {
+                "status_poin": {
                     "type": "string"
                 },
-                "tanggal": {
+                "status_transaction": {
                     "type": "string"
                 },
                 "transaction_id": {
@@ -826,6 +900,54 @@ const docTemplate = `{
                 },
                 "stock": {
                     "type": "integer"
+                }
+            }
+        },
+        "mitra.AuthMitra": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "mitra.Mitra": {
+            "type": "object",
+            "properties": {
+                "alamat": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "nama_toko": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "mitra.MitraRegister": {
+            "type": "object",
+            "properties": {
+                "alamat": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "nama_toko": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
                 }
             }
         },

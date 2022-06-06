@@ -2,8 +2,10 @@ package dummy
 
 import (
 	"api-redeem-point/api/dummy/response"
+	apiMitra "api-redeem-point/api/mitra"
 	"api-redeem-point/business/dummy"
 	dummyBussiness "api-redeem-point/business/dummy"
+	"api-redeem-point/business/mitra"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -55,30 +57,53 @@ func InitiateDB() {
 	Customer = append(Customer, Customer1)
 
 	transaction1 := dummy.DetailTransaction{
-		ID:                1,
-		Customer_id:       1,
-		Transaction_id:    "EM25434353",
-		Jenis_transaction: "Redeem Cashout/Emoney",
-		An_bank:           "BRI",
-		No_rekening:       "2563532554",
-		Poin_account:      52000,
-		Poin_redeem:       50000,
-		Amount:            50000,
-		Keterangan:        "Redeem Cashout - 10000",
-		Status:            "COMPLETED",
+		ID:                 1,
+		Customer_id:        1,
+		Transaction_id:     "EM25434353",
+		Jenis_transaction:  "Redeem Cashout/Emoney",
+		Bank_Provider:      "BRI",
+		AN_Rekening:        "Yudo",
+		Nomor:              "2563532554",
+		Poin_account:       52000,
+		Poin_redeem:        50000,
+		Amount:             50000,
+		Keterangan:         "Redeem Cashout - 10000",
+		Status_transaction: "COMPLETED",
+		Status_poin:        "OUT",
 	}
 	transaction2 := dummy.DetailTransaction{
-		ID:                2,
-		Customer_id:       1,
-		Transaction_id:    "P45574568",
-		Jenis_transaction: "Redeem Pulsa/PaketData",
-		Poin_account:      70000,
-		Poin_redeem:       10000,
-		Keterangan:        "Redeem Pulsa - 10000",
-		Status:            "COMPLETED",
+		ID:                 2,
+		Customer_id:        1,
+		Transaction_id:     "P45574568",
+		Jenis_transaction:  "Redeem Pulsa/PaketData",
+		Nomor:              "085756545325",
+		Poin_account:       70000,
+		Poin_redeem:        10000,
+		Keterangan:         "Redeem Pulsa - 10000",
+		Status_transaction: "COMPLETED",
+		Status_poin:        "OUT",
 	}
 	DetailTransaction = append(DetailTransaction, transaction1)
 	DetailTransaction = append(DetailTransaction, transaction2)
+
+	mitra1 := mitra.Mitra{
+		ID:        1,
+		Nama_toko: "Mitra1",
+		Email:     "mitra1@gmail.com",
+		Password:  "mitrapassword",
+		Alamat:    "Jl. Mitra",
+	}
+
+	mitra2 := mitra.Mitra{
+		ID:        1,
+		Nama_toko: "Mitra2",
+		Email:     "mitra2@gmail.com",
+		Password:  "mitrapassword",
+		Alamat:    "Jl. Mitra",
+	}
+
+	apiMitra.AccountMitra = append(apiMitra.AccountMitra, mitra1)
+	apiMitra.AccountMitra = append(apiMitra.AccountMitra, mitra2)
 }
 
 // Create godoc
@@ -137,7 +162,7 @@ func (Controller *Controller) History(c echo.Context) error {
 			dethistory.Transaction_id = v.Transaction_id
 			dethistory.Keterangan = v.Keterangan
 			dethistory.Tanggal = time.Now()
-			dethistory.Status = v.Status
+			dethistory.Status = v.Status_transaction
 
 			History = append(History, dethistory)
 		}
@@ -172,7 +197,7 @@ func (Controller *Controller) DetailTransaction(c echo.Context) error {
 	detailtransaction := dummyBussiness.DetailTransaction{
 		ID:                1,
 		Jenis_transaction: "Redeem Cashout",
-		An_bank:           "BNI",
+		Bank_Provider:     "BNI",
 		Poin_account:      500000,
 		Poin_redeem:       100000,
 	}

@@ -3,6 +3,7 @@ package api
 import (
 	"api-redeem-point/api/admin"
 	"api-redeem-point/api/dummy"
+	"api-redeem-point/api/mitra"
 
 	"github.com/labstack/echo/v4"
 )
@@ -10,6 +11,7 @@ import (
 type Controller struct {
 	AdminControlller *admin.Controller
 	DummyController  *dummy.Controller
+	MitraController  *mitra.Controller
 }
 
 func RegistrationPath(e *echo.Echo, controller Controller) {
@@ -35,6 +37,11 @@ func RegistrationPath(e *echo.Echo, controller Controller) {
 	g.GET("/managecustomer", controller.AdminControlller.ManageCustomer)
 	g.GET("/historycustomer", controller.AdminControlller.CustomerHistory)
 	g.PUT("/managecustomer/:id", controller.AdminControlller.UpdateCustomer)
+
+	//mitra
+	m := e.Group("/mitra")
+	m.POST("/login", controller.MitraController.LoginMitra)
+	m.POST("/register", controller.MitraController.Register)
 
 	c.POST("/callback", controller.DummyController.CallbackXendit)
 }

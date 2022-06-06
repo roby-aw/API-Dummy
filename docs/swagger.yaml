@@ -81,7 +81,11 @@ definitions:
     properties:
       amount:
         type: integer
-      an_bank:
+      an_rekening:
+        type: string
+      bank_provider:
+        type: string
+      createdat:
         type: string
       customer_id:
         type: integer
@@ -91,17 +95,17 @@ definitions:
         type: string
       keterangan:
         type: string
-      no_hp:
-        type: string
-      no_rekening:
+      mitra_id:
+        type: integer
+      nomor:
         type: string
       poin_account:
         type: integer
       poin_redeem:
         type: integer
-      status:
+      status_poin:
         type: string
-      tanggal:
+      status_transaction:
         type: string
       transaction_id:
         type: string
@@ -143,6 +147,37 @@ definitions:
         type: string
       stock:
         type: integer
+    type: object
+  mitra.AuthMitra:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  mitra.Mitra:
+    properties:
+      alamat:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      nama_toko:
+        type: string
+      password:
+        type: string
+    type: object
+  mitra.MitraRegister:
+    properties:
+      alamat:
+        type: string
+      email:
+        type: string
+      nama_toko:
+        type: string
+      password:
+        type: string
     type: object
   response.ResponseGetProduct:
     properties:
@@ -388,6 +423,50 @@ paths:
           schema:
             $ref: '#/definitions/dummy.Customer'
       summary: Login
+      tags:
+      - User
+  /v1/mitra/login:
+    post:
+      consumes:
+      - application/json
+      description: Login Mitra
+      parameters:
+      - description: mitra
+        in: body
+        name: mitra
+        required: true
+        schema:
+          $ref: '#/definitions/mitra.AuthMitra'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/mitra.Mitra'
+      summary: Login Mitra
+      tags:
+      - Mitra
+  /v1/mitra/register:
+    post:
+      consumes:
+      - application/json
+      description: Register Mitra
+      parameters:
+      - description: MitraRegister
+        in: body
+        name: RegisterMitra
+        required: true
+        schema:
+          $ref: '#/definitions/mitra.MitraRegister'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/mitra.MitraRegister'
+      summary: Register Mitra
       tags:
       - User
   /v1/order/cashout:
