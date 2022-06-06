@@ -519,7 +519,9 @@ func (Controller *Controller) InputPoin(c echo.Context) error {
 	data.Customer_id = req.IDCustomer
 	data.Mitra_id = req.IDMitra
 	data.Amount = req.Amount
-	data.Poin_redeem = price
+	data.Poin_redeem = i
+	data.Status_poin = "IN"
+	data.Poin_account = Customer[data.ID-1].Poin
 
 	acc := Customer[data.ID]
 	acc.Poin = acc.Poin + i
