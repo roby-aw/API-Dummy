@@ -520,6 +520,9 @@ func (Controller *Controller) InputPoin(c echo.Context) error {
 	data.Mitra_id = req.IDMitra
 	data.Amount = req.Amount
 	data.Poin_redeem = price
+
+	DetailTransaction = append(DetailTransaction, data)
+
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success add poin",
