@@ -35,6 +35,7 @@ type ManageCustomer struct {
 	ID       int    `json:"id"`
 	Name     string `json:"name"`
 	Email    string `json:"email"`
+	No_hp    string `json:"no_hp"`
 	Password string `json:"password"`
 }
 

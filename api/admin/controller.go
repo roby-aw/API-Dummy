@@ -202,7 +202,7 @@ func (Controller *Controller) ManageCustomer(c echo.Context) error {
 		data.Email = v.Email
 		data.Name = v.Name
 		data.Password = v.Password
-
+		data.No_hp = v.No_hp
 		result = append(result, data)
 	}
 	if err != nil {
