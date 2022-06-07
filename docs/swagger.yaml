@@ -48,6 +48,9 @@ definitions:
         type: string
       password:
         type: string
+    required:
+    - email
+    - password
     type: object
   dummy.Bank:
     properties:
@@ -77,36 +80,20 @@ definitions:
       token:
         type: string
     type: object
-  dummy.DetailTransaction:
+  dummy.DetailTransactionCustomer:
     properties:
-      amount:
-        type: integer
-      an_rekening:
-        type: string
       bank_provider:
         type: string
       createdat:
         type: string
-      customer_id:
-        type: integer
-      id:
-        type: integer
       jenis_transaction:
         type: string
-      keterangan:
-        type: string
-      mitra_id:
-        type: integer
       nomor:
         type: string
       poin_account:
         type: integer
       poin_redeem:
         type: integer
-      status_poin:
-        type: string
-      status_transaction:
-        type: string
       transaction_id:
         type: string
     type: object
@@ -238,6 +225,11 @@ paths:
         name: Authorization
         required: true
         type: string
+      - description: id customer
+        in: path
+        name: id
+        required: true
+        type: integer
       produces:
       - application/json
       responses:
@@ -384,27 +376,6 @@ paths:
       summary: Update customer point
       tags:
       - Admin
-  /v1/detailhistory/{id}:
-    get:
-      consumes:
-      - application/json
-      description: History/transaction Customer
-      parameters:
-      - description: id detail history
-        in: path
-        name: id
-        required: true
-        type: integer
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/dummy.DetailTransaction'
-      summary: Detail History/transaction
-      tags:
-      - Customer
   /v1/history/{idcustomer}:
     get:
       consumes:
@@ -430,6 +401,27 @@ paths:
           schema:
             $ref: '#/definitions/dummy.History'
       summary: History
+      tags:
+      - Customer
+  /v1/history/{idhistory}:
+    get:
+      consumes:
+      - application/json
+      description: History/transaction Customer
+      parameters:
+      - description: id detail history
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dummy.DetailTransactionCustomer'
+      summary: Detail History/transaction
       tags:
       - Customer
   /v1/login:

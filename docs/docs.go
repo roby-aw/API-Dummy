@@ -37,6 +37,13 @@ const docTemplate = `{
                         "name": "Authorization",
                         "in": "header",
                         "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "id customer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -257,38 +264,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/v1/detailhistory/{id}": {
-            "get": {
-                "description": "History/transaction Customer",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Customer"
-                ],
-                "summary": "Detail History/transaction",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "id detail history",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/dummy.DetailTransaction"
-                        }
-                    }
-                }
-            }
-        },
         "/v1/history/{idcustomer}": {
             "get": {
                 "description": "History Customer",
@@ -324,6 +299,38 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/dummy.History"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/history/{idhistory}": {
+            "get": {
+                "description": "History/transaction Customer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Detail History/transaction",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id detail history",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dummy.DetailTransactionCustomer"
                         }
                     }
                 }
@@ -793,6 +800,10 @@ const docTemplate = `{
         },
         "dummy.AuthLogin": {
             "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
             "properties": {
                 "email": {
                     "type": "string"
@@ -845,35 +856,17 @@ const docTemplate = `{
                 }
             }
         },
-        "dummy.DetailTransaction": {
+        "dummy.DetailTransactionCustomer": {
             "type": "object",
             "properties": {
-                "amount": {
-                    "type": "integer"
-                },
-                "an_rekening": {
-                    "type": "string"
-                },
                 "bank_provider": {
                     "type": "string"
                 },
                 "createdat": {
                     "type": "string"
                 },
-                "customer_id": {
-                    "type": "integer"
-                },
-                "id": {
-                    "type": "integer"
-                },
                 "jenis_transaction": {
                     "type": "string"
-                },
-                "keterangan": {
-                    "type": "string"
-                },
-                "mitra_id": {
-                    "type": "integer"
                 },
                 "nomor": {
                     "type": "string"
@@ -883,12 +876,6 @@ const docTemplate = `{
                 },
                 "poin_redeem": {
                     "type": "integer"
-                },
-                "status_poin": {
-                    "type": "string"
-                },
-                "status_transaction": {
-                    "type": "string"
                 },
                 "transaction_id": {
                     "type": "string"
