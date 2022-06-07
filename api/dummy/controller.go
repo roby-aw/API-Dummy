@@ -78,6 +78,7 @@ func InitiateDB() {
 		Customer_id:        1,
 		Transaction_id:     "P" + randomstring(),
 		Jenis_transaction:  "Redeem Pulsa/PaketData",
+		Bank_Provider:      "TELKOMSEL",
 		Nomor:              "085756545325",
 		Poin_account:       70000,
 		Poin_redeem:        10000,
