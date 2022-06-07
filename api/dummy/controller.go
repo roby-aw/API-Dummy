@@ -402,7 +402,7 @@ func (Controller *Controller) UpdateCustomer(c echo.Context) error {
 	Customer[req.IDCustomer-1].Password = req.Password
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
-		"messages": "success register",
+		"messages": "success update customer",
 	})
 }
 
