@@ -202,11 +202,11 @@ func (Controller *Controller) History(c echo.Context) error {
 // @Produce json
 // @Param id path string true "id detail history"
 // @Success 200 {object} dummy.DetailTransactionCustomer
-// @Router /v1/history/{idhistory} [get]
+// @Router /v1/detailtransaction/{transactionid} [get]
 func (Controller *Controller) DetailTransaction(c echo.Context) error {
 	var err error
 	var tmpHistory dummy.DetailTransactionCustomer
-	id := c.Param("id")
+	id := c.Param("transactionid")
 	for _, v := range DetailTransaction {
 		if v.Transaction_id == id {
 			tmpHistory.Transaction_id = v.Transaction_id
@@ -217,6 +217,9 @@ func (Controller *Controller) DetailTransaction(c echo.Context) error {
 			tmpHistory.Poin_account = v.Poin_account
 			tmpHistory.Poin_redeem = v.Poin_redeem
 		}
+	}
+	if tmpHistory.Transaction_id == "" {
+		err = errors.New("Data tidak ditemukan")
 	}
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{

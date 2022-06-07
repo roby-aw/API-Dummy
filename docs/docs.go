@@ -264,6 +264,38 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/detailtransaction/{transactionid}": {
+            "get": {
+                "description": "History/transaction Customer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Detail History/transaction",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id detail history",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dummy.DetailTransactionCustomer"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/history/{idcustomer}": {
             "get": {
                 "description": "History Customer",
@@ -299,38 +331,6 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/dummy.History"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1/history/{idhistory}": {
-            "get": {
-                "description": "History/transaction Customer",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Customer"
-                ],
-                "summary": "Detail History/transaction",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "id detail history",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/dummy.DetailTransactionCustomer"
                         }
                     }
                 }

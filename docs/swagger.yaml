@@ -376,6 +376,27 @@ paths:
       summary: Update customer point
       tags:
       - Admin
+  /v1/detailtransaction/{transactionid}:
+    get:
+      consumes:
+      - application/json
+      description: History/transaction Customer
+      parameters:
+      - description: id detail history
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dummy.DetailTransactionCustomer'
+      summary: Detail History/transaction
+      tags:
+      - Customer
   /v1/history/{idcustomer}:
     get:
       consumes:
@@ -401,27 +422,6 @@ paths:
           schema:
             $ref: '#/definitions/dummy.History'
       summary: History
-      tags:
-      - Customer
-  /v1/history/{idhistory}:
-    get:
-      consumes:
-      - application/json
-      description: History/transaction Customer
-      parameters:
-      - description: id detail history
-        in: path
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/dummy.DetailTransactionCustomer'
-      summary: Detail History/transaction
       tags:
       - Customer
   /v1/login:
