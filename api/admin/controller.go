@@ -149,11 +149,11 @@ func (Controller *Controller) ManageCustomerPoint(c echo.Context) error {
 	c.Bind(&req)
 	for _, v := range dummy.Customer {
 		var tmpCustomer admin.ManageCustomerPoint
-		v.ID = tmpCustomer.IDCustomer
-		v.Email = tmpCustomer.Email
-		v.Name = tmpCustomer.Name
-		v.No_hp = tmpCustomer.No_hp
-		v.Poin = tmpCustomer.Poin_account
+		tmpCustomer.IDCustomer = v.ID
+		tmpCustomer.Email = v.Email
+		tmpCustomer.Name = v.Name
+		tmpCustomer.No_hp = v.No_hp
+		tmpCustomer.Poin_account = v.Poin
 
 		result = append(result, tmpCustomer)
 	}
