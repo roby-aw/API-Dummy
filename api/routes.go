@@ -37,6 +37,7 @@ func RegistrationPath(e *echo.Echo, controller Controller) {
 	g.GET("/managecustomer", controller.AdminControlller.ManageCustomer)
 	g.GET("/historycustomer", controller.AdminControlller.CustomerHistory)
 	g.PUT("/managecustomer/:id", controller.AdminControlller.UpdateCustomer)
+	g.POST("/approve/:transactionid", controller.AdminControlller.ApproveTransaction)
 
 	//mitra
 	m := c.Group("/mitra")

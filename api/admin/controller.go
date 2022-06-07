@@ -112,7 +112,7 @@ func (Controller *Controller) Dashboard(c echo.Context) error {
 // @Router /v1/admin/approve/{transactionid} [post]
 func (Controller *Controller) ApproveTransaction(c echo.Context) error {
 	var err error
-	transactionid := c.Param("id")
+	transactionid := c.Param("transactionid")
 	var check dummyBusiness.DetailTransaction
 	for _, v := range dummy.DetailTransaction {
 		if v.Transaction_id == transactionid {
