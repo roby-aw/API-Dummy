@@ -387,6 +387,7 @@ func (Controller *Controller) UpdateCustomer(c echo.Context) error {
 	var req dummyBussiness.UpdateCustomer
 	var err error
 	c.Bind(&req)
+	err = validator.New().Struct(req)
 	if req.IDCustomer > len(Customer) {
 		err = errors.New("user tidak ada")
 	}
