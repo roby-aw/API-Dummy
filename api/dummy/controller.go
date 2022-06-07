@@ -26,6 +26,7 @@ func NewController(service dummyBussiness.Service) *Controller {
 	}
 }
 
+var Validator validator.Validate
 var AccountMitra []mitra.Mitra
 var Stockproduct []dummy.StockProduct
 var Customer []dummy.Customer
@@ -235,7 +236,7 @@ func (Controller *Controller) Register(c echo.Context) error {
 	var tmpCustomer dummy.Customer
 	var err error
 	c.Bind(&req)
-	err = validator.New().Struct(req)
+	err = Validator.Struct(req)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"code":     400,
