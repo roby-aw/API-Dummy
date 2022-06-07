@@ -122,7 +122,7 @@ func (Controller *Controller) Login(c echo.Context) error {
 	var tmpCustomer dummy.Customer
 	var err error
 	c.Bind(&req)
-	err = Validator.Struct(req)
+	err = Validator.Struct(&req)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"code":     400,
@@ -243,7 +243,7 @@ func (Controller *Controller) Register(c echo.Context) error {
 	var tmpCustomer dummy.Customer
 	var err error
 	c.Bind(&req)
-	err = Validator.Struct(req)
+	err = Validator.Struct(&req)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"code":     400,
