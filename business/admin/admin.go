@@ -39,6 +39,14 @@ type ManageCustomer struct {
 	Password   string `json:"password" validate:"required"`
 }
 
+type ManageCustomerPoint struct {
+	IDCustomer   int    `json:"id"`
+	Name         string `json:"name" validate:"required"`
+	Email        string `json:"email" validate:"required,email"`
+	No_hp        string `json:"no_hp" validate:"required"`
+	Poin_account int    `json:"poin_account" validate:"required"`
+}
+
 type Kota struct {
 	ID                 int    `json:"id"`
 	Rajaongkir_city_id int    `json:"rajaongkir_city_id" validate:"required"`

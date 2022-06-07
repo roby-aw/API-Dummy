@@ -2,6 +2,7 @@ package admin
 
 import (
 	"api-redeem-point/api/dummy"
+	"api-redeem-point/business/admin"
 	adminBusiness "api-redeem-point/business/admin"
 	dummyBusiness "api-redeem-point/business/dummy"
 	"errors"
@@ -143,46 +144,26 @@ func (Controller *Controller) ApproveTransaction(c echo.Context) error {
 // @Router /v1/admin/managecustomerpoint [get]
 func (Controller *Controller) ManageCustomerPoint(c echo.Context) error {
 	var err error
-	user1 := adminBusiness.UserPoin{
-		ID:       1,
-		Email:    "testuser1@gmail.com",
-		Password: "testpassworduser1",
-		Alamat:   "testalamat",
-		Poin:     420000,
+	var result []admin.ManageCustomerPoint
+	var req admin.ManageCustomerPoint
+	c.Bind(&req)
+	for _, v := range dummy.Customer {
+		var tmpCustomer admin.ManageCustomerPoint
+		v.ID = tmpCustomer.IDCustomer
+		v.Email = tmpCustomer.Email
+		v.Name = tmpCustomer.Name
+		v.No_hp = tmpCustomer.No_hp
+		v.Poin = tmpCustomer.Poin_account
+
+		result = append(result, tmpCustomer)
 	}
-	user2 := adminBusiness.UserPoin{
-		ID:       2,
-		Email:    "testuser2@gmail.com",
-		Password: "testpassworduser2",
-		Alamat:   "testalamat",
-		Poin:     503000,
-	}
-	user3 := adminBusiness.UserPoin{
-		ID:       3,
-		Email:    "testuser3@gmail.com",
-		Password: "testpassworduser3",
-		Alamat:   "testalamat",
-		Poin:     520000,
-	}
-	user4 := adminBusiness.UserPoin{
-		ID:       4,
-		Email:    "testuser4@gmail.com",
-		Password: "testpassworduser4",
-		Alamat:   "testalamat",
-		Poin:     560000,
-	}
-	var arr []adminBusiness.UserPoin
-	arr = append(arr, user1)
-	arr = append(arr, user2)
-	arr = append(arr, user3)
-	arr = append(arr, user4)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success get manage point customer",
-		"result":   arr,
+		"result":   result,
 	})
 }
 
