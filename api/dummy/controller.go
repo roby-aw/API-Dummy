@@ -200,7 +200,7 @@ func (Controller *Controller) History(c echo.Context) error {
 // @tags Customer
 // @Accept json
 // @Produce json
-// @Param id path string true "id detail history"
+// @Param transactionid path string true "id detail history"
 // @Success 200 {object} dummy.DetailTransactionCustomer
 // @Router /v1/detailhistory/{transactionid} [get]
 func (Controller *Controller) DetailTransaction(c echo.Context) error {

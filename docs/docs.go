@@ -281,7 +281,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "id detail history",
-                        "name": "id",
+                        "name": "transactionid",
                         "in": "path",
                         "required": true
                     }

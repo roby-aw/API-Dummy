@@ -384,7 +384,7 @@ paths:
       parameters:
       - description: id detail history
         in: path
-        name: id
+        name: transactionid
         required: true
         type: string
       produces:
