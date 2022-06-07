@@ -133,7 +133,7 @@ func (Controller *Controller) Login(c echo.Context) error {
 			tmpCustomer = v
 		}
 	}
-	if tmpCustomer.Email == "" && tmpCustomer.Password == "" {
+	if tmpCustomer.Email == "" || tmpCustomer.Password == "" {
 		err = errors.New("Email Atau Password salah")
 	}
 	if err != nil {
@@ -345,6 +345,7 @@ func (Controller *Controller) OrderPaketData(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
+// @Param id path int true "id customer"
 // @Success 200 {object} dummy.UpdateCustomer
 // @Router /v1/account/{id} [put]
 func (Controller *Controller) UpdateUser(c echo.Context) error {
