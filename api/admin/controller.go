@@ -84,6 +84,8 @@ func (Controller *Controller) Dashboard(c echo.Context) error {
 			tmpDashboard.Customer_id = v.Customer_id
 			tmpDashboard.Transaction_id = v.Transaction_id
 			tmpDashboard.Status_transaction = v.Status_transaction
+
+			result = append(result, tmpDashboard)
 		}
 	}
 	if len(result) == 0 {
