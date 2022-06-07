@@ -736,11 +736,14 @@ const docTemplate = `{
         "admin.Dashboard": {
             "type": "object",
             "properties": {
-                "stock": {
+                "customer_id": {
                     "type": "integer"
                 },
-                "user": {
-                    "type": "integer"
+                "status_transaction": {
+                    "type": "string"
+                },
+                "transaction_id": {
+                    "type": "string"
                 }
             }
         },

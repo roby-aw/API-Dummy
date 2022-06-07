@@ -62,6 +62,7 @@ type GetCityById struct {
 }
 
 type Dashboard struct {
-	User  int `json:"user"`
-	Stock int `json:"stock"`
+	Transaction_id     string `json:"transaction_id"`
+	Customer_id        int    `json:"customer_id"`
+	Status_transaction string `json:"status_transaction"`
 }

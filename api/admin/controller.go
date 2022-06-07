@@ -1,8 +1,9 @@
 package admin
 
 import (
+	"api-redeem-point/api/dummy"
 	adminBusiness "api-redeem-point/business/admin"
-	"api-redeem-point/business/dummy"
+	dummyBusiness "api-redeem-point/business/dummy"
 	"fmt"
 	"net/http"
 	"time"
@@ -75,9 +76,14 @@ func (Controller *Controller) LoginAdmin(c echo.Context) error {
 // @Router /v1/admin/dashboard [get]
 func (Controller *Controller) Dashboard(c echo.Context) error {
 	var err error
-	result := adminBusiness.Dashboard{
-		User:  15,
-		Stock: 120,
+	var result []adminBusiness.Dashboard
+	for _, v := range dummy.DetailTransaction {
+		if v.Status_transaction == "PENDING" {
+			var tmpDashboard adminBusiness.Dashboard
+			tmpDashboard.Customer_id = v.Customer_id
+			tmpDashboard.Transaction_id = v.Transaction_id
+			tmpDashboard.Status_transaction = v.Status_transaction
+		}
 	}
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
@@ -205,25 +211,25 @@ func (Controller *Controller) ManageCustomer(c echo.Context) error {
 // @Router /v1/admin/historycustomer [get]
 func (Controller *Controller) CustomerHistory(c echo.Context) error {
 	var err error
-	History1 := &dummy.History{
+	History1 := &dummyBusiness.History{
 		ID:         1,
 		Keterangan: "Redeem CashOut",
 		Tanggal:    time.Date(2022, 5, 16, 156, 24, 34, 534, time.UTC),
 		Status:     "Sukses",
 	}
-	History2 := &dummy.History{
+	History2 := &dummyBusiness.History{
 		ID:         5,
 		Keterangan: "Redeem paket data",
 		Tanggal:    time.Date(2022, 5, 17, 156, 24, 34, 534, time.UTC),
 		Status:     "Sukses",
 	}
-	History3 := &dummy.History{
+	History3 := &dummyBusiness.History{
 		ID:         7,
 		Keterangan: "Redeem CashOut",
 		Tanggal:    time.Date(2022, 5, 18, 156, 24, 34, 534, time.UTC),
 		Status:     "Pending",
 	}
-	var arr []dummy.History
+	var arr []dummyBusiness.History
 	arr = append(arr, *History1)
 	arr = append(arr, *History2)
 	arr = append(arr, *History3)
