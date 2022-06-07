@@ -264,7 +264,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/v1/detailtransaction/{transactionid}": {
+        "/v1/detailhistory/{transactionid}": {
             "get": {
                 "description": "History/transaction Customer",
                 "consumes": [

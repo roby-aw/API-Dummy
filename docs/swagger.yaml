@@ -376,7 +376,7 @@ paths:
       summary: Update customer point
       tags:
       - Admin
-  /v1/detailtransaction/{transactionid}:
+  /v1/detailhistory/{transactionid}:
     get:
       consumes:
       - application/json
