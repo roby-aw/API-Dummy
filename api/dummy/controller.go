@@ -66,10 +66,10 @@ func InitiateDB() {
 		Bank_Provider:      "BRI",
 		AN_Rekening:        "Yudo",
 		Nomor:              "2563532554",
-		Poin_account:       52000,
+		Poin_account:       120000,
 		Poin_redeem:        50000,
 		Amount:             50000,
-		Keterangan:         "Redeem Cashout - 10000",
+		Keterangan:         "BRI - 50000",
 		Status_transaction: "COMPLETED",
 		Status_poin:        "OUT",
 	}
@@ -82,12 +82,40 @@ func InitiateDB() {
 		Nomor:              "085756545325",
 		Poin_account:       70000,
 		Poin_redeem:        10000,
-		Keterangan:         "Redeem Pulsa - 10000",
+		Keterangan:         "TELKOMSEL - 10000",
 		Status_transaction: "COMPLETED",
+		Status_poin:        "OUT",
+	}
+	transaction3 := dummy.DetailTransaction{
+		ID:                 3,
+		Customer_id:        1,
+		Transaction_id:     "P" + randomstring(),
+		Jenis_transaction:  "Redeem Pulsa/PaketData",
+		Bank_Provider:      "TELKOMSEL",
+		Nomor:              "085756545325",
+		Poin_account:       60000,
+		Poin_redeem:        10000,
+		Keterangan:         "TELKOMSEL - 10000",
+		Status_transaction: "PENDING",
+		Status_poin:        "OUT",
+	}
+	transaction4 := dummy.DetailTransaction{
+		ID:                 4,
+		Customer_id:        1,
+		Transaction_id:     "P" + randomstring(),
+		Jenis_transaction:  "Redeem Pulsa/PaketData",
+		Bank_Provider:      "TELKOMSEL",
+		Nomor:              "085756545325",
+		Poin_account:       60000,
+		Poin_redeem:        10000,
+		Keterangan:         "TELKOMSEL - 3GB",
+		Status_transaction: "PENDING",
 		Status_poin:        "OUT",
 	}
 	DetailTransaction = append(DetailTransaction, transaction1)
 	DetailTransaction = append(DetailTransaction, transaction2)
+	DetailTransaction = append(DetailTransaction, transaction3)
+	DetailTransaction = append(DetailTransaction, transaction4)
 
 	mitra1 := mitra.Mitra{
 		ID:        1,
