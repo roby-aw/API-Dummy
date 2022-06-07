@@ -161,19 +161,12 @@ const docTemplate = `{
                 "summary": "Update customer data",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "description": "id user",
-                        "name": "iduser",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "description": "User",
+                        "description": "Customer",
                         "name": "Customer",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/admin.User"
+                            "$ref": "#/definitions/admin.ManageCustomer"
                         }
                     }
                 ],
@@ -181,7 +174,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/admin.User"
+                            "$ref": "#/definitions/admin.ManageCustomer"
                         }
                     }
                 }

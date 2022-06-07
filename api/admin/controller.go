@@ -264,9 +264,8 @@ func (Controller *Controller) CustomerHistory(c echo.Context) error {
 // @tags Admin
 // @Accept json
 // @Produce json
-// @Param iduser path int true "id user"
-// @Param Update Customer body admin.User true "User"
-// @Success 200 {object} admin.User
+// @Param Update Customer body admin.ManageCustomer true "Customer"
+// @Success 200 {object} admin.ManageCustomer
 // @Router /v1/admin/managecustomer [PUT]
 func (Controller *Controller) UpdateCustomer(c echo.Context) error {
 	var req adminBusiness.ManageCustomer

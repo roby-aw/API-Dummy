@@ -324,24 +324,19 @@ paths:
       - application/json
       description: Update customer data
       parameters:
-      - description: id user
-        in: path
-        name: iduser
-        required: true
-        type: integer
-      - description: User
+      - description: Customer
         in: body
         name: Customer
         required: true
         schema:
-          $ref: '#/definitions/admin.User'
+          $ref: '#/definitions/admin.ManageCustomer'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/admin.User'
+            $ref: '#/definitions/admin.ManageCustomer'
       summary: Update customer data
       tags:
       - Admin
