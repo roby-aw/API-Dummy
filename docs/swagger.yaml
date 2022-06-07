@@ -252,7 +252,7 @@ paths:
         in: path
         name: transactionid
         required: true
-        type: integer
+        type: string
       produces:
       - application/json
       responses:

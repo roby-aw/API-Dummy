@@ -107,7 +107,7 @@ func (Controller *Controller) Dashboard(c echo.Context) error {
 // @tags Admin
 // @Accept json
 // @Produce json
-// @Param transactionid path int true "transaction_id"
+// @Param transactionid path string true "transaction_id"
 // @Success 200
 // @Router /v1/admin/approve/{transactionid} [post]
 func (Controller *Controller) ApproveTransaction(c echo.Context) error {

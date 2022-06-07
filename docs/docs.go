@@ -71,7 +71,7 @@ const docTemplate = `{
                 "summary": "Approve Transaction",
                 "parameters": [
                     {
-                        "type": "integer",
+                        "type": "string",
                         "description": "transaction_id",
                         "name": "transactionid",
                         "in": "path",
