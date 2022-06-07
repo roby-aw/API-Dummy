@@ -35,6 +35,7 @@ func RegistrationPath(e *echo.Echo, controller Controller) {
 	g.POST("/login", controller.AdminControlller.LoginAdmin)
 	g.GET("/dashboard", controller.AdminControlller.Dashboard)
 	g.GET("/managecustomerpoint", controller.AdminControlller.ManageCustomerPoint)
+	g.PUT("/managecustomerpoint", controller.AdminControlller.UpdateCustomerPoint)
 	g.GET("/managecustomer", controller.AdminControlller.ManageCustomer)
 	g.GET("/historycustomer", controller.AdminControlller.CustomerHistory)
 	g.PUT("/managecustomer", controller.AdminControlller.UpdateCustomer)
