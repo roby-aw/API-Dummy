@@ -20,10 +20,10 @@ type Food struct {
 }
 
 type Register struct {
-	Name     string `json:"name"`
-	Email    string `json:"email"`
-	No_hp    string `json:"no_hp"`
-	Password string `json:"password"`
+	Name     string `json:"name" validate:"required"`
+	Email    string `json:"email" validate:"required,email"`
+	No_hp    string `json:"no_hp" validate:"required"`
+	Password string `json:"password" validate:"required"`
 }
 
 type Customer struct {

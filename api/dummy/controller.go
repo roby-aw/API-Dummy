@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
 )
 
@@ -234,6 +235,13 @@ func (Controller *Controller) Register(c echo.Context) error {
 	var tmpCustomer dummy.Customer
 	var err error
 	c.Bind(&req)
+	err = validator.New().Struct(req)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"code":     400,
+			"messages": err.Error(),
+		})
+	}
 	for _, v := range Customer {
 		if v.Email == req.Email {
 			err = errors.New("Email sudah digunakan")
