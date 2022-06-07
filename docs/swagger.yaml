@@ -387,7 +387,7 @@ paths:
     put:
       consumes:
       - application/json
-      description: UpdateCustomer
+      description: Update Customer
       parameters:
       - default: Bearer <Add access token here>
         description: Insert your access token
@@ -401,11 +401,6 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/dummy.UpdateCustomer'
-      - description: id customer
-        in: path
-        name: id
-        required: true
-        type: integer
       produces:
       - application/json
       responses:
@@ -413,7 +408,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/dummy.UpdateCustomer'
-      summary: UpdateCustomer
+      summary: Update Customer
       tags:
       - Customer
   /v1/detailhistory/{transactionid}:

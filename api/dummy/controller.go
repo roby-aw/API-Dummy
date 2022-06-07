@@ -374,14 +374,13 @@ func (Controller *Controller) OrderPaketData(c echo.Context) error {
 }
 
 // Create godoc
-// @Summary UpdateCustomer
-// @description UpdateCustomer
+// @Summary Update Customer
+// @description Update Customer
 // @tags Customer
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Param Update Customer body dummy.UpdateCustomer true "UpdateCustomer"
-// @Param id path int true "id customer"
 // @Success 200 {object} dummy.UpdateCustomer
 // @Router /v1/customer [put]
 func (Controller *Controller) UpdateCustomer(c echo.Context) error {

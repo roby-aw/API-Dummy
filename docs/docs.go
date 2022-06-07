@@ -255,7 +255,7 @@ const docTemplate = `{
         },
         "/v1/customer": {
             "put": {
-                "description": "UpdateCustomer",
+                "description": "Update Customer",
                 "consumes": [
                     "application/json"
                 ],
@@ -265,7 +265,7 @@ const docTemplate = `{
                 "tags": [
                     "Customer"
                 ],
-                "summary": "UpdateCustomer",
+                "summary": "Update Customer",
                 "parameters": [
                     {
                         "type": "string",
@@ -283,13 +283,6 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/dummy.UpdateCustomer"
                         }
-                    },
-                    {
-                        "type": "integer",
-                        "description": "id customer",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
                     }
                 ],
                 "responses": {
