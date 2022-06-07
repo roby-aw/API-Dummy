@@ -319,7 +319,7 @@ const docTemplate = `{
                 "summary": "Detail History/transaction",
                 "parameters": [
                     {
-                        "type": "integer",
+                        "type": "string",
                         "description": "id detail history",
                         "name": "id",
                         "in": "path",
