@@ -380,10 +380,11 @@ func (Controller *Controller) OrderPaketData(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
+// @Param Update Customer body dummy.UpdateCustomer true "UpdateCustomer"
 // @Param id path int true "id customer"
 // @Success 200 {object} dummy.UpdateCustomer
-// @Router /v1/account/{id} [put]
-func (Controller *Controller) UpdateUser(c echo.Context) error {
+// @Router /v1/customer [put]
+func (Controller *Controller) UpdateCustomer(c echo.Context) error {
 	var req dummyBussiness.UpdateCustomer
 	var err error
 	c.Bind(&req)

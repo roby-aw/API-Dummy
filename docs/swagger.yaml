@@ -228,33 +228,6 @@ info:
   title: API-Loyalty Point Agent
   version: "1.0"
 paths:
-  /v1/account/{id}:
-    put:
-      consumes:
-      - application/json
-      description: UpdateCustomer
-      parameters:
-      - default: Bearer <Add access token here>
-        description: Insert your access token
-        in: header
-        name: Authorization
-        required: true
-        type: string
-      - description: id customer
-        in: path
-        name: id
-        required: true
-        type: integer
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/dummy.UpdateCustomer'
-      summary: UpdateCustomer
-      tags:
-      - Customer
   /v1/admin/approve/{transactionid}:
     post:
       consumes:
@@ -410,6 +383,39 @@ paths:
       summary: Update customer point
       tags:
       - Admin
+  /v1/customer:
+    put:
+      consumes:
+      - application/json
+      description: UpdateCustomer
+      parameters:
+      - default: Bearer <Add access token here>
+        description: Insert your access token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: UpdateCustomer
+        in: body
+        name: Customer
+        required: true
+        schema:
+          $ref: '#/definitions/dummy.UpdateCustomer'
+      - description: id customer
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dummy.UpdateCustomer'
+      summary: UpdateCustomer
+      tags:
+      - Customer
   /v1/detailhistory/{transactionid}:
     get:
       consumes:
