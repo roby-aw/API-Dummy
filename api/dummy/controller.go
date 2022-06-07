@@ -500,10 +500,8 @@ func (Controller *Controller) InputPoin(c echo.Context) error {
 	var data dummy.DetailTransaction
 	var err error
 	c.Bind(&req)
-	for _, v := range AccountMitra {
-		if v.ID != req.IDCustomer {
-			err = errors.New("User tidak ada")
-		}
+	if req.IDCustomer > len(Customer) {
+		err = errors.New("user tidak ada")
 	}
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
@@ -533,7 +531,6 @@ func (Controller *Controller) InputPoin(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success add poin",
-		"data":     AccountMitra,
 	})
 }
 
