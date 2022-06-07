@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"math/rand"
 	"net/http"
 	"strconv"
 	"time"
@@ -60,7 +61,7 @@ func InitiateDB() {
 	transaction1 := dummy.DetailTransaction{
 		ID:                 1,
 		Customer_id:        1,
-		Transaction_id:     "EM25434353",
+		Transaction_id:     "EM" + randomstring(),
 		Jenis_transaction:  "Redeem Cashout/Emoney",
 		Bank_Provider:      "BRI",
 		AN_Rekening:        "Yudo",
@@ -75,7 +76,7 @@ func InitiateDB() {
 	transaction2 := dummy.DetailTransaction{
 		ID:                 2,
 		Customer_id:        1,
-		Transaction_id:     "P45574568",
+		Transaction_id:     "P" + randomstring(),
 		Jenis_transaction:  "Redeem Pulsa/PaketData",
 		Nomor:              "085756545325",
 		Poin_account:       70000,
@@ -201,19 +202,21 @@ func (Controller *Controller) History(c echo.Context) error {
 // @Produce json
 // @Param id path int true "id detail history"
 // @Success 200 {object} dummy.DetailTransaction
-// @Router /v1/detailhistory/{id} [get]
+// @Router /v1/history/{idhistory} [get]
 func (Controller *Controller) DetailTransaction(c echo.Context) error {
 	var err error
-	detailtransaction := dummyBussiness.DetailTransaction{
-		ID:                1,
-		Jenis_transaction: "Redeem Cashout",
-		Bank_Provider:     "BNI",
-		Poin_account:      500000,
-		Poin_redeem:       100000,
-	}
-	id, _ := strconv.Atoi(c.Param("id"))
-	if id != 1 {
-		err = fmt.Errorf("ID tidak ditemukan")
+	var tmpHistory dummy.DetailTransactionCustomer
+	id := c.Param("id")
+	for _, v := range DetailTransaction {
+		if v.Transaction_id == id {
+			tmpHistory.Transaction_id = v.Transaction_id
+			tmpHistory.Jenis_transaction = v.Jenis_transaction
+			tmpHistory.CreatedAt = v.CreatedAt
+			tmpHistory.Bank_Provider = v.Bank_Provider
+			tmpHistory.Nomor = v.Nomor
+			tmpHistory.Poin_account = v.Poin_account
+			tmpHistory.Poin_redeem = v.Poin_redeem
+		}
 	}
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
@@ -224,7 +227,7 @@ func (Controller *Controller) DetailTransaction(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success get detail transaction",
-		"result":   detailtransaction,
+		"result":   tmpHistory,
 	})
 }
 
@@ -600,4 +603,18 @@ func (Controller *Controller) HistoryMitra(c echo.Context) error {
 		"messages": "success get mitra",
 		"result":   History,
 	})
+}
+
+func randomstring() string {
+	rand.Seed(time.Now().UTC().UnixNano())
+	random := rand.Int()
+	angka := []rune(fmt.Sprintf("%d", random))
+	b := make([]rune, 8)
+	for i := range b {
+		b[i] = angka[rand.Intn(len(angka))]
+	}
+	hasil := string(b)
+	inthasil, _ := strconv.Atoi(hasil)
+	strhasil := strconv.Itoa(inthasil)
+	return strhasil
 }

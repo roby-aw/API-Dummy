@@ -73,6 +73,16 @@ type DetailTransaction struct {
 	Status_poin        string    `json:"status_poin"`
 }
 
+type DetailTransactionCustomer struct {
+	Transaction_id    string    `json:"transaction_id"`
+	Jenis_transaction string    `json:"jenis_transaction"`
+	CreatedAt         time.Time `json:"createdat"`
+	Bank_Provider     string    `json:"bank_provider"`
+	Nomor             string    `json:"nomor"`
+	Poin_account      int       `json:"poin_account"`
+	Poin_redeem       int       `json:"poin_redeem"`
+}
+
 type ProductCashout struct {
 	ID    int `json:"id"`
 	Harga int `json:"harga"`
