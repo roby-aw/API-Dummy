@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
 )
 
@@ -198,7 +199,7 @@ func (Controller *Controller) ManageCustomer(c echo.Context) error {
 	var result []adminBusiness.ManageCustomer
 	for _, v := range dummy.Customer {
 		var data adminBusiness.ManageCustomer
-		data.ID = v.ID
+		data.IDCustomer = v.ID
 		data.Email = v.Email
 		data.Name = v.Name
 		data.Password = v.Password
@@ -266,15 +267,28 @@ func (Controller *Controller) CustomerHistory(c echo.Context) error {
 // @Param iduser path int true "id user"
 // @Param Update Customer body admin.User true "User"
 // @Success 200 {object} admin.User
-// @Router /v1/admin/managecustomer/{id} [PUT]
+// @Router /v1/admin/managecustomer [PUT]
 func (Controller *Controller) UpdateCustomer(c echo.Context) error {
+	var req adminBusiness.ManageCustomer
 	var err error
-	if err != nil {
-		return c.JSON(http.StatusBadRequest, err.Error())
+	c.Bind(&req)
+	err = validator.New().Struct(req)
+	if req.IDCustomer > len(dummy.Customer) {
+		err = errors.New("user tidak ada")
 	}
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"code":     400,
+			"messages": err.Error(),
+		})
+	}
+	dummy.Customer[req.IDCustomer-1].Name = req.Name
+	dummy.Customer[req.IDCustomer-1].No_hp = req.No_hp
+	dummy.Customer[req.IDCustomer-1].Email = req.Email
+	dummy.Customer[req.IDCustomer-1].Password = req.Password
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
-		"messages": "success update customer data",
+		"messages": "success update customer",
 	})
 }
 

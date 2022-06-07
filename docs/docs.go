@@ -146,9 +146,7 @@ const docTemplate = `{
                         }
                     }
                 }
-            }
-        },
-        "/v1/admin/managecustomer/{id}": {
+            },
             "put": {
                 "description": "Update customer data",
                 "consumes": [
@@ -791,6 +789,12 @@ const docTemplate = `{
         },
         "admin.ManageCustomer": {
             "type": "object",
+            "required": [
+                "email",
+                "name",
+                "no_hp",
+                "password"
+            ],
             "properties": {
                 "email": {
                     "type": "string"

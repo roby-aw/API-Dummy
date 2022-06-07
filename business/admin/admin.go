@@ -32,11 +32,11 @@ type UserPoin struct {
 }
 
 type ManageCustomer struct {
-	ID       int    `json:"id"`
-	Name     string `json:"name"`
-	Email    string `json:"email"`
-	No_hp    string `json:"no_hp"`
-	Password string `json:"password"`
+	IDCustomer int    `json:"id"`
+	Name       string `json:"name" validate:"required"`
+	Email      string `json:"email" validate:"required,email"`
+	No_hp      string `json:"no_hp" validate:"required"`
+	Password   string `json:"password" validate:"required"`
 }
 
 type Kota struct {

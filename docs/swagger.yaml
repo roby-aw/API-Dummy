@@ -28,6 +28,11 @@ definitions:
         type: string
       password:
         type: string
+    required:
+    - email
+    - name
+    - no_hp
+    - password
     type: object
   admin.User:
     properties:
@@ -314,7 +319,6 @@ paths:
       summary: Manage Customer
       tags:
       - Admin
-  /v1/admin/managecustomer/{id}:
     put:
       consumes:
       - application/json
