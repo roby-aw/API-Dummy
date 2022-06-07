@@ -179,7 +179,7 @@ func (Controller *Controller) History(c echo.Context) error {
 			}
 		}
 	}
-	if History[0].Keterangan == "" {
+	if len(History) == 0 {
 		err = errors.New("ID User tidak ada history")
 	}
 	if err != nil {
