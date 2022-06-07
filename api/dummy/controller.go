@@ -535,3 +535,40 @@ func (Controller *Controller) InputPoin(c echo.Context) error {
 		"messages": "success add poin",
 	})
 }
+
+// Create godoc
+// @Summary History Mitra
+// @description History Mitra
+// @tags Mitra
+// @Accept json
+// @Produce json
+// @Success 200
+// @Router /v1/mitra/history [get]
+func (Controller *Controller) HistoryMitra(c echo.Context) error {
+	var err error
+	var History []*mitra.HistoryMitra
+	for _, v := range DetailTransaction {
+		if v.Status_poin == "IN" {
+			var data mitra.HistoryMitra
+			data.Customer_id = v.Customer_id
+			data.Mitra_id = v.Mitra_id
+			data.Amount = v.Amount
+			data.Poin_redeem = v.Poin_redeem
+			History = append(History, &data)
+		}
+	}
+	if History == nil {
+		err = errors.New("data tidak ada")
+	}
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"code":     400,
+			"messages": err.Error(),
+		})
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success get mitra",
+		"result":   History,
+	})
+}

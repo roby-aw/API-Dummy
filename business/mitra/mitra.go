@@ -25,3 +25,10 @@ type InputPoinMitra struct {
 	IDCustomer int `json:"idcustomer"`
 	Amount     int `json:"amount"`
 }
+
+type HistoryMitra struct {
+	Mitra_id    int `json:"mitra_id"`
+	Customer_id int `json:"customer_id"`
+	Amount      int `json:"amount"`
+	Poin_redeem int `json:"poin_redeem"`
+}

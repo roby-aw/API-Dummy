@@ -434,6 +434,19 @@ paths:
       summary: Login
       tags:
       - User
+  /v1/mitra/history:
+    get:
+      consumes:
+      - application/json
+      description: History Mitra
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: History Mitra
+      tags:
+      - Mitra
   /v1/mitra/inputpoin:
     post:
       consumes:

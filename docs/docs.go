@@ -363,6 +363,26 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/mitra/history": {
+            "get": {
+                "description": "History Mitra",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mitra"
+                ],
+                "summary": "History Mitra",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/v1/mitra/inputpoin": {
             "post": {
                 "description": "Input Poin Mitra",
