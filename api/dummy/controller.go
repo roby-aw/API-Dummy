@@ -511,7 +511,7 @@ func (Controller *Controller) InputPoin(c echo.Context) error {
 	}
 	var i int
 	price := req.Amount
-	for i = 0; price > 1; i = i + 100 {
+	for i = 0; price > 10000; i = i + 100 {
 		price = price - 10000
 	}
 
