@@ -201,9 +201,7 @@ const docTemplate = `{
                         }
                     }
                 }
-            }
-        },
-        "/v1/admin/managecustomerpoint/{id}": {
+            },
             "put": {
                 "description": "Update customer",
                 "consumes": [
@@ -225,12 +223,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "User",
+                        "description": "Customer Point",
                         "name": "Customer",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/admin.User"
+                            "$ref": "#/definitions/admin.ManageCustomerPoint"
                         }
                     }
                 ],
@@ -238,7 +236,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/admin.UserPoin"
+                            "$ref": "#/definitions/admin.ManageCustomerPoint"
                         }
                     }
                 }
@@ -806,12 +804,15 @@ const docTemplate = `{
                 }
             }
         },
-        "admin.User": {
+        "admin.ManageCustomerPoint": {
             "type": "object",
+            "required": [
+                "email",
+                "name",
+                "no_hp",
+                "poin_account"
+            ],
             "properties": {
-                "alamat": {
-                    "type": "string"
-                },
                 "email": {
                     "type": "string"
                 },
@@ -821,8 +822,11 @@ const docTemplate = `{
                 "name": {
                     "type": "string"
                 },
-                "password": {
+                "no_hp": {
                     "type": "string"
+                },
+                "poin_account": {
+                    "type": "integer"
                 }
             }
         },

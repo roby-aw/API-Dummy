@@ -279,16 +279,26 @@ func (Controller *Controller) UpdateCustomer(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Param iduser path int true "id user"
-// @Param Update Customer body admin.User true "User"
-// @Success 200 {object} admin.UserPoin
-// @Router /v1/admin/managecustomerpoint/{id} [PUT]
+// @Param Update Customer body admin.ManageCustomerPoint true "Customer Point"
+// @Success 200 {object} admin.ManageCustomerPoint
+// @Router /v1/admin/managecustomerpoint [PUT]
 func (Controller *Controller) UpdateCustomerPoint(c echo.Context) error {
+	var req adminBusiness.UpdateCustomerPoint
 	var err error
-	if err != nil {
-		return c.JSON(http.StatusBadRequest, err.Error())
+	c.Bind(&req)
+	err = validator.New().Struct(req)
+	if req.IDCustomer > len(dummy.Customer) {
+		err = errors.New("user tidak ada")
 	}
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"code":     400,
+			"messages": err.Error(),
+		})
+	}
+	dummy.Customer[req.IDCustomer-1].Poin = dummy.Customer[req.IDCustomer-1].Poin + req.Poin_account
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
-		"messages": "success manage customer",
+		"messages": "success update point customer",
 	})
 }

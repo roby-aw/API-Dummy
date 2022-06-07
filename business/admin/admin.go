@@ -47,6 +47,11 @@ type ManageCustomerPoint struct {
 	Poin_account int    `json:"poin_account" validate:"required"`
 }
 
+type UpdateCustomerPoint struct {
+	IDCustomer   int `json:"id"`
+	Poin_account int `json:"poin_account" validate:"required"`
+}
+
 type Kota struct {
 	ID                 int    `json:"id"`
 	Rajaongkir_city_id int    `json:"rajaongkir_city_id" validate:"required"`
