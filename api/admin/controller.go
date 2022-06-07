@@ -278,9 +278,8 @@ func (Controller *Controller) UpdateCustomer(c echo.Context) error {
 // @tags Admin
 // @Accept json
 // @Produce json
-// @Param iduser path int true "id user"
-// @Param Update Customer body admin.ManageCustomerPoint true "Customer Point"
-// @Success 200 {object} admin.ManageCustomerPoint
+// @Param Update Customer body admin.UpdateCustomerPoint true "Customer Point"
+// @Success 200 {object}
 // @Router /v1/admin/managecustomerpoint [PUT]
 func (Controller *Controller) UpdateCustomerPoint(c echo.Context) error {
 	var req adminBusiness.UpdateCustomerPoint
