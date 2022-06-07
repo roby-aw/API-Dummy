@@ -34,22 +34,13 @@ definitions:
     - no_hp
     - password
     type: object
-  admin.ManageCustomerPoint:
+  admin.UpdateCustomerPoint:
     properties:
-      email:
-        type: string
       id:
         type: integer
-      name:
-        type: string
-      no_hp:
-        type: string
       poin_account:
         type: integer
     required:
-    - email
-    - name
-    - no_hp
     - poin_account
     type: object
   admin.UserPoin:
@@ -363,26 +354,19 @@ paths:
     put:
       consumes:
       - application/json
-      description: Update customer
+      description: Update customer point
       parameters:
-      - description: id user
-        in: path
-        name: iduser
-        required: true
-        type: integer
       - description: Customer Point
         in: body
-        name: Customer
+        name: UpdateCustomerPoint
         required: true
         schema:
-          $ref: '#/definitions/admin.ManageCustomerPoint'
+          $ref: '#/definitions/admin.UpdateCustomerPoint'
       produces:
       - application/json
       responses:
         "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/admin.ManageCustomerPoint'
+          description: ""
       summary: Update customer point
       tags:
       - Admin

@@ -203,7 +203,7 @@ const docTemplate = `{
                 }
             },
             "put": {
-                "description": "Update customer",
+                "description": "Update customer point",
                 "consumes": [
                     "application/json"
                 ],
@@ -216,28 +216,18 @@ const docTemplate = `{
                 "summary": "Update customer point",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "description": "id user",
-                        "name": "iduser",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
                         "description": "Customer Point",
-                        "name": "Customer",
+                        "name": "UpdateCustomerPoint",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/admin.ManageCustomerPoint"
+                            "$ref": "#/definitions/admin.UpdateCustomerPoint"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/admin.ManageCustomerPoint"
-                        }
+                        "description": ""
                     }
                 }
             }
@@ -804,26 +794,14 @@ const docTemplate = `{
                 }
             }
         },
-        "admin.ManageCustomerPoint": {
+        "admin.UpdateCustomerPoint": {
             "type": "object",
             "required": [
-                "email",
-                "name",
-                "no_hp",
                 "poin_account"
             ],
             "properties": {
-                "email": {
-                    "type": "string"
-                },
                 "id": {
                     "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "no_hp": {
-                    "type": "string"
                 },
                 "poin_account": {
                     "type": "integer"

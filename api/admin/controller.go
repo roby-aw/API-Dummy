@@ -274,12 +274,12 @@ func (Controller *Controller) UpdateCustomer(c echo.Context) error {
 
 // Create godoc
 // @Summary Update customer point
-// @description Update customer
+// @description Update customer point
 // @tags Admin
 // @Accept json
 // @Produce json
-// @Param Update Customer body admin.UpdateCustomerPoint true "Customer Point"
-// @Success 200 {object}
+// @Param UpdateCustomerPoint body admin.UpdateCustomerPoint true "Customer Point"
+// @Success 200
 // @Router /v1/admin/managecustomerpoint [PUT]
 func (Controller *Controller) UpdateCustomerPoint(c echo.Context) error {
 	var req adminBusiness.UpdateCustomerPoint
