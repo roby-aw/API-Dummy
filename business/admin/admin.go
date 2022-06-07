@@ -66,3 +66,6 @@ type Dashboard struct {
 	Customer_id        int    `json:"customer_id"`
 	Status_transaction string `json:"status_transaction"`
 }
+type ApproveTransaction struct {
+	Status_transaction string `json:"status_transaction"`
+}

@@ -102,6 +102,37 @@ func (Controller *Controller) Dashboard(c echo.Context) error {
 }
 
 // Create godoc
+// @Summary Approve Transaction
+// @description Approve Transaction
+// @tags Admin
+// @Accept json
+// @Produce json
+// @Param transactionid path int true "transaction_id"
+// @Success 200
+// @Router /v1/admin/approve/{transactionid} [post]
+func (Controller *Controller) ApproveTransaction(c echo.Context) error {
+	var err error
+	transactionid := c.Param("id")
+	var check dummyBusiness.DetailTransaction
+	for _, v := range dummy.DetailTransaction {
+		if v.Transaction_id == transactionid {
+			check = v
+			dummy.DetailTransaction[v.ID-1].Status_transaction = "COMPLETED"
+		}
+	}
+	if check.Transaction_id == "" {
+		err = errors.New("transaction id tidak ditemukan")
+	}
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"code":     200,
+		"messages": "success approve transaction",
+	})
+}
+
+// Create godoc
 // @Summary Manage Customer Point
 // @description Manage Customer Point
 // @tags Admin
