@@ -25,6 +25,12 @@ type Register struct {
 	No_hp    string `json:"no_hp" validate:"required"`
 	Password string `json:"password" validate:"required"`
 }
+type UpdateCustomer struct {
+	IDCustomer int    `json:"idcustomer"`
+	Name       string `json:"name" validate:"required"`
+	No_hp      string `json:"no_hp" validate:"required"`
+	Password   string `json:"password" validate:"required"`
+}
 
 type Customer struct {
 	ID       int    `json:"id"`
@@ -89,14 +95,6 @@ type ProductPaketData struct {
 	Kuota string `json:"kuota"`
 	Harga int    `json:"harga"`
 	Poin  int    `json:"poin"`
-}
-
-type UpdateUser struct {
-	Name     string `json:"name"`
-	Email    string `json:"email"`
-	No_hp    string `json:"no_hp"`
-	Password string `json:"password"`
-	Pin      int    `json:"pin"`
 }
 
 type Bank struct {

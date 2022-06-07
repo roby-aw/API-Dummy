@@ -138,6 +138,11 @@ definitions:
         type: string
       password:
         type: string
+    required:
+    - email
+    - name
+    - no_hp
+    - password
     type: object
   dummy.StockProduct:
     properties:
@@ -147,6 +152,21 @@ definitions:
         type: string
       stock:
         type: integer
+    type: object
+  dummy.UpdateCustomer:
+    properties:
+      idcustomer:
+        type: integer
+      name:
+        type: string
+      no_hp:
+        type: string
+      password:
+        type: string
+    required:
+    - name
+    - no_hp
+    - password
     type: object
   mitra.AuthMitra:
     properties:
@@ -206,11 +226,11 @@ info:
   title: API-Loyalty Point Agent
   version: "1.0"
 paths:
-  /v1/account:
+  /v1/account/{id}:
     put:
       consumes:
       - application/json
-      description: UpdateUser
+      description: UpdateCustomer
       parameters:
       - default: Bearer <Add access token here>
         description: Insert your access token
@@ -224,10 +244,10 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/dummy.Register'
-      summary: UpdateUser
+            $ref: '#/definitions/dummy.UpdateCustomer'
+      summary: UpdateCustomer
       tags:
-      - User
+      - Customer
   /v1/admin/dashboard:
     get:
       consumes:
@@ -368,7 +388,7 @@ paths:
     get:
       consumes:
       - application/json
-      description: History/transaction User
+      description: History/transaction Customer
       parameters:
       - description: id detail history
         in: path
@@ -384,12 +404,12 @@ paths:
             $ref: '#/definitions/dummy.DetailTransaction'
       summary: Detail History/transaction
       tags:
-      - User
+      - Customer
   /v1/history/{idcustomer}:
     get:
       consumes:
       - application/json
-      description: History User
+      description: History Customer
       parameters:
       - default: Bearer <Add access token here>
         description: Insert your access token
@@ -411,16 +431,16 @@ paths:
             $ref: '#/definitions/dummy.History'
       summary: History
       tags:
-      - User
+      - Customer
   /v1/login:
     post:
       consumes:
       - application/json
-      description: Login user
+      description: Login Customer
       parameters:
-      - description: user
+      - description: Customer
         in: body
-        name: user
+        name: Customer
         required: true
         schema:
           $ref: '#/definitions/dummy.AuthLogin'
@@ -433,7 +453,7 @@ paths:
             $ref: '#/definitions/dummy.Customer'
       summary: Login
       tags:
-      - User
+      - Customer
   /v1/mitra/history:
     get:
       consumes:
@@ -612,11 +632,11 @@ paths:
     post:
       consumes:
       - application/json
-      description: Register user
+      description: Register Customer
       parameters:
       - description: Register
         in: body
-        name: RegisterUser
+        name: RegisterCustomer
         required: true
         schema:
           $ref: '#/definitions/dummy.Register'
@@ -629,7 +649,7 @@ paths:
             $ref: '#/definitions/dummy.Register'
       summary: Register
       tags:
-      - User
+      - Customer
   /v1/stockproduct:
     get:
       consumes:

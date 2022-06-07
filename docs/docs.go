@@ -16,9 +16,9 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/v1/account": {
+        "/v1/account/{id}": {
             "put": {
-                "description": "UpdateUser",
+                "description": "UpdateCustomer",
                 "consumes": [
                     "application/json"
                 ],
@@ -26,9 +26,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "User"
+                    "Customer"
                 ],
-                "summary": "UpdateUser",
+                "summary": "UpdateCustomer",
                 "parameters": [
                     {
                         "type": "string",
@@ -43,7 +43,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dummy.Register"
+                            "$ref": "#/definitions/dummy.UpdateCustomer"
                         }
                     }
                 }
@@ -259,7 +259,7 @@ const docTemplate = `{
         },
         "/v1/detailhistory/{id}": {
             "get": {
-                "description": "History/transaction User",
+                "description": "History/transaction Customer",
                 "consumes": [
                     "application/json"
                 ],
@@ -267,7 +267,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "User"
+                    "Customer"
                 ],
                 "summary": "Detail History/transaction",
                 "parameters": [
@@ -291,7 +291,7 @@ const docTemplate = `{
         },
         "/v1/history/{idcustomer}": {
             "get": {
-                "description": "History User",
+                "description": "History Customer",
                 "consumes": [
                     "application/json"
                 ],
@@ -299,7 +299,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "User"
+                    "Customer"
                 ],
                 "summary": "History",
                 "parameters": [
@@ -331,7 +331,7 @@ const docTemplate = `{
         },
         "/v1/login": {
             "post": {
-                "description": "Login user",
+                "description": "Login Customer",
                 "consumes": [
                     "application/json"
                 ],
@@ -339,13 +339,13 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "User"
+                    "Customer"
                 ],
                 "summary": "Login",
                 "parameters": [
                     {
-                        "description": "user",
-                        "name": "user",
+                        "description": "Customer",
+                        "name": "Customer",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -628,7 +628,7 @@ const docTemplate = `{
         },
         "/v1/register": {
             "post": {
-                "description": "Register user",
+                "description": "Register Customer",
                 "consumes": [
                     "application/json"
                 ],
@@ -636,13 +636,13 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "User"
+                    "Customer"
                 ],
                 "summary": "Register",
                 "parameters": [
                     {
                         "description": "Register",
-                        "name": "RegisterUser",
+                        "name": "RegisterCustomer",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -925,6 +925,12 @@ const docTemplate = `{
         },
         "dummy.Register": {
             "type": "object",
+            "required": [
+                "email",
+                "name",
+                "no_hp",
+                "password"
+            ],
             "properties": {
                 "email": {
                     "type": "string"
@@ -951,6 +957,28 @@ const docTemplate = `{
                 },
                 "stock": {
                     "type": "integer"
+                }
+            }
+        },
+        "dummy.UpdateCustomer": {
+            "type": "object",
+            "required": [
+                "name",
+                "no_hp",
+                "password"
+            ],
+            "properties": {
+                "idcustomer": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "no_hp": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
                 }
             }
         },

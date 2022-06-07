@@ -109,11 +109,11 @@ func InitiateDB() {
 
 // Create godoc
 // @Summary Login
-// @description Login user
-// @tags User
+// @description Login Customer
+// @tags Customer
 // @Accept json
 // @Produce json
-// @Param user body dummy.AuthLogin true "user"
+// @Param Customer body dummy.AuthLogin true "Customer"
 // @Success 200 {object} dummy.Customer
 // @Router /v1/login [post]
 func (Controller *Controller) Login(c echo.Context) error {
@@ -144,8 +144,8 @@ func (Controller *Controller) Login(c echo.Context) error {
 
 // Create godoc
 // @Summary History
-// @description History User
-// @tags User
+// @description History Customer
+// @tags Customer
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
@@ -188,8 +188,8 @@ func (Controller *Controller) History(c echo.Context) error {
 
 // Create godoc
 // @Summary Detail History/transaction
-// @description History/transaction User
-// @tags User
+// @description History/transaction Customer
+// @tags Customer
 // @Accept json
 // @Produce json
 // @Param id path int true "id detail history"
@@ -223,11 +223,11 @@ func (Controller *Controller) DetailTransaction(c echo.Context) error {
 
 // Create godoc
 // @Summary Register
-// @description Register user
-// @tags User
+// @description Register Customer
+// @tags Customer
 // @Accept json
 // @Produce json
-// @Param RegisterUser body dummy.Register true "Register"
+// @Param RegisterCustomer body dummy.Register true "Register"
 // @Success 200 {object} dummy.Register
 // @Router /v1/register [post]
 func (Controller *Controller) Register(c echo.Context) error {
@@ -332,15 +332,30 @@ func (Controller *Controller) OrderPaketData(c echo.Context) error {
 }
 
 // Create godoc
-// @Summary UpdateUser
-// @description UpdateUser
-// @tags User
+// @Summary UpdateCustomer
+// @description UpdateCustomer
+// @tags Customer
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Success 200 {object} dummy.Register
-// @Router /v1/account [put]
+// @Success 200 {object} dummy.UpdateCustomer
+// @Router /v1/account/{id} [put]
 func (Controller *Controller) UpdateUser(c echo.Context) error {
+	var req dummyBussiness.UpdateCustomer
+	var err error
+	c.Bind(&req)
+	if req.IDCustomer > len(Customer) {
+		err = errors.New("user tidak ada")
+	}
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"code":     400,
+			"messages": err.Error(),
+		})
+	}
+	Customer[req.IDCustomer-1].Name = req.Name
+	Customer[req.IDCustomer-1].No_hp = req.No_hp
+	Customer[req.IDCustomer-1].Password = req.Password
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success register",
