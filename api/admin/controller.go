@@ -4,6 +4,7 @@ import (
 	"api-redeem-point/api/dummy"
 	adminBusiness "api-redeem-point/business/admin"
 	dummyBusiness "api-redeem-point/business/dummy"
+	"errors"
 	"fmt"
 	"net/http"
 	"time"
@@ -84,6 +85,9 @@ func (Controller *Controller) Dashboard(c echo.Context) error {
 			tmpDashboard.Transaction_id = v.Transaction_id
 			tmpDashboard.Status_transaction = v.Status_transaction
 		}
+	}
+	if len(result) == 0 {
+		err = errors.New("Tidak ada pending data")
 	}
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
