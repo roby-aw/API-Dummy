@@ -533,6 +533,7 @@ func (Controller *Controller) InputPoin(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success add poin",
+		"data":     AccountMitra,
 	})
 }
 
