@@ -191,50 +191,27 @@ func (Controller *Controller) ManageCustomerPoint(c echo.Context) error {
 // @tags Admin
 // @Accept json
 // @Produce json
-// @Success 200 {object} admin.User
+// @Success 200 {object} admin.ManageCustomer
 // @Router /v1/admin/managecustomer [get]
 func (Controller *Controller) ManageCustomer(c echo.Context) error {
 	var err error
-	user1 := adminBusiness.User{
-		ID:       1,
-		Name:     "testuser1",
-		Email:    "testuser1@gmail.com",
-		Password: "testpassworduser1",
-		Alamat:   "testalamat",
+	var result []adminBusiness.ManageCustomer
+	for _, v := range dummy.Customer {
+		var data adminBusiness.ManageCustomer
+		data.ID = v.ID
+		data.Email = v.Email
+		data.Name = v.Name
+		data.Password = v.Password
+
+		result = append(result, data)
 	}
-	user2 := adminBusiness.User{
-		ID:       2,
-		Name:     "testuser2",
-		Email:    "testuser2@gmail.com",
-		Password: "testpassworduser2",
-		Alamat:   "testalamat",
-	}
-	user3 := adminBusiness.User{
-		ID:       3,
-		Name:     "testuser3",
-		Email:    "testuser3@gmail.com",
-		Password: "testpassworduser3",
-		Alamat:   "testalamat",
-	}
-	user4 := adminBusiness.User{
-		ID:       4,
-		Name:     "testuser4",
-		Email:    "testuser4@gmail.com",
-		Password: "testpassworduser4",
-		Alamat:   "testalamat",
-	}
-	var arr []adminBusiness.User
-	arr = append(arr, user1)
-	arr = append(arr, user2)
-	arr = append(arr, user3)
-	arr = append(arr, user4)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success get manage customer",
-		"result":   arr,
+		"result":   result,
 	})
 }
 
