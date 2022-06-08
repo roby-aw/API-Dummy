@@ -949,12 +949,6 @@ const docTemplate = `{
                 },
                 "poin_redeem": {
                     "type": "integer"
-                },
-                "status_poin": {
-                    "type": "string"
-                },
-                "status_transaction": {
-                    "type": "string"
                 }
             }
         },

@@ -153,10 +153,6 @@ definitions:
         type: integer
       poin_redeem:
         type: integer
-      status_poin:
-        type: string
-      status_transaction:
-        type: string
     required:
     - amount
     - customer_id
