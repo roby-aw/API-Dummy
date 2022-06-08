@@ -353,7 +353,7 @@ func (Controller *Controller) OrderPulsa(c echo.Context) error {
 		Nomor:              req.Nomor,
 		Poin_account:       req.Poin_account,
 		Poin_redeem:        req.Poin_redeem,
-		Keterangan:         req.Keterangan,
+		Keterangan:         req.Bank_Provider + " - " + strconv.Itoa(req.Amount),
 		Status_transaction: "PENDING",
 		Status_poin:        "OUT",
 	}
