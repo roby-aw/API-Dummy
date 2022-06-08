@@ -141,10 +141,12 @@ definitions:
       stock:
         type: integer
     type: object
-  dummy.RedeemPaketData:
+  dummy.RedeemEmoney:
     properties:
       amount:
         type: integer
+      an_rekening:
+        type: string
       bank_provider:
         type: string
       customer_id:
@@ -163,7 +165,7 @@ definitions:
     - poin_account
     - poin_redeem
     type: object
-  dummy.RedeemPulsa:
+  dummy.RedeemPulsaPaketData:
     properties:
       amount:
         type: integer
@@ -472,14 +474,20 @@ paths:
       consumes:
       - application/json
       description: Redeem Emoney/Cashout
+      parameters:
+      - description: RedeemEmoney
+        in: body
+        name: RedeemEmoney
+        required: true
+        schema:
+          $ref: '#/definitions/dummy.RedeemEmoney'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            additionalProperties: true
-            type: object
+            $ref: '#/definitions/dummy.RedeemEmoney'
       summary: Redeem Emoney/Cashout
       tags:
       - RedeemPoint
@@ -620,14 +628,14 @@ paths:
         name: RedeemPaketData
         required: true
         schema:
-          $ref: '#/definitions/dummy.RedeemPaketData'
+          $ref: '#/definitions/dummy.RedeemPulsaPaketData'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/dummy.RedeemPaketData'
+            $ref: '#/definitions/dummy.RedeemPulsaPaketData'
       summary: Redeem PaketData
       tags:
       - RedeemPoint
@@ -642,14 +650,14 @@ paths:
         name: RedeemPulsa
         required: true
         schema:
-          $ref: '#/definitions/dummy.RedeemPulsa'
+          $ref: '#/definitions/dummy.RedeemPulsaPaketData'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/dummy.RedeemPulsa'
+            $ref: '#/definitions/dummy.RedeemPulsaPaketData'
       summary: Redeem Pulsa
       tags:
       - RedeemPoint

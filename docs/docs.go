@@ -311,12 +311,22 @@ const docTemplate = `{
                     "RedeemPoint"
                 ],
                 "summary": "Redeem Emoney/Cashout",
+                "parameters": [
+                    {
+                        "description": "RedeemEmoney",
+                        "name": "RedeemEmoney",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dummy.RedeemEmoney"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": true
+                            "$ref": "#/definitions/dummy.RedeemEmoney"
                         }
                     }
                 }
@@ -535,7 +545,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dummy.RedeemPaketData"
+                            "$ref": "#/definitions/dummy.RedeemPulsaPaketData"
                         }
                     }
                 ],
@@ -543,7 +553,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dummy.RedeemPaketData"
+                            "$ref": "#/definitions/dummy.RedeemPulsaPaketData"
                         }
                     }
                 }
@@ -569,7 +579,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dummy.RedeemPulsa"
+                            "$ref": "#/definitions/dummy.RedeemPulsaPaketData"
                         }
                     }
                 ],
@@ -577,7 +587,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dummy.RedeemPulsa"
+                            "$ref": "#/definitions/dummy.RedeemPulsaPaketData"
                         }
                     }
                 }
@@ -898,7 +908,7 @@ const docTemplate = `{
                 }
             }
         },
-        "dummy.RedeemPaketData": {
+        "dummy.RedeemEmoney": {
             "type": "object",
             "required": [
                 "amount",
@@ -911,6 +921,9 @@ const docTemplate = `{
             "properties": {
                 "amount": {
                     "type": "integer"
+                },
+                "an_rekening": {
+                    "type": "string"
                 },
                 "bank_provider": {
                     "type": "string"
@@ -929,7 +942,7 @@ const docTemplate = `{
                 }
             }
         },
-        "dummy.RedeemPulsa": {
+        "dummy.RedeemPulsaPaketData": {
             "type": "object",
             "required": [
                 "amount",

@@ -314,9 +314,34 @@ func (Controller *Controller) Register(c echo.Context) error {
 // @tags RedeemPoint
 // @Accept json
 // @Produce json
-// @Success 200 {object} map[string]interface{}
+// @Param RedeemEmoney body dummy.RedeemEmoney true "RedeemEmoney"
+// @Success 200 {object} dummy.RedeemEmoney
 // @Router /v1/emoney [post]
 func (Controller *Controller) RedeemEmoney(c echo.Context) error {
+	var err error
+	var req dummy.RedeemEmoney
+	c.Bind(&req)
+	err = validator.New().Struct(req)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"code":     400,
+			"messages": err.Error(),
+		})
+	}
+	transaction := dummyBussiness.DetailTransaction{
+		ID:                 len(DetailTransaction) + 1,
+		Customer_id:        req.Customer_id,
+		Transaction_id:     "EM" + randomstring(),
+		Jenis_transaction:  "Redeem Cashout/Emoney",
+		Bank_Provider:      req.Bank_Provider,
+		Nomor:              req.Nomor,
+		Poin_account:       req.Poin_account,
+		Poin_redeem:        req.Poin_redeem,
+		Keterangan:         req.Bank_Provider + " - " + strconv.Itoa(req.Amount),
+		Status_transaction: "COMPLETED",
+		Status_poin:        "OUT",
+	}
+	DetailTransaction = append(DetailTransaction, transaction)
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success register",
@@ -329,12 +354,12 @@ func (Controller *Controller) RedeemEmoney(c echo.Context) error {
 // @tags RedeemPoint
 // @Accept json
 // @Produce json
-// @Param RedeemPulsa body dummy.RedeemPulsa true "RedeemPulsa"
-// @Success 200 {object} dummy.RedeemPulsa
+// @Param RedeemPulsa body dummy.RedeemPulsaPaketData true "RedeemPulsa"
+// @Success 200 {object} dummy.RedeemPulsaPaketData
 // @Router /v1/pulsa [post]
 func (Controller *Controller) RedeemPulsa(c echo.Context) error {
 	var err error
-	var req dummy.RedeemPulsa
+	var req dummy.RedeemPulsaPaketData
 	c.Bind(&req)
 	err = validator.New().Struct(req)
 	if err != nil {
@@ -369,12 +394,12 @@ func (Controller *Controller) RedeemPulsa(c echo.Context) error {
 // @tags RedeemPoint
 // @Accept json
 // @Produce json
-// @Param RedeemPaketData body dummy.RedeemPaketData true "RedeemPaketData"
-// @Success 200 {object} dummy.RedeemPaketData
+// @Param RedeemPaketData body dummy.RedeemPulsaPaketData true "RedeemPaketData"
+// @Success 200 {object} dummy.RedeemPulsaPaketData
 // @Router /v1/paketdata [post]
 func (Controller *Controller) RedeemPaketData(c echo.Context) error {
 	var err error
-	var req dummy.RedeemPaketData
+	var req dummy.RedeemPulsaPaketData
 	c.Bind(&req)
 	err = validator.New().Struct(req)
 	if err != nil {
