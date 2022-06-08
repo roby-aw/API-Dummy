@@ -349,6 +349,7 @@ func (Controller *Controller) OrderPulsa(c echo.Context) error {
 		ID:                 len(DetailTransaction) + 1,
 		Customer_id:        req.Customer_id,
 		Transaction_id:     "P" + randomstring(),
+		Jenis_transaction:  "Redeem Pulsa/PaketData",
 		Bank_Provider:      req.Bank_Provider,
 		Nomor:              req.Nomor,
 		Poin_account:       req.Poin_account,

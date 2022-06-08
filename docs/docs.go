@@ -738,6 +738,9 @@ const docTemplate = `{
                 "customer_id": {
                     "type": "integer"
                 },
+                "keterangan": {
+                    "type": "string"
+                },
                 "status_transaction": {
                     "type": "string"
                 },

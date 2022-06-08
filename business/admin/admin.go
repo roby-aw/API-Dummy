@@ -90,6 +90,7 @@ type GetCityById struct {
 type Dashboard struct {
 	Transaction_id     string `json:"transaction_id"`
 	Customer_id        int    `json:"customer_id"`
+	Keterangan         string `json:"keterangan"`
 	Status_transaction string `json:"status_transaction"`
 }
 type ApproveTransaction struct {

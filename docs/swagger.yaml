@@ -19,6 +19,8 @@ definitions:
     properties:
       customer_id:
         type: integer
+      keterangan:
+        type: string
       status_transaction:
         type: string
       transaction_id:
