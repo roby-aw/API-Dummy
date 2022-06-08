@@ -309,26 +309,9 @@ func (Controller *Controller) Register(c echo.Context) error {
 }
 
 // Create godoc
-// @Summary Order Cashout
-// @description Order Cashout
-// @tags UserOrder
-// @Accept json
-// @Produce json
-// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Param InputDataCashout body dummy.Bank true "inputdatacashout"
-// @Success 200 {object} dummy.Bank
-// @Router /v1/order/cashout [post]
-func (Controller *Controller) OrderCashout(c echo.Context) error {
-	return c.JSON(http.StatusOK, map[string]interface{}{
-		"code":     200,
-		"messages": "success register",
-	})
-}
-
-// Create godoc
-// @Summary Order Emoney
+// @Summary Order Emoney/Cashout
 // @description Emoney user
-// @tags UserOrder
+// @tags CustomerOrder
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
@@ -344,23 +327,47 @@ func (Controller *Controller) OrderEmoney(c echo.Context) error {
 // Create godoc
 // @Summary Order Pulsa
 // @description Pulsa user
-// @tags UserOrder
+// @tags CustomerOrder
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Success 200 {object} map[string]interface{}
+// @Param OrderPulsa body dummy.OrderPulsa true "OrderPulsa"
+// @Success 200 {object} dummy.OrderPulsa
 // @Router /v1/order/pulsa [post]
 func (Controller *Controller) OrderPulsa(c echo.Context) error {
+	var err error
+	var req dummy.OrderPulsa
+	c.Bind(&req)
+	err = validator.New().Struct(req)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"code":     400,
+			"messages": err.Error(),
+		})
+	}
+	transaction := dummyBussiness.DetailTransaction{
+		ID:                 len(DetailTransaction) + 1,
+		Customer_id:        req.Customer_id,
+		Transaction_id:     "P" + randomstring(),
+		Bank_Provider:      req.Bank_Provider,
+		Nomor:              req.Nomor,
+		Poin_account:       req.Poin_account,
+		Poin_redeem:        req.Poin_redeem,
+		Keterangan:         req.Keterangan,
+		Status_transaction: "PENDING",
+		Status_poin:        "OUT",
+	}
+	DetailTransaction = append(DetailTransaction, transaction)
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
-		"messages": "success register",
+		"messages": "success order pulsa",
 	})
 }
 
 // Create godoc
 // @Summary Order PaketData
 // @description PaketData user
-// @tags UserOrder
+// @tags CustomerOrder
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)

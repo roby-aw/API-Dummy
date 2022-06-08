@@ -83,15 +83,6 @@ definitions:
     - email
     - password
     type: object
-  dummy.Bank:
-    properties:
-      amount:
-        type: integer
-      bankcode:
-        type: string
-      no_rekening:
-        type: string
-    type: object
   dummy.Customer:
     properties:
       email:
@@ -145,6 +136,34 @@ definitions:
     properties:
       stock:
         type: integer
+    type: object
+  dummy.OrderPulsa:
+    properties:
+      amount:
+        type: integer
+      bank_provider:
+        type: string
+      customer_id:
+        type: integer
+      keterangan:
+        type: string
+      nomor:
+        type: string
+      poin_account:
+        type: integer
+      poin_redeem:
+        type: integer
+      status_poin:
+        type: string
+      status_transaction:
+        type: string
+    required:
+    - amount
+    - customer_id
+    - keterangan
+    - nomor
+    - poin_account
+    - poin_redeem
     type: object
   dummy.Register:
     properties:
@@ -560,34 +579,6 @@ paths:
       summary: Register Mitra
       tags:
       - Mitra
-  /v1/order/cashout:
-    post:
-      consumes:
-      - application/json
-      description: Order Cashout
-      parameters:
-      - default: Bearer <Add access token here>
-        description: Insert your access token
-        in: header
-        name: Authorization
-        required: true
-        type: string
-      - description: inputdatacashout
-        in: body
-        name: InputDataCashout
-        required: true
-        schema:
-          $ref: '#/definitions/dummy.Bank'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/dummy.Bank'
-      summary: Order Cashout
-      tags:
-      - UserOrder
   /v1/order/emoney:
     post:
       consumes:
@@ -608,9 +599,9 @@ paths:
           schema:
             additionalProperties: true
             type: object
-      summary: Order Emoney
+      summary: Order Emoney/Cashout
       tags:
-      - UserOrder
+      - CustomerOrder
   /v1/order/paketdata:
     post:
       consumes:
@@ -633,7 +624,7 @@ paths:
             type: object
       summary: Order PaketData
       tags:
-      - UserOrder
+      - CustomerOrder
   /v1/order/pulsa:
     post:
       consumes:
@@ -646,17 +637,22 @@ paths:
         name: Authorization
         required: true
         type: string
+      - description: OrderPulsa
+        in: body
+        name: OrderPulsa
+        required: true
+        schema:
+          $ref: '#/definitions/dummy.OrderPulsa'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            additionalProperties: true
-            type: object
+            $ref: '#/definitions/dummy.OrderPulsa'
       summary: Order Pulsa
       tags:
-      - UserOrder
+      - CustomerOrder
   /v1/register:
     post:
       consumes:

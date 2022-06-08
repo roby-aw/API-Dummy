@@ -499,48 +499,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/v1/order/cashout": {
-            "post": {
-                "description": "Order Cashout",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "UserOrder"
-                ],
-                "summary": "Order Cashout",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "default": "Bearer \u003cAdd access token here\u003e",
-                        "description": "Insert your access token",
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "description": "inputdatacashout",
-                        "name": "InputDataCashout",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/dummy.Bank"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/dummy.Bank"
-                        }
-                    }
-                }
-            }
-        },
         "/v1/order/emoney": {
             "post": {
                 "description": "Emoney user",
@@ -551,9 +509,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "UserOrder"
+                    "CustomerOrder"
                 ],
-                "summary": "Order Emoney",
+                "summary": "Order Emoney/Cashout",
                 "parameters": [
                     {
                         "type": "string",
@@ -585,7 +543,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "UserOrder"
+                    "CustomerOrder"
                 ],
                 "summary": "Order PaketData",
                 "parameters": [
@@ -619,7 +577,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "UserOrder"
+                    "CustomerOrder"
                 ],
                 "summary": "Order Pulsa",
                 "parameters": [
@@ -630,14 +588,22 @@ const docTemplate = `{
                         "name": "Authorization",
                         "in": "header",
                         "required": true
+                    },
+                    {
+                        "description": "OrderPulsa",
+                        "name": "OrderPulsa",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dummy.OrderPulsa"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": true
+                            "$ref": "#/definitions/dummy.OrderPulsa"
                         }
                     }
                 }
@@ -869,20 +835,6 @@ const docTemplate = `{
                 }
             }
         },
-        "dummy.Bank": {
-            "type": "object",
-            "properties": {
-                "amount": {
-                    "type": "integer"
-                },
-                "bankcode": {
-                    "type": "string"
-                },
-                "no_rekening": {
-                    "type": "string"
-                }
-            }
-        },
         "dummy.Customer": {
             "type": "object",
             "properties": {
@@ -963,6 +915,46 @@ const docTemplate = `{
             "properties": {
                 "stock": {
                     "type": "integer"
+                }
+            }
+        },
+        "dummy.OrderPulsa": {
+            "type": "object",
+            "required": [
+                "amount",
+                "customer_id",
+                "keterangan",
+                "nomor",
+                "poin_account",
+                "poin_redeem"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "bank_provider": {
+                    "type": "string"
+                },
+                "customer_id": {
+                    "type": "integer"
+                },
+                "keterangan": {
+                    "type": "string"
+                },
+                "nomor": {
+                    "type": "string"
+                },
+                "poin_account": {
+                    "type": "integer"
+                },
+                "poin_redeem": {
+                    "type": "integer"
+                },
+                "status_poin": {
+                    "type": "string"
+                },
+                "status_transaction": {
+                    "type": "string"
                 }
             }
         },
