@@ -263,6 +263,76 @@ paths:
       summary: Approve Transaction
       tags:
       - Admin
+  /v1/admin/customer:
+    get:
+      consumes:
+      - application/json
+      description: Manage Customer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.ManageCustomer'
+      summary: Manage Customer
+      tags:
+      - Admin
+    put:
+      consumes:
+      - application/json
+      description: Update customer data
+      parameters:
+      - description: Customer
+        in: body
+        name: Customer
+        required: true
+        schema:
+          $ref: '#/definitions/admin.ManageCustomer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.ManageCustomer'
+      summary: Update customer data
+      tags:
+      - Admin
+  /v1/admin/customerpoint:
+    get:
+      consumes:
+      - application/json
+      description: Manage Customer Point
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.UserPoin'
+      summary: Manage Customer Point
+      tags:
+      - Admin
+    put:
+      consumes:
+      - application/json
+      description: Update customer point
+      parameters:
+      - description: Customer Point
+        in: body
+        name: UpdateCustomerPoint
+        required: true
+        schema:
+          $ref: '#/definitions/admin.UpdateCustomerPoint'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Update customer point
+      tags:
+      - Admin
   /v1/admin/dashboard:
     get:
       consumes:
@@ -313,76 +383,6 @@ paths:
           schema:
             $ref: '#/definitions/admin.LoginAdmin'
       summary: Login
-      tags:
-      - Admin
-  /v1/admin/managecustomer:
-    get:
-      consumes:
-      - application/json
-      description: Manage Customer
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/admin.ManageCustomer'
-      summary: Manage Customer
-      tags:
-      - Admin
-    put:
-      consumes:
-      - application/json
-      description: Update customer data
-      parameters:
-      - description: Customer
-        in: body
-        name: Customer
-        required: true
-        schema:
-          $ref: '#/definitions/admin.ManageCustomer'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/admin.ManageCustomer'
-      summary: Update customer data
-      tags:
-      - Admin
-  /v1/admin/managecustomerpoint:
-    get:
-      consumes:
-      - application/json
-      description: Manage Customer Point
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/admin.UserPoin'
-      summary: Manage Customer Point
-      tags:
-      - Admin
-    put:
-      consumes:
-      - application/json
-      description: Update customer point
-      parameters:
-      - description: Customer Point
-        in: body
-        name: UpdateCustomerPoint
-        required: true
-        schema:
-          $ref: '#/definitions/admin.UpdateCustomerPoint'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ""
-      summary: Update customer point
       tags:
       - Admin
   /v1/customer:

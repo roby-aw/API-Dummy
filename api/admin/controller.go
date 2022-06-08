@@ -140,7 +140,7 @@ func (Controller *Controller) ApproveTransaction(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Success 200 {object} admin.UserPoin
-// @Router /v1/admin/managecustomerpoint [get]
+// @Router /v1/admin/customerpoint [get]
 func (Controller *Controller) ManageCustomerPoint(c echo.Context) error {
 	var err error
 	var result []admin.ManageCustomerPoint
@@ -173,7 +173,7 @@ func (Controller *Controller) ManageCustomerPoint(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Success 200 {object} admin.ManageCustomer
-// @Router /v1/admin/managecustomer [get]
+// @Router /v1/admin/customer [get]
 func (Controller *Controller) ManageCustomer(c echo.Context) error {
 	var err error
 	var result []adminBusiness.ManageCustomer
@@ -236,7 +236,7 @@ func (Controller *Controller) CustomerHistory(c echo.Context) error {
 // @Produce json
 // @Param Update Customer body admin.ManageCustomer true "Customer"
 // @Success 200 {object} admin.ManageCustomer
-// @Router /v1/admin/managecustomer [PUT]
+// @Router /v1/admin/customer [PUT]
 func (Controller *Controller) UpdateCustomer(c echo.Context) error {
 	var req adminBusiness.ManageCustomer
 	var err error
@@ -269,7 +269,7 @@ func (Controller *Controller) UpdateCustomer(c echo.Context) error {
 // @Produce json
 // @Param UpdateCustomerPoint body admin.UpdateCustomerPoint true "Customer Point"
 // @Success 200
-// @Router /v1/admin/managecustomerpoint [PUT]
+// @Router /v1/admin/customerpoint [PUT]
 func (Controller *Controller) UpdateCustomerPoint(c echo.Context) error {
 	var req adminBusiness.UpdateCustomerPoint
 	var err error

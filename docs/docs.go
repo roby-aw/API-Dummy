@@ -45,6 +45,113 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/admin/customer": {
+            "get": {
+                "description": "Manage Customer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Manage Customer",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/admin.ManageCustomer"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update customer data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update customer data",
+                "parameters": [
+                    {
+                        "description": "Customer",
+                        "name": "Customer",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/admin.ManageCustomer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/admin.ManageCustomer"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/admin/customerpoint": {
+            "get": {
+                "description": "Manage Customer Point",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Manage Customer Point",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/admin.UserPoin"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update customer point",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update customer point",
+                "parameters": [
+                    {
+                        "description": "Customer Point",
+                        "name": "UpdateCustomerPoint",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/admin.UpdateCustomerPoint"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/v1/admin/dashboard": {
             "get": {
                 "description": "Dashboard Admin",
@@ -121,113 +228,6 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/admin.LoginAdmin"
                         }
-                    }
-                }
-            }
-        },
-        "/v1/admin/managecustomer": {
-            "get": {
-                "description": "Manage Customer",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Admin"
-                ],
-                "summary": "Manage Customer",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/admin.ManageCustomer"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "description": "Update customer data",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Admin"
-                ],
-                "summary": "Update customer data",
-                "parameters": [
-                    {
-                        "description": "Customer",
-                        "name": "Customer",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/admin.ManageCustomer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/admin.ManageCustomer"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1/admin/managecustomerpoint": {
-            "get": {
-                "description": "Manage Customer Point",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Admin"
-                ],
-                "summary": "Manage Customer Point",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/admin.UserPoin"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "description": "Update customer point",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Admin"
-                ],
-                "summary": "Update customer point",
-                "parameters": [
-                    {
-                        "description": "Customer Point",
-                        "name": "UpdateCustomerPoint",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/admin.UpdateCustomerPoint"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
                     }
                 }
             }
