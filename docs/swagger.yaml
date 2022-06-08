@@ -145,8 +145,6 @@ definitions:
         type: string
       customer_id:
         type: integer
-      keterangan:
-        type: string
       nomor:
         type: string
       poin_account:
@@ -155,8 +153,8 @@ definitions:
         type: integer
     required:
     - amount
+    - bank_provider
     - customer_id
-    - keterangan
     - nomor
     - poin_account
     - poin_redeem

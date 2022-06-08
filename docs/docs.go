@@ -922,8 +922,8 @@ const docTemplate = `{
             "type": "object",
             "required": [
                 "amount",
+                "bank_provider",
                 "customer_id",
-                "keterangan",
                 "nomor",
                 "poin_account",
                 "poin_redeem"
@@ -937,9 +937,6 @@ const docTemplate = `{
                 },
                 "customer_id": {
                     "type": "integer"
-                },
-                "keterangan": {
-                    "type": "string"
                 },
                 "nomor": {
                     "type": "string"
