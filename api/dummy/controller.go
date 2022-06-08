@@ -311,7 +311,7 @@ func (Controller *Controller) Register(c echo.Context) error {
 // Create godoc
 // @Summary Order Emoney/Cashout
 // @description Emoney user
-// @tags CustomerOrder
+// @tags RedeemPoint
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
@@ -327,7 +327,7 @@ func (Controller *Controller) OrderEmoney(c echo.Context) error {
 // Create godoc
 // @Summary Order Pulsa
 // @description Pulsa user
-// @tags CustomerOrder
+// @tags RedeemPoint
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
@@ -368,7 +368,7 @@ func (Controller *Controller) OrderPulsa(c echo.Context) error {
 // Create godoc
 // @Summary Order PaketData
 // @description PaketData user
-// @tags CustomerOrder
+// @tags RedeemPoint
 // @Accept json
 // @Produce json
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)

@@ -599,7 +599,7 @@ paths:
             type: object
       summary: Order Emoney/Cashout
       tags:
-      - CustomerOrder
+      - RedeemPoint
   /v1/order/paketdata:
     post:
       consumes:
@@ -622,7 +622,7 @@ paths:
             type: object
       summary: Order PaketData
       tags:
-      - CustomerOrder
+      - RedeemPoint
   /v1/pulsa:
     post:
       consumes:
@@ -650,7 +650,7 @@ paths:
             $ref: '#/definitions/dummy.OrderPulsa'
       summary: Order Pulsa
       tags:
-      - CustomerOrder
+      - RedeemPoint
   /v1/register:
     post:
       consumes:

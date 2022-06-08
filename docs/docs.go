@@ -509,7 +509,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "CustomerOrder"
+                    "RedeemPoint"
                 ],
                 "summary": "Order Emoney/Cashout",
                 "parameters": [
@@ -543,7 +543,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "CustomerOrder"
+                    "RedeemPoint"
                 ],
                 "summary": "Order PaketData",
                 "parameters": [
@@ -577,7 +577,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "CustomerOrder"
+                    "RedeemPoint"
                 ],
                 "summary": "Order Pulsa",
                 "parameters": [

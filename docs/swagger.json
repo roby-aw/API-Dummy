@@ -502,7 +502,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "CustomerOrder"
+                    "RedeemPoint"
                 ],
                 "summary": "Order Emoney/Cashout",
                 "parameters": [
@@ -536,7 +536,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "CustomerOrder"
+                    "RedeemPoint"
                 ],
                 "summary": "Order PaketData",
                 "parameters": [
@@ -570,7 +570,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "CustomerOrder"
+                    "RedeemPoint"
                 ],
                 "summary": "Order Pulsa",
                 "parameters": [
