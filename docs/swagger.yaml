@@ -141,7 +141,29 @@ definitions:
       stock:
         type: integer
     type: object
-  dummy.OrderPulsa:
+  dummy.RedeemPaketData:
+    properties:
+      amount:
+        type: integer
+      bank_provider:
+        type: string
+      customer_id:
+        type: integer
+      nomor:
+        type: string
+      poin_account:
+        type: integer
+      poin_redeem:
+        type: integer
+    required:
+    - amount
+    - bank_provider
+    - customer_id
+    - nomor
+    - poin_account
+    - poin_redeem
+    type: object
+  dummy.RedeemPulsa:
     properties:
       amount:
         type: integer
@@ -408,12 +430,6 @@ paths:
       - application/json
       description: Update Customer
       parameters:
-      - default: Bearer <Add access token here>
-        description: Insert your access token
-        in: header
-        name: Authorization
-        required: true
-        type: string
       - description: UpdateCustomer
         in: body
         name: Customer
@@ -451,6 +467,22 @@ paths:
       summary: Detail History/transaction
       tags:
       - Customer
+  /v1/emoney:
+    post:
+      consumes:
+      - application/json
+      description: Redeem Emoney/Cashout
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Redeem Emoney/Cashout
+      tags:
+      - RedeemPoint
   /v1/history/{idcustomer}:
     get:
       consumes:
@@ -577,78 +609,48 @@ paths:
       summary: Register Mitra
       tags:
       - Mitra
-  /v1/order/emoney:
+  /v1/paketdata:
     post:
       consumes:
       - application/json
-      description: Emoney user
+      description: Redeem PaketData
       parameters:
-      - default: Bearer <Add access token here>
-        description: Insert your access token
-        in: header
-        name: Authorization
+      - description: RedeemPaketData
+        in: body
+        name: RedeemPaketData
         required: true
-        type: string
+        schema:
+          $ref: '#/definitions/dummy.RedeemPaketData'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            additionalProperties: true
-            type: object
-      summary: Order Emoney/Cashout
-      tags:
-      - RedeemPoint
-  /v1/order/paketdata:
-    post:
-      consumes:
-      - application/json
-      description: PaketData user
-      parameters:
-      - default: Bearer <Add access token here>
-        description: Insert your access token
-        in: header
-        name: Authorization
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            additionalProperties: true
-            type: object
-      summary: Order PaketData
+            $ref: '#/definitions/dummy.RedeemPaketData'
+      summary: Redeem PaketData
       tags:
       - RedeemPoint
   /v1/pulsa:
     post:
       consumes:
       - application/json
-      description: Pulsa user
+      description: Redeem Pulsa
       parameters:
-      - default: Bearer <Add access token here>
-        description: Insert your access token
-        in: header
-        name: Authorization
-        required: true
-        type: string
-      - description: OrderPulsa
+      - description: RedeemPulsa
         in: body
-        name: OrderPulsa
+        name: RedeemPulsa
         required: true
         schema:
-          $ref: '#/definitions/dummy.OrderPulsa'
+          $ref: '#/definitions/dummy.RedeemPulsa'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/dummy.OrderPulsa'
-      summary: Order Pulsa
+            $ref: '#/definitions/dummy.RedeemPulsa'
+      summary: Redeem Pulsa
       tags:
       - RedeemPoint
   /v1/register:

@@ -247,14 +247,6 @@ const docTemplate = `{
                 "summary": "Update Customer",
                 "parameters": [
                     {
-                        "type": "string",
-                        "default": "Bearer \u003cAdd access token here\u003e",
-                        "description": "Insert your access token",
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
                         "description": "UpdateCustomer",
                         "name": "Customer",
                         "in": "body",
@@ -301,6 +293,30 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/dummy.DetailTransactionCustomer"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/emoney": {
+            "post": {
+                "description": "Redeem Emoney/Cashout",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RedeemPoint"
+                ],
+                "summary": "Redeem Emoney/Cashout",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     }
                 }
@@ -499,9 +515,9 @@ const docTemplate = `{
                 }
             }
         },
-        "/v1/order/emoney": {
+        "/v1/paketdata": {
             "post": {
-                "description": "Emoney user",
+                "description": "Redeem PaketData",
                 "consumes": [
                     "application/json"
                 ],
@@ -511,57 +527,23 @@ const docTemplate = `{
                 "tags": [
                     "RedeemPoint"
                 ],
-                "summary": "Order Emoney/Cashout",
+                "summary": "Redeem PaketData",
                 "parameters": [
                     {
-                        "type": "string",
-                        "default": "Bearer \u003cAdd access token here\u003e",
-                        "description": "Insert your access token",
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
+                        "description": "RedeemPaketData",
+                        "name": "RedeemPaketData",
+                        "in": "body",
+                        "required": true,
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": true
+                            "$ref": "#/definitions/dummy.RedeemPaketData"
                         }
                     }
-                }
-            }
-        },
-        "/v1/order/paketdata": {
-            "post": {
-                "description": "PaketData user",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "RedeemPoint"
-                ],
-                "summary": "Order PaketData",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "default": "Bearer \u003cAdd access token here\u003e",
-                        "description": "Insert your access token",
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true
-                    }
                 ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": true
+                            "$ref": "#/definitions/dummy.RedeemPaketData"
                         }
                     }
                 }
@@ -569,7 +551,7 @@ const docTemplate = `{
         },
         "/v1/pulsa": {
             "post": {
-                "description": "Pulsa user",
+                "description": "Redeem Pulsa",
                 "consumes": [
                     "application/json"
                 ],
@@ -579,23 +561,15 @@ const docTemplate = `{
                 "tags": [
                     "RedeemPoint"
                 ],
-                "summary": "Order Pulsa",
+                "summary": "Redeem Pulsa",
                 "parameters": [
                     {
-                        "type": "string",
-                        "default": "Bearer \u003cAdd access token here\u003e",
-                        "description": "Insert your access token",
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "description": "OrderPulsa",
-                        "name": "OrderPulsa",
+                        "description": "RedeemPulsa",
+                        "name": "RedeemPulsa",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dummy.OrderPulsa"
+                            "$ref": "#/definitions/dummy.RedeemPulsa"
                         }
                     }
                 ],
@@ -603,7 +577,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dummy.OrderPulsa"
+                            "$ref": "#/definitions/dummy.RedeemPulsa"
                         }
                     }
                 }
@@ -924,7 +898,38 @@ const docTemplate = `{
                 }
             }
         },
-        "dummy.OrderPulsa": {
+        "dummy.RedeemPaketData": {
+            "type": "object",
+            "required": [
+                "amount",
+                "bank_provider",
+                "customer_id",
+                "nomor",
+                "poin_account",
+                "poin_redeem"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "bank_provider": {
+                    "type": "string"
+                },
+                "customer_id": {
+                    "type": "integer"
+                },
+                "nomor": {
+                    "type": "string"
+                },
+                "poin_account": {
+                    "type": "integer"
+                },
+                "poin_redeem": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dummy.RedeemPulsa": {
             "type": "object",
             "required": [
                 "amount",

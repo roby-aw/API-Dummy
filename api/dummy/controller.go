@@ -309,15 +309,14 @@ func (Controller *Controller) Register(c echo.Context) error {
 }
 
 // Create godoc
-// @Summary Order Emoney/Cashout
-// @description Emoney user
+// @Summary Redeem Emoney/Cashout
+// @description Redeem Emoney/Cashout
 // @tags RedeemPoint
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Success 200 {object} map[string]interface{}
-// @Router /v1/order/emoney [post]
-func (Controller *Controller) OrderEmoney(c echo.Context) error {
+// @Router /v1/emoney [post]
+func (Controller *Controller) RedeemEmoney(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success register",
@@ -325,18 +324,17 @@ func (Controller *Controller) OrderEmoney(c echo.Context) error {
 }
 
 // Create godoc
-// @Summary Order Pulsa
-// @description Pulsa user
+// @Summary Redeem Pulsa
+// @description Redeem Pulsa
 // @tags RedeemPoint
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Param OrderPulsa body dummy.OrderPulsa true "OrderPulsa"
-// @Success 200 {object} dummy.OrderPulsa
+// @Param RedeemPulsa body dummy.RedeemPulsa true "RedeemPulsa"
+// @Success 200 {object} dummy.RedeemPulsa
 // @Router /v1/pulsa [post]
-func (Controller *Controller) OrderPulsa(c echo.Context) error {
+func (Controller *Controller) RedeemPulsa(c echo.Context) error {
 	var err error
-	var req dummy.OrderPulsa
+	var req dummy.RedeemPulsa
 	c.Bind(&req)
 	err = validator.New().Struct(req)
 	if err != nil {
@@ -349,7 +347,7 @@ func (Controller *Controller) OrderPulsa(c echo.Context) error {
 		ID:                 len(DetailTransaction) + 1,
 		Customer_id:        req.Customer_id,
 		Transaction_id:     "P" + randomstring(),
-		Jenis_transaction:  "Redeem Pulsa/PaketData",
+		Jenis_transaction:  "Redeem Pulsa",
 		Bank_Provider:      req.Bank_Provider,
 		Nomor:              req.Nomor,
 		Poin_account:       req.Poin_account,
@@ -361,23 +359,48 @@ func (Controller *Controller) OrderPulsa(c echo.Context) error {
 	DetailTransaction = append(DetailTransaction, transaction)
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
-		"messages": "success order pulsa",
+		"messages": "success redeem pulsa",
 	})
 }
 
 // Create godoc
-// @Summary Order PaketData
-// @description PaketData user
+// @Summary Redeem PaketData
+// @description Redeem PaketData
 // @tags RedeemPoint
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
-// @Success 200 {object} map[string]interface{}
-// @Router /v1/order/paketdata [post]
-func (Controller *Controller) OrderPaketData(c echo.Context) error {
+// @Param RedeemPaketData body dummy.RedeemPaketData true "RedeemPaketData"
+// @Success 200 {object} dummy.RedeemPaketData
+// @Router /v1/paketdata [post]
+func (Controller *Controller) RedeemPaketData(c echo.Context) error {
+	var err error
+	var req dummy.RedeemPaketData
+	c.Bind(&req)
+	err = validator.New().Struct(req)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"code":     400,
+			"messages": err.Error(),
+		})
+	}
+	transaction := dummyBussiness.DetailTransaction{
+		ID:                 len(DetailTransaction) + 1,
+		Customer_id:        req.Customer_id,
+		Transaction_id:     "PD" + randomstring(),
+		Jenis_transaction:  "Redeem PaketData",
+		Bank_Provider:      req.Bank_Provider,
+		Nomor:              req.Nomor,
+		Poin_account:       req.Poin_account,
+		Poin_redeem:        req.Poin_redeem,
+		Amount:             req.Amount,
+		Keterangan:         req.Bank_Provider + strconv.Itoa(req.Amount) + " GB",
+		Status_transaction: "PENDING",
+		Status_poin:        "OUT",
+	}
+	DetailTransaction = append(DetailTransaction, transaction)
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
-		"messages": "success register",
+		"messages": "success redeem paketdata",
 	})
 }
 
@@ -387,7 +410,6 @@ func (Controller *Controller) OrderPaketData(c echo.Context) error {
 // @tags Customer
 // @Accept json
 // @Produce json
-// @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Param Update Customer body dummy.UpdateCustomer true "UpdateCustomer"
 // @Success 200 {object} dummy.UpdateCustomer
 // @Router /v1/customer [put]
@@ -556,7 +578,7 @@ func (Controller *Controller) RegisterMitra(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
-		"messages": "success register",
+		"messages": "success register mitra",
 		"result":   req,
 	})
 }
