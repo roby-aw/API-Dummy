@@ -344,7 +344,7 @@ func (Controller *Controller) RedeemEmoney(c echo.Context) error {
 	DetailTransaction = append(DetailTransaction, transaction)
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
-		"messages": "success register",
+		"messages": "success redeem emoney/cashout",
 	})
 }
 
