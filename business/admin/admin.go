@@ -89,6 +89,7 @@ type GetCityById struct {
 
 type Dashboard struct {
 	Transaction_id     string `json:"transaction_id"`
+	Nomor              string `json:"nomor"`
 	Customer_id        int    `json:"customer_id"`
 	Keterangan         string `json:"keterangan"`
 	Status_transaction string `json:"status_transaction"`

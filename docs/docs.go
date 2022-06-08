@@ -741,6 +741,9 @@ const docTemplate = `{
                 "keterangan": {
                     "type": "string"
                 },
+                "nomor": {
+                    "type": "string"
+                },
                 "status_transaction": {
                     "type": "string"
                 },

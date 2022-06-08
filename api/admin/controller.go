@@ -83,6 +83,7 @@ func (Controller *Controller) Dashboard(c echo.Context) error {
 		if v.Status_transaction == "PENDING" {
 			var tmpDashboard adminBusiness.Dashboard
 			tmpDashboard.Customer_id = v.Customer_id
+			tmpDashboard.Nomor = v.Nomor
 			tmpDashboard.Transaction_id = v.Transaction_id
 			tmpDashboard.Status_transaction = v.Status_transaction
 			tmpDashboard.Keterangan = v.Keterangan
