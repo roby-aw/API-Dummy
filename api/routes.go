@@ -24,6 +24,7 @@ func RegistrationPath(e *echo.Echo, controller Controller) {
 	c.GET("/detailhistory/:transactionid", controller.DummyController.DetailTransaction)
 	c.GET("/stockproduct", controller.DummyController.StockProduct)
 	c.PUT("/stockproduct/:id", controller.DummyController.ManageStockProduct)
+	c.POST("/pulsa", controller.DummyController.OrderPulsa)
 	// product
 	// f := c.Group("/product")
 	// f.GET("/cashout", controller.DummyController.ProductCashout)

@@ -333,7 +333,7 @@ func (Controller *Controller) OrderEmoney(c echo.Context) error {
 // @Param Authorization header string true "Insert your access token" default(Bearer <Add access token here>)
 // @Param OrderPulsa body dummy.OrderPulsa true "OrderPulsa"
 // @Success 200 {object} dummy.OrderPulsa
-// @Router /v1/order/pulsa [post]
+// @Router /v1/pulsa [post]
 func (Controller *Controller) OrderPulsa(c echo.Context) error {
 	var err error
 	var req dummy.OrderPulsa

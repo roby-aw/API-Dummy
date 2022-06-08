@@ -567,7 +567,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/v1/order/pulsa": {
+        "/v1/pulsa": {
             "post": {
                 "description": "Pulsa user",
                 "consumes": [
