@@ -8,7 +8,6 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"time"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
@@ -203,39 +202,29 @@ func (Controller *Controller) ManageCustomer(c echo.Context) error {
 // @tags Admin
 // @Accept json
 // @Produce json
-// @Success 200 {object} dummy.History
+// @Success 200 {object} admin.CustomerHistory
 // @Router /v1/admin/historycustomer [get]
 func (Controller *Controller) CustomerHistory(c echo.Context) error {
 	var err error
-	History1 := &dummyBusiness.History{
-		ID:         1,
-		Keterangan: "Redeem CashOut",
-		Tanggal:    time.Date(2022, 5, 16, 156, 24, 34, 534, time.UTC),
-		Status:     "Sukses",
+	var result []adminBusiness.CustomerHistory
+	for _, v := range dummy.DetailTransaction {
+		var tmpHistory adminBusiness.CustomerHistory
+		tmpHistory.Customer_id = v.Customer_id
+		tmpHistory.Keterangan = v.Keterangan
+		tmpHistory.Nomor = v.Nomor
+		tmpHistory.Tanggal = v.CreatedAt
+		tmpHistory.Status = v.Status_transaction
+		tmpHistory.Poin_redeem = v.Poin_redeem
+
+		result = append(result, tmpHistory)
 	}
-	History2 := &dummyBusiness.History{
-		ID:         5,
-		Keterangan: "Redeem paket data",
-		Tanggal:    time.Date(2022, 5, 17, 156, 24, 34, 534, time.UTC),
-		Status:     "Sukses",
-	}
-	History3 := &dummyBusiness.History{
-		ID:         7,
-		Keterangan: "Redeem CashOut",
-		Tanggal:    time.Date(2022, 5, 18, 156, 24, 34, 534, time.UTC),
-		Status:     "Pending",
-	}
-	var arr []dummyBusiness.History
-	arr = append(arr, *History1)
-	arr = append(arr, *History2)
-	arr = append(arr, *History3)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"code":     200,
 		"messages": "success get history customer",
-		"result":   arr,
+		"result":   result,
 	})
 }
 

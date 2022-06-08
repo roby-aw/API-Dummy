@@ -1,6 +1,10 @@
 package admin
 
-import "github.com/golang-jwt/jwt/v4"
+import (
+	"time"
+
+	"github.com/golang-jwt/jwt/v4"
+)
 
 type LoginAdmin struct {
 	Email    string `json:"email"`
@@ -90,4 +94,13 @@ type Dashboard struct {
 }
 type ApproveTransaction struct {
 	Status_transaction string `json:"status_transaction"`
+}
+
+type CustomerHistory struct {
+	Customer_id int       `json:"customer_id"`
+	Keterangan  string    `json:"keterangan"`
+	Nomor       string    `json:"nomor"`
+	Tanggal     time.Time `json:"tanggal"`
+	Status      string    `json:"status"`
+	Poin_redeem int       `json:"poin_redeem"`
 }

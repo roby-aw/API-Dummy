@@ -85,7 +85,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dummy.History"
+                            "$ref": "#/definitions/admin.CustomerHistory"
                         }
                     }
                 }
@@ -743,6 +743,29 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "admin.CustomerHistory": {
+            "type": "object",
+            "properties": {
+                "customer_id": {
+                    "type": "integer"
+                },
+                "keterangan": {
+                    "type": "string"
+                },
+                "nomor": {
+                    "type": "string"
+                },
+                "poin_redeem": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "tanggal": {
+                    "type": "string"
+                }
+            }
+        },
         "admin.Dashboard": {
             "type": "object",
             "properties": {
