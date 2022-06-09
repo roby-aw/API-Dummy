@@ -406,125 +406,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/v1/mitra/history": {
-            "get": {
-                "description": "History Mitra",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Mitra"
-                ],
-                "summary": "History Mitra",
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/v1/mitra/inputpoin": {
-            "post": {
-                "description": "Input Poin Mitra",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Mitra"
-                ],
-                "summary": "Input Poin Mitra",
-                "parameters": [
-                    {
-                        "description": "InputPoinMitra",
-                        "name": "InputPoin",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/mitra.InputPoinMitra"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/v1/mitra/login": {
-            "post": {
-                "description": "Login Mitra",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Mitra"
-                ],
-                "summary": "Login Mitra",
-                "parameters": [
-                    {
-                        "description": "mitra",
-                        "name": "mitra",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/mitra.AuthMitra"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/mitra.Mitra"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1/mitra/register": {
-            "post": {
-                "description": "Register Mitra",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Mitra"
-                ],
-                "summary": "Register Mitra",
-                "parameters": [
-                    {
-                        "description": "MitraRegister",
-                        "name": "RegisterMitra",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/mitra.MitraRegister"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/mitra.MitraRegister"
-                        }
-                    }
-                }
-            }
-        },
         "/v1/paketdata": {
             "post": {
                 "description": "Redeem PaketData",
@@ -686,6 +567,125 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/response.ResponseGetProduct"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/store/history": {
+            "get": {
+                "description": "History Mitra",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mitra"
+                ],
+                "summary": "History Mitra",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/v1/store/inputpoin": {
+            "post": {
+                "description": "Input Poin Mitra",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mitra"
+                ],
+                "summary": "Input Poin Mitra",
+                "parameters": [
+                    {
+                        "description": "InputPoinMitra",
+                        "name": "InputPoin",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/mitra.InputPoinMitra"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/v1/store/login": {
+            "post": {
+                "description": "Login Mitra",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mitra"
+                ],
+                "summary": "Login Mitra",
+                "parameters": [
+                    {
+                        "description": "mitra",
+                        "name": "mitra",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/mitra.AuthMitra"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/mitra.Mitra"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/store/register": {
+            "post": {
+                "description": "Register Mitra",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Mitra"
+                ],
+                "summary": "Register Mitra",
+                "parameters": [
+                    {
+                        "description": "MitraRegister",
+                        "name": "RegisterMitra",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/mitra.MitraRegister"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/mitra.MitraRegister"
                         }
                     }
                 }

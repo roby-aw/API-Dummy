@@ -541,7 +541,7 @@ func (Controller *Controller) ManageStockProduct(c echo.Context) error {
 // @Produce json
 // @Param mitra body mitra.AuthMitra true "mitra"
 // @Success 200 {object} mitra.Mitra
-// @Router /v1/mitra/login [post]
+// @Router /v1/store/login [post]
 func (Controller *Controller) LoginMitra(c echo.Context) error {
 	var req mitra.AuthMitra
 	var tmpMitra mitra.Mitra
@@ -576,7 +576,7 @@ func (Controller *Controller) LoginMitra(c echo.Context) error {
 // @Produce json
 // @Param RegisterMitra body mitra.MitraRegister true "MitraRegister"
 // @Success 200 {object} mitra.MitraRegister
-// @Router /v1/mitra/register [post]
+// @Router /v1/store/register [post]
 func (Controller *Controller) RegisterMitra(c echo.Context) error {
 	var req mitra.MitraRegister
 	var tmpMitra mitra.Mitra
@@ -616,7 +616,7 @@ func (Controller *Controller) RegisterMitra(c echo.Context) error {
 // @Produce json
 // @Param InputPoin body mitra.InputPoinMitra true "InputPoinMitra"
 // @Success 200
-// @Router /v1/mitra/inputpoin [post]
+// @Router /v1/store/inputpoin [post]
 func (Controller *Controller) InputPoin(c echo.Context) error {
 	var req mitra.InputPoinMitra
 	var data dummy.DetailTransaction
@@ -663,7 +663,7 @@ func (Controller *Controller) InputPoin(c echo.Context) error {
 // @Accept json
 // @Produce json
 // @Success 200
-// @Router /v1/mitra/history [get]
+// @Router /v1/store/history [get]
 func (Controller *Controller) HistoryMitra(c echo.Context) error {
 	var err error
 	var History []*mitra.HistoryMitra

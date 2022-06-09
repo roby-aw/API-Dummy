@@ -45,7 +45,7 @@ func RegistrationPath(e *echo.Echo, controller Controller) {
 	g.POST("/approve/:transactionid", controller.AdminControlller.ApproveTransaction)
 
 	//mitra
-	m := c.Group("/mitra")
+	m := c.Group("/store")
 	m.POST("/login", controller.DummyController.LoginMitra)
 	m.POST("/register", controller.DummyController.RegisterMitra)
 	m.POST("/inputpoin", controller.DummyController.InputPoin)

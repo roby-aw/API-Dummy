@@ -540,83 +540,6 @@ paths:
       summary: Login
       tags:
       - Customer
-  /v1/mitra/history:
-    get:
-      consumes:
-      - application/json
-      description: History Mitra
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ""
-      summary: History Mitra
-      tags:
-      - Mitra
-  /v1/mitra/inputpoin:
-    post:
-      consumes:
-      - application/json
-      description: Input Poin Mitra
-      parameters:
-      - description: InputPoinMitra
-        in: body
-        name: InputPoin
-        required: true
-        schema:
-          $ref: '#/definitions/mitra.InputPoinMitra'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ""
-      summary: Input Poin Mitra
-      tags:
-      - Mitra
-  /v1/mitra/login:
-    post:
-      consumes:
-      - application/json
-      description: Login Mitra
-      parameters:
-      - description: mitra
-        in: body
-        name: mitra
-        required: true
-        schema:
-          $ref: '#/definitions/mitra.AuthMitra'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/mitra.Mitra'
-      summary: Login Mitra
-      tags:
-      - Mitra
-  /v1/mitra/register:
-    post:
-      consumes:
-      - application/json
-      description: Register Mitra
-      parameters:
-      - description: MitraRegister
-        in: body
-        name: RegisterMitra
-        required: true
-        schema:
-          $ref: '#/definitions/mitra.MitraRegister'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/mitra.MitraRegister'
-      summary: Register Mitra
-      tags:
-      - Mitra
   /v1/paketdata:
     post:
       consumes:
@@ -725,4 +648,81 @@ paths:
       summary: Update Stock Product
       tags:
       - Product
+  /v1/store/history:
+    get:
+      consumes:
+      - application/json
+      description: History Mitra
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: History Mitra
+      tags:
+      - Mitra
+  /v1/store/inputpoin:
+    post:
+      consumes:
+      - application/json
+      description: Input Poin Mitra
+      parameters:
+      - description: InputPoinMitra
+        in: body
+        name: InputPoin
+        required: true
+        schema:
+          $ref: '#/definitions/mitra.InputPoinMitra'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: Input Poin Mitra
+      tags:
+      - Mitra
+  /v1/store/login:
+    post:
+      consumes:
+      - application/json
+      description: Login Mitra
+      parameters:
+      - description: mitra
+        in: body
+        name: mitra
+        required: true
+        schema:
+          $ref: '#/definitions/mitra.AuthMitra'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/mitra.Mitra'
+      summary: Login Mitra
+      tags:
+      - Mitra
+  /v1/store/register:
+    post:
+      consumes:
+      - application/json
+      description: Register Mitra
+      parameters:
+      - description: MitraRegister
+        in: body
+        name: RegisterMitra
+        required: true
+        schema:
+          $ref: '#/definitions/mitra.MitraRegister'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/mitra.MitraRegister'
+      summary: Register Mitra
+      tags:
+      - Mitra
 swagger: "2.0"
